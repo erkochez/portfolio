@@ -31,20 +31,16 @@ export default function LogoLoop({
   logoHeight = 48,
   gap = 40,
   pauseOnHover = false,
-  scaleOnHover = false,
   fadeOut = false,
   fadeOutColor = '#ffffff',
   ariaLabel = 'Technology logos'
 }: LogoLoopProps) {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
     const updateWidth = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
-      }
+      // Width update logic removed as it's not needed
     };
 
     updateWidth();

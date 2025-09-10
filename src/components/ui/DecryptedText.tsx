@@ -31,13 +31,6 @@ export default function DecryptedText({
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const generateRandomText = (length: number) => {
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  };
 
   const animateText = () => {
     if (isAnimating || (animateOn === 'view' && hasAnimated)) return;

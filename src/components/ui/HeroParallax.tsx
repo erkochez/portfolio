@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -131,7 +131,7 @@ export const ProductCard = ({
     link: string;
     thumbnail: string;
   };
-  translate: any;
+  translate: MotionValue<number>;
 }) => {
   return (
     <motion.div

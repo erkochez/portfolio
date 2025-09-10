@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CarouselProps {
-  items: any[];
+  items: unknown[];
   autoplay?: boolean;
   autoplayDelay?: number;
   showIndicators?: boolean;
   showArrows?: boolean;
-  renderItem: (item: any, index: number) => React.ReactNode;
+  renderItem: (item: unknown, index: number) => React.ReactNode;
 }
 
 export const Carousel = ({
@@ -137,24 +137,27 @@ export const TestimonialCarousel = () => {
     }
   ];
 
-  const renderTestimonial = (testimonial: any) => (
+  const renderTestimonial = (testimonial: unknown) => {
+    const testimonialData = testimonial as { avatar: string; text: string; author: string; role: string; position: string };
+    return (
     <div className="bg-gray-800 rounded-xl p-8 mx-4 border border-gray-700">
       <div className="flex items-start space-x-4">
-        <div className="text-4xl">{testimonial.avatar}</div>
+        <div className="text-4xl">{testimonialData.avatar}</div>
         <div className="flex-1">
           <blockquote className="text-gray-300 text-lg leading-relaxed mb-4">
-            "{testimonial.text}"
+            &ldquo;{testimonialData.text}&rdquo;
           </blockquote>
           <div>
             <cite className="text-purple-400 font-semibold not-italic">
-              {testimonial.author}
+              {testimonialData.author}
             </cite>
-            <p className="text-gray-500 text-sm">{testimonial.position}</p>
+            <p className="text-gray-500 text-sm">{testimonialData.position}</p>
           </div>
         </div>
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-16">
@@ -212,20 +215,22 @@ export const ProjectShowcase = () => {
     }
   ];
 
-  const renderProject = (project: any) => (
-    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient} p-1`}>
+  const renderProject = (project: unknown) => {
+    const projectData = project as { title: string; description: string; stats: Array<{ label: string; value: string }>; gradient: string; impact: string; technologies: string[] };
+    return (
+    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${projectData.gradient} p-1`}>
       <div className="bg-gray-900 rounded-xl p-8 h-full">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">{projectData.title}</h3>
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              {project.description}
+              {projectData.description}
             </p>
             
             <div className="mb-6">
               <h4 className="text-cyan-400 font-semibold mb-3">Technologies Used:</h4>
               <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech: string, index: number) => (
+                {projectData.technologies.map((tech: string, index: number) => (
                   <span
                     key={index}
                     className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-700"
@@ -237,12 +242,12 @@ export const ProjectShowcase = () => {
             </div>
 
             <div className="text-green-400 font-semibold">
-              🚀 {project.impact}
+              🚀 {projectData.impact}
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-4">
-            {project.stats.map((stat: any, index: number) => (
+            {projectData.stats.map((stat: { label: string; value: string }, index: number) => (
               <div key={index} className="text-center p-4 bg-gray-800 rounded-lg border border-gray-700">
                 <div className="text-2xl font-bold text-cyan-400 mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-400">{stat.label}</div>
@@ -252,7 +257,8 @@ export const ProjectShowcase = () => {
         </div>
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-16">

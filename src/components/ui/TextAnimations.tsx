@@ -91,15 +91,7 @@ export const WordPullUp = ({
 
   const pullUp = {
     initial: { y: 100, opacity: 0 },
-    animate: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: i * delayMultiple,
-        duration: 0.5,
-        ease: [0.215, 0.61, 0.355, 1],
-      },
-    }),
+    animate: { y: 0, opacity: 1 },
   };
 
   return (
@@ -110,7 +102,11 @@ export const WordPullUp = ({
           variants={pullUp}
           initial="initial"
           animate="animate"
-          custom={i}
+          transition={{
+            delay: i * delayMultiple,
+            duration: 0.5,
+            ease: "easeOut",
+          }}
           className="inline-block mr-2"
         >
           {word}
@@ -134,15 +130,7 @@ export const CharacterReveal = ({
 
   const characterAnimation = {
     initial: { opacity: 0, y: 50 },
-    animate: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: delay + i * 0.05,
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    }),
+    animate: { opacity: 1, y: 0 },
   };
 
   return (
@@ -153,7 +141,11 @@ export const CharacterReveal = ({
           variants={characterAnimation}
           initial="initial"
           animate="animate"
-          custom={i}
+          transition={{
+            delay: delay + i * 0.05,
+            duration: 0.4,
+            ease: "easeOut",
+          }}
           className="inline-block"
         >
           {char === " " ? "\u00A0" : char}

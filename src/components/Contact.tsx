@@ -91,7 +91,7 @@ export default function Contact() {
       icon: '💼',
       title: 'LinkedIn',
       value: '/in/erkochez',
-      description: 'Let\'s connect professionally'
+      description: 'Let&apos;s connect professionally'
     }
   ];
 
@@ -101,7 +101,7 @@ export default function Contact() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Ready to bring your ideas to life? Whether it&apos;s enterprise solutions, 
@@ -240,7 +240,7 @@ export default function Contact() {
 
               {submitStatus === 'success' && (
                 <p className="mt-4 text-green-400 text-center text-sm">
-                  Thank you! I'll get back to you as soon as possible.
+                  Thank you! I&apos;ll get back to you as soon as possible.
                 </p>
               )}
             </form>

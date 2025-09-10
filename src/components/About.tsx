@@ -83,7 +83,7 @@ export default function About() {
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             From a curious 12-year-old creating websites to leading enterprise-level solutions 
-            and pioneering AR experiences in Macedonia's tech scene.
+            and pioneering AR experiences in Macedonia&apos;s tech scene.
           </p>
         </div>
 
