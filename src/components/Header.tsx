@@ -1,19 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import StaggeredMenu from './ui/StaggeredMenu';
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '#home' },

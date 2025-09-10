@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { WordPullUp, FadeInBlur } from './ui/TextAnimations';
 
@@ -89,7 +89,7 @@ export default function Projects() {
           </div>
           <FadeInBlur delay={0.5} className="text-xl text-slate-600 max-w-3xl mx-auto">
             From enterprise solutions to cutting-edge AR experiences, 
-            here's a showcase of projects that define my journey as a developer.
+            here&apos;s a showcase of projects that define my journey as a developer.
           </FadeInBlur>
         </div>
 

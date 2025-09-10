@@ -95,12 +95,6 @@ export default function Contact() {
     }
   ];
 
-  const socialLinks = [
-    { name: 'GitHub', url: '#', icon: '🐙' },
-    { name: 'LinkedIn', url: '#', icon: '💼' },
-    { name: 'Twitter', url: '#', icon: '🐦' },
-    { name: 'Instagram', url: '#', icon: '📸' }
-  ];
 
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-gray-900 text-white">
@@ -110,8 +104,8 @@ export default function Contact() {
             Let's Work Together
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Whether it's enterprise solutions, 
-            mobile apps, or cutting-edge AR experiences, I'm here to help.
+            Ready to bring your ideas to life? Whether it&apos;s enterprise solutions, 
+            mobile apps, or cutting-edge AR experiences, I&apos;m here to help.
           </p>
         </div>
 
@@ -121,9 +115,9 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                I'm always excited to discuss new opportunities, whether you're looking 
+                I&apos;m always excited to discuss new opportunities, whether you&apos;re looking 
                 to build enterprise-grade systems, innovative mobile applications, or 
-                explore the possibilities of AR technology. Let's create something amazing together.
+                explore the possibilities of AR technology. Let&apos;s create something amazing together.
               </p>
             </div>
 

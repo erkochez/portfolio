@@ -99,7 +99,7 @@ export default function About() {
               />
               <div className="prose prose-lg">
                 <p className="text-slate-600 leading-relaxed">
-                  I'm <span className="font-semibold text-blue-600">Eren Ahmed</span>, a passionate software engineer from 
+                  I&apos;m <span className="font-semibold text-blue-600">Eren Ahmed</span>, a passionate software engineer from 
                   <span className="font-semibold"> Skopje, Macedonia</span>. My journey in programming began with an insatiable curiosity 
                   about how digital worlds are created.
                 </p>
@@ -109,15 +109,15 @@ export default function About() {
             <div className="prose prose-lg">
               
               <p className="text-slate-600 leading-relaxed">
-                Over the years, I've evolved from creating simple websites to architecting complex enterprise solutions. 
+                Over the years, I&apos;ve evolved from creating simple websites to architecting complex enterprise solutions. 
                 Today, as the <span className="font-semibold text-blue-700">Head Backend Developer</span> at my company, 
                 I lead teams in building robust Workflow Management systems for banks and state institutions.
               </p>
               
               <p className="text-slate-600 leading-relaxed">
-                Beyond my professional role, I'm an entrepreneur and innovator. I've created 
+                Beyond my professional role, I&apos;m an entrepreneur and innovator. I&apos;ve created 
                 <span className="font-semibold text-blue-500"> Biteklif</span>, an online auction platform with real-time bidding, 
-                and co-developed a revolutionary <span className="font-semibold text-blue-600">Restaurant AR menu app</span> that's 
+                and co-developed a revolutionary <span className="font-semibold text-blue-600">Restaurant AR menu app</span> that&apos;s 
                 transforming dining experiences across Skopje.
               </p>
             </div>
