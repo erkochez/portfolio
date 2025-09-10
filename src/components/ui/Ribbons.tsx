@@ -32,7 +32,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const ribbonsRef = useRef<RibbonPoint[]>([]);
 
