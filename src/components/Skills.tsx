@@ -6,13 +6,13 @@ import { WordPullUp, FadeInBlur } from './ui/TextAnimations';
 export default function Skills() {
   const coreSkills = [
     { name: "Spring Boot", experience: "2.5+ years" },
-    { name: "Java", experience: "3+ years" },
-    { name: "React", experience: "2+ years" },
-    { name: "Next.js", experience: "1.5+ years" },
-    { name: "TypeScript", experience: "2+ years" },
+    { name: "Java", experience: "4+ years" },
+    { name: "React", experience: "1.5+ years" },
+    { name: "Next.js", experience: "0.8+ years" },
+    { name: "TypeScript", experience: "1+ years" },
     { name: "PostgreSQL", experience: "2.5+ years" },
     { name: "React Native", experience: "2+ years" },
-    { name: "Docker", experience: "2+ years" },
+    { name: "Docker", experience: "1+ years" },
     { name: "AR Core", experience: "1+ years" },
     { name: "Microservices", experience: "2+ years" }
   ];

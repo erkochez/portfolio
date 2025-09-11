@@ -383,3 +383,14 @@
     filter: invert(100%);
   }
 }
+
+/* Navbar color changes when in contact section */
+.navbar-in-contact .sm-resume-button {
+  color: #ffffff !important;
+  transition: color 0.4s ease;
+}
+
+.navbar-in-contact .sm-toggle {
+  color: #ffffff !important;
+  transition: color 0.4s ease;
+}

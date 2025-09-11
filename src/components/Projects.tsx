@@ -50,7 +50,7 @@ export default function Projects() {
       title: "Biteklif Online Auction Platform",
       category: "E-commerce Platform",
       description: "A full-featured online auction platform with real-time bidding, secure payments, and comprehensive seller management system.",
-      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "WebSocket"],
+      technologies: ["Spring Boot", "TypeScript", "PostgreSQL", "Stripe", "WebSocket"],
       features: [
         "Real-time Bidding",
         "Secure Payment Processing",

@@ -204,7 +204,7 @@ export const ProjectShowcase = () => {
       id: 3,
       title: "Biteklif Auction Platform",
       description: "Real-time bidding platform with live updates, secure payments, and automated winner selection. Built to handle thousands of concurrent users with seamless performance.",
-      technologies: ["Next.js", "Spring Boot", "Redis", "WebSocket"],
+      technologies: ["Spring Boot", "Redis", "WebSocket","React"],
       impact: "1000+ active users",
       gradient: "from-emerald-600 to-cyan-600",
       stats: [
