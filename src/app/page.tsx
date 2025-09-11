@@ -18,22 +18,7 @@ export default function Home() {
       <Projects />
       <Skills />
       <SkillsLogos />
-      {/* Testimonials Section */}
-      <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-              What People Say
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Testimonials from clients, colleagues, and collaborators who have experienced my work firsthand.
-            </p>
-          </div>
-          <ClientOnly fallback={<div className="h-96 flex items-center justify-center text-slate-600">Loading testimonials...</div>}>
-            <AnimatedTestimonialsDemo />
-          </ClientOnly>
-        </div>
-      </section>
+  
       <Contact />
       
       {/* Cursor Ribbons Effect */}
