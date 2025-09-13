@@ -135,9 +135,8 @@ const Projects = () => {
 
       tl3.to(rectangleRef3.current, {
         x: "600",
-        y: "80",
-       
-        scale: 1,
+        y: "70",
+        scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
       }, "-=0.7")
@@ -631,7 +630,7 @@ const Projects = () => {
           <div className="w-1/2 pr-8">
             <div
               ref={rectangleRef3}
-              className="w-[260px] h-[520px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative"
+              className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative"
               style={{boxShadow: '0 0 0 8px #1f2937, 0 0 0 12px #374151'}}
             >
               {/* Landing Content */}
@@ -892,19 +891,19 @@ const Projects = () => {
         </div>
 
           <div ref={contentRef3} className="w-1/2 pl-8 pt-8">
-            <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
+            <h2 className="text-5xl font-bold text-slate-800 leading-tight uppercase mb-6">
               AR RESTAURANT
               <br />
               MENU APP
             </h2>
-            <p className="text-2xl text-slate-600 mb-6">
+            <p className="text-xl text-slate-600 mb-4">
               A revolutionary AR-powered restaurant menu application with modern design. 
               Fully dynamic, scalable, and supports multiple languages, currencies, and AR food models.
             </p>
-            <p className="text-xl text-slate-700 mb-4">
+            <p className="text-lg text-slate-700 mb-3">
               <strong>Key Features:</strong>
             </p>
-            <ul className="text-lg text-slate-600 space-y-2">
+            <ul className="text-base text-slate-600 space-y-1">
               <li>• Augmented Reality food visualization and 3D models</li>
               <li>• Multi-language and multi-currency support</li>
               <li>• Dynamic menu management for restaurant owners</li>

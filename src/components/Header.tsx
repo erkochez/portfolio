@@ -14,9 +14,8 @@ export default function Header() {
   ];
 
   const socialItems = [
-    { label: 'GitHub', link: 'https://github.com/erenahmed' },
-    { label: 'LinkedIn', link: 'https://linkedin.com/in/erenahmed' },
-    { label: 'Twitter', link: 'https://twitter.com/erenahmed' }
+    { label: 'GitHub', link: 'https://github.com/erkochez' },
+    { label: 'LinkedIn', link: 'https://linkedin.com/in/eren-ahmed-b14934199' },
   ];
 
   return (
