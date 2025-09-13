@@ -25,6 +25,9 @@ const Projects = () => {
 
   useGSAP(
     () => {
+      // Only run animations on desktop (lg and above)
+      if (window.innerWidth < 1024) return;
+      
       // First section animation
       const tl1 = gsap.timeline({
         scrollTrigger: {
@@ -167,15 +170,16 @@ const Projects = () => {
           </p>
         </div>
       </div>
-      <div ref={containerRef} className="min-h-[900vh] overflow-x-hidden">
+      <div ref={containerRef} className="min-h-0 lg:min-h-[900vh] overflow-x-hidden">
         {/* Section 1: Auction Platform */}
-        <div className="section-1 h-screen relative px-8 py-12 overflow-x-hidden">
+        <div className="section-1 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
           {/* Title */}
-          <h1 className="text-3xl font-bold text-slate-800 mb-16">
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
             Online Auction Center
           </h1>
 
-        <div className="flex">
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex">
           {/* Left side with rectangle and icons */}
           <div className="w-1/2 pr-8">
             {/* Rectangle with content */}
@@ -387,15 +391,205 @@ const Projects = () => {
             </ul>
           </div>
         </div>
+
+        {/* Mobile Layout */}
+        <div className="lg:hidden space-y-6">
+          {/* Two rectangles stacked vertically */}
+          <div className="flex flex-col gap-4 items-center">
+            {/* Initial state rectangle */}
+            <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+              {/* Landing Page Content */}
+              <div className="p-3 h-full">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-sm font-bold text-blue-600">Open Auction</h3>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-gray-600">100 $</span>
+                    <img 
+                      src="/avatar.png" 
+                      alt="Avatar" 
+                      className="w-4 h-4 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Search Bar */}
+                <div className="mb-2">
+                  <div className="flex items-center border rounded px-2 py-1">
+                    <input 
+                      type="text" 
+                      placeholder="Enter keyword..." 
+                      className="flex-1 text-xs outline-none"
+                    />
+                    <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                {/* Product Grid */}
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="border rounded p-1">
+                    <img 
+                      src="/macbookpro.jpg" 
+                      alt="MacBook Pro" 
+                      className="w-full h-8 object-contain rounded mb-1"
+                    />
+                    <div className="text-xs font-semibold">MacBook Pro</div>
+                    <div className="text-xs text-blue-600">$800</div>
+                  </div>
+                  <div className="border rounded p-1">
+                    <img 
+                      src="/iphone.jpg" 
+                      alt="iPhone 15" 
+                      className="w-full h-8 object-contain rounded mb-1"
+                    />
+                    <div className="text-xs font-semibold">iPhone 15</div>
+                    <div className="text-xs text-blue-600">$200</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Final state rectangle */}
+            <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+              {/* Auction Page Content */}
+              <div className="p-3 h-full">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-sm font-bold text-blue-600">Open Auction</h3>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-gray-600">100 $</span>
+                    <img 
+                      src="/avatar.png" 
+                      alt="Avatar" 
+                      className="w-4 h-4 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Product Info */}
+                <div className="flex gap-2 mb-2">
+                  <img 
+                    src="/macbookpro.jpg" 
+                    alt="MacBook Pro" 
+                    className="w-12 h-10 object-contain rounded"
+                  />
+                  <div className="flex-1">
+                    <h4 className="text-xs font-bold">MacBook Pro</h4>
+                    <p className="text-xs text-gray-600">14" 256 GB SSD</p>
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs line-through text-gray-400">$2,000</span>
+                      <span className="text-xs font-bold text-blue-600">$800</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Bidding Section */}
+                <div className="space-y-1 mb-2">
+                  <div className="text-xs text-gray-600">Last bid: $750</div>
+                  <div className="flex gap-1">
+                    <input 
+                      type="text" 
+                      placeholder="850" 
+                      className="flex-1 text-xs border rounded px-1 py-0.5"
+                    />
+                    <button className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded">Bid</button>
+                  </div>
+                  <div className="text-xs text-red-600">30 seconds left!</div>
+                </div>
+                
+                {/* Bidders List */}
+                <div>
+                  <div className="text-xs font-semibold mb-1">Bids</div>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-xs">
+                      <img 
+                        src="/chris.png" 
+                        alt="Chris" 
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                      <div className="flex-1">
+                        <div className="font-semibold">Chris</div>
+                        <div className="text-green-600 font-bold">$750</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <img 
+                        src="/oliver.png" 
+                        alt="Oliver" 
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                      <div className="flex-1">
+                        <div className="font-semibold">Oliver</div>
+                        <div className="text-green-600 font-bold">$720</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tech stack icons */}
+          <div className="flex gap-4 justify-center mb-6">
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" 
+                alt="React" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="/springlogo.png" 
+                alt="Java" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://images.icon-icons.com/2415/PNG/512/redis_original_wordmark_logo_icon_146369.png" 
+                alt="Redis" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png" 
+                alt="PostgreSQL" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className="text-left">
+            <p className="text-lg text-slate-600 mb-4">
+              A revolutionary token-based auction system built with cutting-edge technology. 
+              Features real-time bidding, dynamic participant thresholds, and unlimited scalability.
+            </p>
+            <p className="text-base text-slate-700 mb-3">
+              <strong>Key Features:</strong>
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>• Token-based bidding system with minimum bid requirements</li>
+              <li>• Dynamic auction start based on participant thresholds</li>
+              <li>• Real-time updates and unlimited participant capacity</li>
+              <li>• Secure, fast, and reliable transaction processing</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
         {/* Section 2: Bank Loan Management */}
-        <div className="section-2 h-screen relative px-8 py-12 overflow-x-hidden">
-          <h1 className="text-3xl font-bold text-slate-800 mb-16">
+        <div className="section-2 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
             Bank Loan Management
           </h1>
 
-        <div className="flex">
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex">
           <div className="w-1/2 pr-8">
             <div
               ref={rectangleRef2}
@@ -618,15 +812,161 @@ const Projects = () => {
             </ul>
           </div>
         </div>
+
+        {/* Mobile Layout */}
+        <div className="lg:hidden space-y-6">
+          {/* Two rectangles stacked vertically */}
+          <div className="flex flex-col gap-4 items-center">
+            {/* Initial state rectangle */}
+            <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+              {/* Landing Content */}
+              <div className="p-3 h-full">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-sm font-bold text-blue-600">Loan Dashboard</h3>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-gray-600">Joe Evans</span>
+                    <img 
+                      src="/employee.png" 
+                      alt="employee" 
+                      className="w-4 h-4 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-2">
+                  <div className="flex items-center border rounded px-2 py-1">
+                    <input 
+                      type="text" 
+                      placeholder="Search clients..." 
+                      className="flex-1 text-xs outline-none"
+                    />
+                    <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-1 mb-2">
+                  <div className="border rounded p-1">
+                    <div className="text-xs font-semibold text-green-600">Active</div>
+                    <div className="text-lg font-bold text-blue-600">24</div>
+                  </div>
+                  <div className="border rounded p-1">
+                    <div className="text-xs font-semibold text-blue-600">Total</div>
+                    <div className="text-lg font-bold text-blue-600">156</div>
+                  </div>
+                  <div className="border rounded p-1">
+                    <div className="text-xs font-semibold text-orange-600">Pending</div>
+                    <div className="text-lg font-bold text-blue-600">8</div>
+                  </div>
+                  <div className="border rounded p-1">
+                    <div className="text-xs font-semibold text-red-600">Rejected</div>
+                    <div className="text-lg font-bold text-blue-600">3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Final state rectangle */}
+            <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+              {/* Detail Content */}
+              <div className="p-3 h-full">
+                <div className="mb-2">
+                  <div className="flex items-center gap-1 mb-1">
+                    <img 
+                      src="/johnsmith.png" 
+                      alt="Client" 
+                      className="w-6 h-6 rounded-full object-cover"
+                    />
+                    <div>
+                      <h4 className="text-xs font-bold">John Smith</h4>
+                      <p className="text-xs text-gray-600">#CS12345</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-blue-50 p-1 rounded">
+                    <div className="text-xs font-semibold text-blue-600">#OKR0123</div>
+                    <div className="text-xs font-bold">Personal Loan</div>
+                    <div className="text-xs text-gray-600">$25,000</div>
+                  </div>
+                </div>
+
+                <div className="mb-2">
+                  <div className="text-xs font-semibold mb-1">Documents</div>
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs">
+                      <span>Identity Document</span>
+                      <button className="bg-green-500 text-white px-1 py-0.5 rounded text-xs">View</button>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span>Income Certificate</span>
+                      <button className="bg-green-500 text-white px-1 py-0.5 rounded text-xs">View</button>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Navigation Buttons */}
+                <div className="absolute bottom-2 left-2 right-2 flex gap-1">
+                  <button className="bg-gray-500 text-white text-xs px-2 py-1 rounded flex-1">← Back</button>
+                  <button className="bg-blue-600 text-white text-xs px-2 py-1 rounded flex-1">Send</button>
+                  <button className="bg-red-500 text-white text-xs px-2 py-1 rounded flex-1">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tech stack icons */}
+          <div className="flex gap-4 justify-center mb-6">
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" 
+                alt="React" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="/springlogo.png" 
+                alt="Java" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png" 
+                alt="PostgreSQL" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className="text-left">
+            <p className="text-lg text-slate-600 mb-4">
+              A comprehensive document management system for bank loan processing. 
+              Streamlines workflow, tracks documents, and manages loan applications efficiently.
+            </p>
+            <p className="text-base text-slate-700 mb-3">
+              <strong>Key Features:</strong>
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>• Document workflow management and tracking</li>
+              <li>• Client information and loan product management</li>
+              <li>• Multi-level approval hierarchy system</li>
+              <li>• Real-time status updates and notifications</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
         {/* Section 3: AR Restaurant Menu App */}
-        <div className="section-3 h-screen relative px-8 py-12 overflow-x-hidden">
-          <h1 className="text-3xl font-bold text-slate-800 mb-16">
+        <div className="section-3 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
             AR Restaurant Menu App
           </h1>
 
-        <div className="flex">
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex">
           <div className="w-1/2 pr-8">
             <div
               ref={rectangleRef3}
@@ -911,6 +1251,218 @@ const Projects = () => {
             </ul>
           </div>
           </div>
+
+        {/* Mobile Layout */}
+        <div className="lg:hidden space-y-6">
+          {/* Two phones side by side */}
+          <div className="flex gap-4 justify-center">
+            {/* Initial state phone */}
+            <div className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
+                 style={{boxShadow: '0 0 0 4px #1f2937, 0 0 0 6px #374151'}}>
+              {/* Landing Content */}
+              <div className="h-full bg-white">
+                {/* Phone Header */}
+                <div className="bg-blue-600 text-white px-2 py-2 flex justify-between items-center">
+                  <div className="w-3 h-3 flex flex-col justify-center">
+                    <div className="w-2 h-0.5 bg-white mb-0.5"></div>
+                    <div className="w-2 h-0.5 bg-white mb-0.5"></div>
+                    <div className="w-2 h-0.5 bg-white"></div>
+                  </div>
+                  <h3 className="text-xs font-bold">Carmine's</h3>
+                  <div className="w-3 h-3"></div>
+                </div>
+                
+                {/* Search Bar */}
+                <div className="px-1 py-1">
+                  <div className="flex items-center bg-gray-100 rounded px-1 py-0.5">
+                    <svg className="w-2 h-2 text-gray-400 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                      type="text" 
+                      placeholder="Search..." 
+                      className="flex-1 outline-none bg-transparent"
+                      style={{fontSize: '7px'}}
+                    />
+                  </div>
+                </div>
+                
+                {/* Categories */}
+                <div className="px-1 mb-1">
+                  <div className="flex gap-1">
+                    <button className="bg-blue-600 text-white px-1 py-0.5 rounded-full" style={{fontSize: '7px'}}>All</button>
+                    <button className="bg-white text-blue-600 px-1 py-0.5 rounded-full border border-blue-600" style={{fontSize: '7px'}}>Pizza</button>
+                  </div>
+                </div>
+                
+                {/* Food Items */}
+                <div className="px-2 space-y-1">
+                  <div className="bg-white border rounded p-1">
+                    <div className="relative">
+                      <img 
+                        src="/alfredo.webp" 
+                        alt="Grilled Chicken Alfredo" 
+                        className="w-full h-10 object-cover rounded mb-1"
+                      />
+                      <div className="absolute top-0.5 left-0.5 bg-blue-600 text-white px-0.5 py-0.5 rounded" style={{fontSize: '6px'}}>SPECIAL</div>
+                      <div className="absolute bottom-0.5 right-0.5 bg-blue-600 text-white px-0.5 py-0.5 rounded" style={{fontSize: '6px'}}>$12</div>
+                    </div>
+                    <h5 className="font-bold" style={{fontSize: '8px'}}>Grilled Chicken Alfredo</h5>
+                    <p className="text-gray-600" style={{fontSize: '7px'}}>Tender grilled chicken</p>
+                    <div className="flex items-center mt-0.5">
+                      <svg className="w-2 h-2 text-gray-400 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-gray-500" style={{fontSize: '7px'}}>20 min</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white border rounded p-1">
+                    <div className="relative">
+                      <img 
+                        src="/chickenwings.jpg" 
+                        alt="Spicy Chicken Wings" 
+                        className="w-full h-10 object-cover rounded mb-1"
+                      />
+                      <div className="absolute top-0.5 left-0.5 bg-red-600 text-white px-0.5 py-0.5 rounded" style={{fontSize: '6px'}}>HOT</div>
+                      <div className="absolute bottom-0.5 right-0.5 bg-blue-600 text-white px-0.5 py-0.5 rounded" style={{fontSize: '6px'}}>$8</div>
+                    </div>
+                    <h5 className="font-bold" style={{fontSize: '8px'}}>Spicy Chicken Wings</h5>
+                    <p className="text-gray-600" style={{fontSize: '7px'}}>Crispy wings</p>
+                    <div className="flex items-center mt-0.5">
+                      <svg className="w-2 h-2 text-gray-400 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-gray-500" style={{fontSize: '7px'}}>15 min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Final state phone */}
+            <div className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
+                 style={{boxShadow: '0 0 0 4px #1f2937, 0 0 0 6px #374151'}}>
+              {/* Detail Content */}
+              <div className="h-full bg-white">
+                {/* Phone Header */}
+                <div className="bg-blue-600 text-white px-2 py-2 flex justify-between items-center">
+                  <button className="w-3 h-3 bg-blue-600 rounded flex items-center justify-center"></button>
+                  <h3 className="text-xs font-bold">Carmine's</h3>
+                  <div className="w-3 h-3 rounded-full flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                  </div>
+                </div>
+                
+                {/* Food Image */}
+                <div className="relative">
+                  <img 
+                    src="/alfredo.webp" 
+                    alt="Grilled Chicken Alfredo Pasta" 
+                    className="w-full h-16 object-cover"
+                  />
+                  <div className="absolute top-1 right-1 bg-blue-600 text-white px-1 py-0.5 rounded" style={{fontSize: '6px'}}>SPECIAL</div>
+                  <div className="absolute bottom-1 left-1 bg-gray-800 text-white px-1 py-0.5 rounded flex items-center" style={{fontSize: '6px'}}>
+                    <svg className="w-2 h-2 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    20 min
+                  </div>
+                  <div className="absolute bottom-1 right-1">
+                    <button className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold" style={{fontSize: '7px'}}>3D</span>
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Food Details */}
+                <div className="px-2 py-2">
+                  <h4 className="font-bold" style={{fontSize: '9px'}}>Grilled Chicken Alfredo</h4>
+                  <p className="text-blue-600 font-bold" style={{fontSize: '8px'}}>$ 12.00</p>
+                  
+                  <div className="border-t my-1"></div>
+                  
+                  <div className="mb-2">
+                    <h5 className="font-semibold text-gray-700 mb-1" style={{fontSize: '7px'}}>Ingredients</h5>
+                    <div className="flex gap-1">
+                      <div className="text-center">
+                        <div className="w-3 h-3 bg-gray-100 rounded-full flex items-center justify-center mb-0.5">
+                          <span style={{fontSize: '6px'}}>🥛</span>
+                        </div>
+                        <span style={{fontSize: '6px'}}>Milk</span>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-3 h-3 bg-gray-100 rounded-full flex items-center justify-center mb-0.5">
+                          <span style={{fontSize: '6px'}}>🧄</span>
+                        </div>
+                        <span style={{fontSize: '6px'}}>Garlic</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-2">
+                    <h5 className="font-semibold text-gray-700 mb-1" style={{fontSize: '7px'}}>Description</h5>
+                    <p className="text-gray-600" style={{fontSize: '7px'}}>Tender grilled chicken over creamy Alfredo fettuccine.</p>
+                  </div>
+                </div>
+
+                {/* Bottom Action Bar */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white border-t px-2 py-2 flex items-center gap-2">
+                  <div className="flex items-center bg-gray-100 rounded-full">
+                    <button className="w-4 h-4 flex items-center justify-center" style={{fontSize: '8px'}}>-</button>
+                    <span className="px-1" style={{fontSize: '8px'}}>1</span>
+                    <button className="w-4 h-4 flex items-center justify-center" style={{fontSize: '8px'}}>+</button>
+                  </div>
+                  <button className="flex-1 bg-blue-600 text-white py-1 rounded-full flex items-center justify-center" style={{fontSize: '7px'}}>
+                    Add to Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tech stack icons */}
+          <div className="flex gap-4 justify-center mb-6">
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" 
+                alt="React" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="/springlogo.png" 
+                alt="Java" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png" 
+                alt="PostgreSQL" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className="text-left">
+            <p className="text-lg text-slate-600 mb-4">
+              A revolutionary AR-powered restaurant menu application with modern design. 
+              Fully dynamic, scalable, and supports multiple languages, currencies, and AR food models.
+            </p>
+            <p className="text-base text-slate-700 mb-3">
+              <strong>Key Features:</strong>
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>• Augmented Reality food visualization and 3D models</li>
+              <li>• Multi-language and multi-currency support</li>
+              <li>• Dynamic menu management for restaurant owners</li>
+              <li>• Real-time order processing and payment integration</li>
+            </ul>
+          </div>
+        </div>
         </div>
       </div>
     </section>
