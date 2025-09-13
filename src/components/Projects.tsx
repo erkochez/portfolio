@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,8 +49,8 @@ const Projects = () => {
       }, "-=0.9");
 
       tl1.to(rectangleRef.current, {
-        x: "calc(50vw - 300px)", // 50% viewport width - half rectangle width (600px/2)
-        y: "calc(50vh - 200px)", // 50% viewport height - half rectangle height (400px/2)
+        x: "400",
+        y: "80",
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -61,7 +61,7 @@ const Projects = () => {
         ease: "power2.inOut",
       }, "-=0.7")
       .to("#auction-content", {
-        opacity: 1,
+          opacity: 1,
         duration: 0.4,
         ease: "power2.inOut",
       }, "-=0.3")
@@ -69,7 +69,7 @@ const Projects = () => {
 
       // Second section animations
       const tl2 = gsap.timeline({
-        scrollTrigger: {
+          scrollTrigger: {
           trigger: ".section-2",
           start: "top top",
           end: "+=300%",
@@ -91,8 +91,9 @@ const Projects = () => {
       }, "-=0.9");
 
       tl2.to(rectangleRef2.current, {
-        x: "calc(50vw - 300px)", // 50% viewport width - half rectangle width (600px/2)
-        y: "calc(50vh - 200px)", // 50% viewport height - half rectangle height (400px/2)
+        x: "400",
+        y: "80",
+   
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -133,9 +134,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl3.to(rectangleRef3.current, {
-        x: "calc(50vw - 130px)", // 50% viewport width - half rectangle width (260px/2)
-        y: "calc(50vh - 260px)", // 50% viewport height - half rectangle height (520px/2)
-        scale: 1.1,
+        x: "600",
+        y: "80",
+       
+        scale: 1,
         duration: 1.3,
         ease: "power2.inOut",
       }, "-=0.7")
@@ -510,7 +512,7 @@ const Projects = () => {
                     <div className="text-xs text-gray-600">Amount: $25,000</div>
                   </div>
                 </div>
-                
+
                 {/* Documents Table */}
                 <div className="mb-4">
                   <div className="text-xs font-semibold mb-2">Required Documents</div>
@@ -849,7 +851,7 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Bottom Action Bar */}
                 <div className="absolute bottom-0 left-0 right-0 bg-white border-t px-3 py-3 flex items-center gap-3">
                   <div className="flex items-center bg-gray-100 rounded-full">
@@ -887,7 +889,7 @@ const Projects = () => {
                 />
               </div>
             </div>
-          </div>
+        </div>
 
           <div ref={contentRef3} className="w-1/2 pl-8 pt-8">
             <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
@@ -909,7 +911,7 @@ const Projects = () => {
               <li>• Real-time order processing and payment integration</li>
             </ul>
           </div>
-        </div>
+          </div>
         </div>
       </div>
     </section>
