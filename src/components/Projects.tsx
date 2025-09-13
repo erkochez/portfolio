@@ -49,8 +49,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl1.to(rectangleRef.current, {
-        x: 300,
-        y: 150,
+        x: "50%",
+        y: "50%",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -91,8 +93,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl2.to(rectangleRef2.current, {
-        x: 300,
-        y: 150,
+        x: "50%",
+        y: "50%",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -133,8 +137,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl3.to(rectangleRef3.current, {
-        x: 400,
-        y: 60,
+        x: "50%",
+        y: "50%",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.1,
         duration: 1.3,
         ease: "power2.inOut",
