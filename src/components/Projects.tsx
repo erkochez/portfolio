@@ -49,10 +49,8 @@ const Projects = () => {
       }, "-=0.9");
 
       tl1.to(rectangleRef.current, {
-        x: "50%",
-        y: "50%",
-        xPercent: -50,
-        yPercent: -50,
+        x: "calc(50vw - 300px)", // 50% viewport width - half rectangle width (600px/2)
+        y: "calc(50vh - 200px)", // 50% viewport height - half rectangle height (400px/2)
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -93,10 +91,8 @@ const Projects = () => {
       }, "-=0.9");
 
       tl2.to(rectangleRef2.current, {
-        x: "50%",
-        y: "50%",
-        xPercent: -50,
-        yPercent: -50,
+        x: "calc(50vw - 300px)", // 50% viewport width - half rectangle width (600px/2)
+        y: "calc(50vh - 200px)", // 50% viewport height - half rectangle height (400px/2)
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -137,10 +133,8 @@ const Projects = () => {
       }, "-=0.9");
 
       tl3.to(rectangleRef3.current, {
-        x: "50%",
-        y: "50%",
-        xPercent: -50,
-        yPercent: -50,
+        x: "calc(50vw - 130px)", // 50% viewport width - half rectangle width (260px/2)
+        y: "calc(50vh - 260px)", // 50% viewport height - half rectangle height (520px/2)
         scale: 1.1,
         duration: 1.3,
         ease: "power2.inOut",
