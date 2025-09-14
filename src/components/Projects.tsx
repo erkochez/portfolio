@@ -477,7 +477,7 @@ const Projects = () => {
                   />
                   <div className="flex-1">
                     <h4 className="text-xs font-bold">MacBook Pro</h4>
-                    <p className="text-xs text-gray-600">14" 256 GB SSD</p>
+                    <p className="text-xs text-gray-600">14&quot; 256 GB SSD</p>
                     <div className="flex items-center gap-1">
                       <span className="text-xs line-through text-gray-400">$2,000</span>
                       <span className="text-xs font-bold text-blue-600">$800</span>
@@ -1268,7 +1268,7 @@ const Projects = () => {
                     <div className="w-2 h-0.5 bg-white mb-0.5"></div>
                     <div className="w-2 h-0.5 bg-white"></div>
                   </div>
-                  <h3 className="text-xs font-bold">Carmine's</h3>
+                  <h3 className="text-xs font-bold">Carmine&apos;s</h3>
                   <div className="w-3 h-3"></div>
                 </div>
                 
@@ -1348,7 +1348,7 @@ const Projects = () => {
                 {/* Phone Header */}
                 <div className="bg-blue-600 text-white px-2 py-2 flex justify-between items-center">
                   <button className="w-3 h-3 bg-blue-600 rounded flex items-center justify-center"></button>
-                  <h3 className="text-xs font-bold">Carmine's</h3>
+                  <h3 className="text-xs font-bold">Carmine&apos;s</h3>
                   <div className="w-3 h-3 rounded-full flex items-center justify-center">
                     <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                   </div>

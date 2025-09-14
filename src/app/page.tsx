@@ -4,7 +4,6 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
-import { AnimatedTestimonialsDemo } from '@/components/ui/AnimatedTestimonialsDemo';
 import { ClientOnly } from '@/components/ui/ClientOnly';
 import SkillsLogos from '@/components/ui/SkillsLogos';
 import CursorRibbons from '@/components/ui/CursorRibbons';
