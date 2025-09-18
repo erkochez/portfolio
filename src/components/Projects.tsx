@@ -51,9 +51,13 @@ const Projects = () => {
         ease: "power2.inOut",
       }, "-=0.9");
 
+   
+
       tl1.to(rectangleRef.current, {
-        x: "400",
-        y: "80",
+        x: "50vw",
+        y: "40vh",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -94,9 +98,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl2.to(rectangleRef2.current, {
-        x: "400",
-        y: "80",
-   
+        x: "50vw",
+        y: "35vh",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -137,8 +142,10 @@ const Projects = () => {
       }, "-=0.9");
 
       tl3.to(rectangleRef3.current, {
-        x: "600",
-        y: "70",
+        x: "50vw",
+        y: "35vh",
+        xPercent: -50,
+        yPercent: -50,
         scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
@@ -174,7 +181,7 @@ const Projects = () => {
         {/* Section 1: Auction Platform */}
         <div className="section-1 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
           {/* Title */}
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
             Online Auction Center
           </h1>
 
@@ -372,7 +379,7 @@ const Projects = () => {
           </div>
 
           {/* Right side text */}
-          <div ref={contentRef} className="w-1/2 pl-8 pt-8">
+          <div ref={contentRef} className="w-1/2 pl-8">
             <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
               NEXT-GEN AUCTION PLATFORM
             </h2>
@@ -584,8 +591,8 @@ const Projects = () => {
 
         {/* Section 2: Bank Loan Management */}
         <div className="section-2 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
-            Bank Loan Management
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+            Bank Workflow
           </h1>
 
         {/* Desktop Layout */}
@@ -791,9 +798,9 @@ const Projects = () => {
             </div>
           </div>
 
-          <div ref={contentRef2} className="w-1/2 pl-8 pt-8">
+          <div ref={contentRef2} className="w-1/2 pl-8">
             <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
-              BANK LOAN
+              BANK WORKFLOW
               <br />
               MANAGEMENT
             </h2>
@@ -961,8 +968,8 @@ const Projects = () => {
 
         {/* Section 3: AR Restaurant Menu App */}
         <div className="section-3 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-8 lg:mb-16">
-            AR Restaurant Menu App
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+            AR Menu App
           </h1>
 
         {/* Desktop Layout */}
@@ -1230,11 +1237,11 @@ const Projects = () => {
             </div>
         </div>
 
-          <div ref={contentRef3} className="w-1/2 pl-8 pt-8">
+          <div ref={contentRef3} className="w-1/2 pl-8">
             <h2 className="text-5xl font-bold text-slate-800 leading-tight uppercase mb-6">
-              AR RESTAURANT
+              NEXT GEN
               <br />
-              MENU APP
+              AR MENU APP
             </h2>
             <p className="text-xl text-slate-600 mb-4">
               A revolutionary AR-powered restaurant menu application with modern design. 
