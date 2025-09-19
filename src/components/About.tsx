@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -13,12 +13,14 @@ export default function About() {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
-    const timelineItems = timelineRef.current?.querySelectorAll('.timeline-item');
-    
+    const timelineItems =
+      timelineRef.current?.querySelectorAll(".timeline-item");
+
     if (timelineItems) {
-      gsap.fromTo(timelineItems, 
+      gsap.fromTo(
+        timelineItems,
         { opacity: 0, x: -50 },
         {
           opacity: 1,
@@ -30,14 +32,14 @@ export default function About() {
             trigger: timelineRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -45,45 +47,55 @@ export default function About() {
     {
       year: "2012",
       title: "Started Coding",
-      description: "Fell in love with programming at age 12. Created multiple websites and a sports news platform that gained thousands of monthly views.",
-      icon: "💻"
+      description:
+        "Fell in love with programming at age 12. Created multiple websites and a sports news platform that gained thousands of monthly views.",
+      icon: "💻",
     },
     {
       year: "2022",
       title: "University Graduate",
-      description: "Graduated with a Bachelor's degree from International Balkan University, equipped with solid computer science fundamentals.",
-      icon: "🎓"
+      description:
+        "Graduated with a Bachelor's degree from International Balkan University, equipped with solid computer science fundamentals.",
+      icon: "🎓",
     },
     {
       year: "2022",
       title: "Junior Backend Developer",
-      description: "Started my professional journey as a Junior Spring Backend Developer at a company in Skopje, Macedonia.",
-      icon: "🚀"
+      description:
+        "Started my professional journey as a Junior Spring Backend Developer at a company in Skopje, Macedonia.",
+      icon: "🚀",
     },
     {
       year: "2024",
       title: "Head Backend Developer",
-      description: "Promoted to Head Backend Developer. Led multiple projects including Workflow Management systems for Banks and state institutions.",
-      icon: "👑"
+      description:
+        "Promoted to Head Backend Developer. Led multiple projects including Workflow Management systems for Banks and state institutions.",
+      icon: "👑",
     },
     {
       year: "Present",
       title: "AR Innovator",
-      description: "Co-created a modern Restaurant AR menu app used across Skopje. Building next-generation AR tools and managing enterprise systems.",
-      icon: "🥽"
-    }
+      description:
+        "Co-created a modern Restaurant AR menu app used across Skopje. Building next-generation AR tools and managing enterprise systems.",
+      icon: "🥽",
+    },
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-white text-slate-800">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="py-20 bg-white text-slate-800"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
             My Journey
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            From a curious 12-year-old creating websites to leading enterprise-level solutions 
-            and pioneering AR experiences in Macedonia&apos;s tech scene.
+            From a curious 12-year-old creating websites to leading
+            enterprise-level solutions and pioneering AR experiences in
+            Macedonia&apos;s tech scene.
           </p>
         </div>
 
@@ -99,26 +111,39 @@ export default function About() {
               />
               <div className="prose prose-lg">
                 <p className="text-slate-600 leading-relaxed">
-                  I&apos;m <span className="font-semibold text-blue-600">Eren Ahmed</span>, a passionate software engineer from 
-                  <span className="font-semibold"> Skopje, Macedonia</span>. My journey in programming began with an insatiable curiosity 
+                  I&apos;m{" "}
+                  <span className="font-semibold text-blue-600">
+                    Eren Ahmed
+                  </span>
+                  , a passionate software engineer from
+                  <span className="font-semibold"> Skopje, Macedonia</span>. My
+                  journey in programming began with an insatiable curiosity
                   about how digital worlds are created.
                 </p>
               </div>
             </div>
-            
+
             <div className="prose prose-lg">
-              
               <p className="text-slate-600 leading-relaxed">
-                Over the years, I&apos;ve evolved from creating simple websites to architecting complex enterprise solutions. 
-                Today, as the <span className="font-semibold text-blue-700">Head Backend Developer</span> at my company, 
-                I lead teams in building robust Workflow Management systems for banks and state institutions.
+                Over the years, I&apos;ve evolved from creating simple websites
+                to architecting complex enterprise solutions. Today, as the{" "}
+                <span className="font-semibold text-blue-700">
+                  Head Backend Developer
+                </span>{" "}
+                at my company, I lead teams in building robust Workflow
+                Management systems for banks and state institutions.
               </p>
-              
+
               <p className="text-slate-600 leading-relaxed">
-                Beyond my professional role, I&apos;m an entrepreneur and innovator. I&apos;ve created 
-                <span className="font-semibold text-blue-500"> Biteklif</span>, an online auction platform with real-time bidding, 
-                and co-developed a revolutionary <span className="font-semibold text-blue-600">Restaurant AR menu app</span> that&apos;s 
-                transforming dining experiences across Skopje.
+                Beyond my professional role, I&apos;m an entrepreneur and
+                innovator. I&apos;ve created
+                <span className="font-semibold text-blue-500"> Biteklif</span>,
+                an online auction platform with real-time bidding, and
+                co-developed a revolutionary{" "}
+                <span className="font-semibold text-blue-600">
+                  Restaurant AR menu app
+                </span>{" "}
+                that&apos;s transforming dining experiences across Skopje.
               </p>
             </div>
 
@@ -145,14 +170,17 @@ export default function About() {
           {/* Timeline */}
           <div ref={timelineRef} className="relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-blue-600"></div>
-            
+
             <div className="space-y-8">
               {timeline.map((item, index) => (
-                <div key={index} className="timeline-item relative flex items-start space-x-4">
+                <div
+                  key={index}
+                  className="timeline-item relative flex items-start space-x-4"
+                >
                   <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white text-sm font-bold relative z-10">
                     {item.icon}
                   </div>
-                  
+
                   <div className="flex-grow">
                     <div className="bg-blue-50 p-6 rounded-lg shadow-lg border-l-4 border-blue-400">
                       <div className="flex items-center space-x-2 mb-2">
