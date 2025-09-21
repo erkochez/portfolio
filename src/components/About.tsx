@@ -1,97 +1,6 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import AboutAnimations from './ui/AboutAnimations';
 
 export default function About() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // Title and description animations
-    const title = sectionRef.current?.querySelector('h2');
-    const description = sectionRef.current?.querySelector('p');
-    const aboutText = sectionRef.current?.querySelector('.space-y-6');
-    const profileGrid = sectionRef.current?.querySelector('.grid');
-
-    // Set initial states
-    gsap.set([title, description, aboutText, profileGrid], {
-      opacity: 0,
-      y: 60
-    });
-
-    // Create entrance timeline
-    const entranceTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        end: "top 20%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    if (title) entranceTl.to(title, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-    
-    if (description) entranceTl.to(description, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    }, "-=0.4");
-    
-    if (aboutText) entranceTl.to(aboutText, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.3");
-    
-    if (profileGrid) entranceTl.to(profileGrid, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.5");
-
-    const timelineItems =
-      timelineRef.current?.querySelectorAll(".timeline-item");
-
-    if (timelineItems) {
-      gsap.fromTo(
-        timelineItems,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: timelineRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
 
   const timeline = [
     {
@@ -134,9 +43,9 @@ export default function About() {
   return (
     <section
       id="about"
-      ref={sectionRef}
       className="py-20 bg-white text-slate-800"
     >
+      <AboutAnimations sectionId="about" />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
@@ -218,7 +127,7 @@ export default function About() {
           </div>
 
           {/* Timeline */}
-          <div ref={timelineRef} className="relative">
+          <div className="timeline-container relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-blue-600"></div>
 
             <div className="space-y-8">
