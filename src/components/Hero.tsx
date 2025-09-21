@@ -116,11 +116,11 @@ export default function Hero() {
               
               <DecryptedText
                 text="Spring Boot Developer in Macedonia"
-                speed={50}
-                maxIterations={6}
+                speed={20}
+                maxIterations={3}
                 animateOn="view"
                 revealDirection="left"
-                className="text-2xl md:text-3xl font-semibold text-blue-600"
+                className="text-lg md:text-xl font-semibold text-blue-600"
               />
               
             
@@ -134,9 +134,9 @@ export default function Hero() {
               className="space-y-4"
             >
               <p className="text-lg text-slate-600 leading-relaxed">
-                <strong>Expert React & Next.js Developer from Skopje, Macedonia.</strong> 
-                Specializing in Spring Boot, TypeScript, and AR development. 
-                Available for hire - building enterprise solutions and revolutionary applications.
+                <strong>Expert Spring Boot Developer from Skopje, Macedonia. </strong> 
+                Specializing in backend architecture, microservices, and enterprise solutions. 
+                Also skilled in React, Next.js, and AR development. Available for hire.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
