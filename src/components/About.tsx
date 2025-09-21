@@ -49,14 +49,14 @@ export default function About() {
       <AboutAnimations sectionId="about" />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
-            My Journey
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            From a curious 12-year-old creating websites to leading
-            enterprise-level solutions and pioneering AR experiences in
-            Macedonia&apos;s tech scene.
-          </p>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
+                Spring Boot Developer Journey in Macedonia
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                From a curious 12-year-old creating websites to becoming a <strong>Head Backend Developer</strong> 
+                leading enterprise-level Spring Boot solutions and pioneering AR experiences in
+                <strong> Macedonia&apos;s tech scene</strong>.
+              </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">

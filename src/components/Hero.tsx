@@ -115,7 +115,7 @@ export default function Hero() {
               />
               
               <DecryptedText
-                text="Software Engineer"
+                text="Spring Boot Developer in Macedonia"
                 speed={50}
                 maxIterations={6}
                 animateOn="view"
@@ -134,8 +134,9 @@ export default function Hero() {
               className="space-y-4"
             >
               <p className="text-lg text-slate-600 leading-relaxed">
-                Building the future with cutting-edge technology. From enterprise solutions 
-                to revolutionary AR applications, I create digital experiences that matter.
+                <strong>Expert React & Next.js Developer from Skopje, Macedonia.</strong> 
+                Specializing in Spring Boot, TypeScript, and AR development. 
+                Available for hire - building enterprise solutions and revolutionary applications.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">

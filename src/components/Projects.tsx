@@ -28,6 +28,13 @@ const Projects = () => {
     () => {
       // Only run animations on desktop (lg and above)
       if (window.innerWidth < 1024) return;
+
+      // Throttle scroll events to prevent animation conflicts
+      ScrollTrigger.config({
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+        ignoreMobileResize: true,
+        syncInterval: 60
+      });
       
       // Header animation
       if (headerRef.current) {
@@ -82,15 +89,17 @@ const Projects = () => {
           scale: 0.9
         });
 
-        // Create entrance timeline
-        const entranceTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "top 20%",
-            toggleActions: "play none none reverse"
-          }
-        });
+          // Create entrance timeline with proper queuing
+          const entranceTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+              fastScrollEnd: true,
+              preventOverlaps: true
+            }
+          });
 
         // Animate elements in sequence
         entranceTl
@@ -131,6 +140,8 @@ const Projects = () => {
           end: "+=300%",
           scrub: 0.5,
           pin: true,
+          fastScrollEnd: true,
+          preventOverlaps: true
         },
       });
 
@@ -192,6 +203,8 @@ const Projects = () => {
           end: "+=300%",
           scrub: 0.5,
           pin: true,
+          fastScrollEnd: true,
+          preventOverlaps: true
         },
       });
 
@@ -253,6 +266,8 @@ const Projects = () => {
           end: "+=300%",
           scrub: 0.5,
           pin: true,
+          fastScrollEnd: true,
+          preventOverlaps: true
         },
       });
 

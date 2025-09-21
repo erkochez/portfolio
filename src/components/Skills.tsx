@@ -47,13 +47,13 @@ export default function Skills() {
       <SkillsAnimations sectionId="skills" />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
-            Technical Expertise
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Core technologies and frameworks I work with daily, plus key
-            achievements that showcase my impact.
-          </p>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
+                Spring Boot & React Developer Skills
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                <strong>Expert Spring Boot Developer in Macedonia</strong> with React, Next.js, and TypeScript expertise. 
+                Core technologies I work with daily, plus key achievements that showcase my impact in the tech industry.
+              </p>
         </div>
 
         {/* Core Skills - Clean List */}
