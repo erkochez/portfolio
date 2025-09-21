@@ -37,6 +37,11 @@ export default function Hero() {
           ease: "easeInOut" 
         }}
         className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"
+        style={{ 
+          transform: 'translate3d(0,0,0)', 
+          willChange: 'transform', 
+          contain: 'layout style paint' 
+        }}
       />
       <motion.div 
         animate={{ 
@@ -51,15 +56,20 @@ export default function Hero() {
           delay: 1
         }}
         className="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+        style={{ 
+          transform: 'translate3d(0,0,0)', 
+          willChange: 'transform', 
+          contain: 'layout style paint' 
+        }}
       />
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Profile Card for Mobile - Shown at top on mobile */}
+        {/* Profile Card for Mobile - Shown ONLY on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center mb-8 lg:hidden"
+          className="flex justify-center mb-8 lg:!hidden"
         >
           <ProfileCard
             name="Eren Ahmed"
@@ -76,12 +86,12 @@ export default function Hero() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-40 items-center">
-          {/* Left Side - Profile Card (Hidden on mobile, shown on desktop) */}
+          {/* Left Side - Profile Card (Hidden on mobile, shown ONLY on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hidden lg:flex justify-center lg:justify-end"
+            className="!hidden lg:!flex justify-center lg:justify-end"
           >
             <ProfileCard
               name="Eren Ahmed"

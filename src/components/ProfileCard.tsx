@@ -286,24 +286,17 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <picture>
-              <source 
-                media="(max-width: 768px)" 
-                srcSet="/profileimage-mobile.webp"
-                type="image/webp"
-              />
-              <img
-                className="avatar"
-                src={avatarUrl}
-                alt={`${name || 'User'} avatar`}
-                loading="eager"
-                fetchPriority="high"
-                onError={e => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
-              />
-            </picture>
+            <img
+              className="avatar"
+              src={avatarUrl}
+              alt={`${name || 'User'} avatar`}
+              loading="eager"
+              fetchPriority="high"
+              onError={e => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
             {showUserInfo && (
               <div className="pc-user-info">
                 <div className="pc-user-details">

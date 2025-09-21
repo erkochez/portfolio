@@ -1,8 +1,19 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import StaggeredMenu from './ui/StaggeredMenu';
 
 export default function Header() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Delay menu visibility until page content is loaded
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 500); // Small delay to prevent menu flash
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '#home' },
@@ -19,7 +30,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999]">
+    <div className={`fixed top-0 left-0 right-0 z-[9999] transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <StaggeredMenu
         position="right"
         items={menuItems}

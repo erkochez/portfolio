@@ -101,27 +101,12 @@ export default function RootLayout({
           media="(min-width: 768px)"
         />
         
-        {/* Preload critical images - mobile first */}
-        <link
-          rel="preload"
-          href="/profileimage-mobile.webp"
-          as="image"
-          type="image/webp"
-          media="(max-width: 768px)"
-        />
+        {/* Preload critical images */}
         <link
           rel="preload"
           href="/profileimage.webp"
           as="image"
           type="image/webp"
-          media="(min-width: 769px)"
-        />
-        <link
-          rel="preload"
-          href="/hiemoji-mobile.webp"
-          as="image"
-          type="image/webp"
-          media="(max-width: 768px)"
         />
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://upload.wikimedia.org" />
