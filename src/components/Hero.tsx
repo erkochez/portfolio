@@ -107,8 +107,8 @@ export default function Hero() {
             <div className="space-y-4">
               <DecryptedText
                 text="Eren Ahmed"
-                speed={40}
-                maxIterations={8}
+                speed={20}
+                maxIterations={3}
                 animateOn="view"
                 revealDirection="center"
                 className="text-5xl md:text-6xl font-bold text-slate-800"
@@ -130,7 +130,7 @@ export default function Hero() {
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+              transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
               className="space-y-4"
             >
               <p className="text-lg text-slate-600 leading-relaxed">

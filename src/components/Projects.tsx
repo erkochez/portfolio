@@ -481,7 +481,7 @@ const Projects = () => {
                   {/* Product Info */}
                   <div className="flex gap-3 mb-10">
                     <img
-                      src="/macbookpro.jpg"
+                      src="/macbookpro.webp"
                       alt="MacBook Pro"
                       className="w-20 h-18 object-contain rounded"
                     />
