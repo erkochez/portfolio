@@ -420,7 +420,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo">
+        <div className="sm-logo" role="img" aria-label="Logo">
           {logoUrl ? (
             <img
               src={logoUrl}

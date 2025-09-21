@@ -491,7 +491,7 @@ const Projects = () => {
                         14&quot; 256 GB SSD + 8 GB RAM
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs line-through text-gray-400">
+                        <span className="text-xs line-through text-gray-500">
                           $2,000
                         </span>
                         <span className="text-sm font-bold text-blue-600">
@@ -708,7 +708,7 @@ const Projects = () => {
                         14&quot; 256 GB SSD
                       </p>
                       <div className="flex items-center gap-1">
-                        <span className="text-xs line-through text-gray-400">
+                        <span className="text-xs line-through text-gray-500">
                           $2,000
                         </span>
                         <span className="text-xs font-bold text-blue-600">
@@ -770,7 +770,7 @@ const Projects = () => {
             <div className="flex gap-4 justify-center mb-6">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                  src="/react.webp"
                   alt="React"
                   className="w-full h-full object-contain"
                 />
@@ -784,14 +784,14 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://images.icon-icons.com/2415/PNG/512/redis_original_wordmark_logo_icon_146369.png"
+                  src="/redis.webp"
                   alt="Redis"
                   className="w-full h-full object-contain"
                 />
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                  src="/postgresql.webp"
                   alt="PostgreSQL"
                   className="w-full h-full object-contain"
                 />
@@ -1281,7 +1281,7 @@ const Projects = () => {
             <div className="flex gap-4 justify-center mb-6">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                  src="/react.webp"
                   alt="React"
                   className="w-full h-full object-contain"
                 />
@@ -1295,7 +1295,7 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                  src="/postgresql.webp"
                   alt="PostgreSQL"
                   className="w-full h-full object-contain"
                 />
@@ -1906,7 +1906,10 @@ const Projects = () => {
                 <div className="h-full bg-white">
                   {/* Phone Header */}
                   <div className="bg-blue-600 text-white px-2 py-2 flex justify-between items-center">
-                    <button className="w-3 h-3 bg-blue-600 rounded flex items-center justify-center"></button>
+                    <button 
+                      className="w-3 h-3 bg-blue-600 rounded flex items-center justify-center" 
+                      aria-label="Bid on item"
+                    ></button>
                     <h3 className="text-xs font-bold">Carmine&apos;s</h3>
                     <div className="w-3 h-3 rounded-full flex items-center justify-center">
                       <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
@@ -2041,7 +2044,7 @@ const Projects = () => {
             <div className="flex gap-4 justify-center mb-6">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                  src="/react.webp"
                   alt="React"
                   className="w-full h-full object-contain"
                 />
@@ -2055,7 +2058,7 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                  src="/postgresql.webp"
                   alt="PostgreSQL"
                   className="w-full h-full object-contain"
                 />

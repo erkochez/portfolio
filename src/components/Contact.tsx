@@ -1,322 +1,141 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import ContactAnimations from "./ui/ContactAnimations";
+import ContactForm from "./ui/ContactForm";
 
 export default function Contact() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // Get elements for animation
-    const title = sectionRef.current?.querySelector('h2');
-    const description = sectionRef.current?.querySelector('p');
-    const contactInfo = sectionRef.current?.querySelector('.space-y-8');
-
-    // Filter out null elements
-    const elements = [title, description, contactInfo, formRef.current].filter(Boolean);
-
-    if (elements.length === 0) return;
-
-    // Set initial states
-    gsap.set(elements, {
-      opacity: 0,
-      y: 60
-    });
-
-    // Create entrance timeline
-    const entranceTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        end: "top 20%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    if (title) entranceTl.to(title, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-    
-    if (description) entranceTl.to(description, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    }, "-=0.4");
-    
-    if (contactInfo) entranceTl.to(contactInfo, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.3");
-    
-    if (formRef.current) entranceTl.to(formRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.5");
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus("idle"), 3000);
-    }, 2000);
-  };
-
-  const contactInfo = [
-    {
-      icon: "📧",
-      title: "Email",
-      value: "erenahmed3@gmail.com",
-      description: "Send me an email anytime",
-    },
-    {
-      icon: "📱",
-      title: "Phone",
-      value: "+389 71 229 173",
-      description: "Available during business hours",
-    },
-    {
-      icon: "📍",
-      title: "Location",
-      value: "Skopje, Macedonia",
-      description: "Available for remote & local work",
-    },
-    {
-      icon: "💼",
-      title: "LinkedIn",
-      value: "/in/eren-ahmed-b14934199",
-      description: "Let us connect professionally",
-    },
-  ];
-
   return (
     <section
       id="contact"
-      ref={sectionRef}
-      className="py-20 bg-gray-900 text-white"
+      className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <ContactAnimations sectionId="contact" />
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-recoleta">
-            Let&apos;s Work Together
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Whether it&apos;s enterprise
-            solutions, mobile apps, or cutting-edge AR experiences, I&apos;m
-            here to help.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                I&apos;m always excited to discuss new opportunities, whether
-                you&apos;re looking to build enterprise-grade systems,
-                innovative mobile applications, or explore the possibilities of
-                AR technology. Let&apos;s create something amazing together.
-              </p>
-            </div>
-
-            <div className="grid gap-6">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center text-xl">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white mb-1">
-                      {info.title}
-                    </h4>
-                    <p className="text-cyan-300 font-medium">{info.value}</p>
-                    <p className="text-gray-400 text-sm">{info.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
+              Let&apos;s Work Together
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Ready to bring your project to life? I&apos;m available for freelance
+              work and exciting opportunities. Let&apos;s discuss how we can build
+              something amazing together.
+            </p>
           </div>
 
-          {/* Contact Form */}
-          <div ref={formRef}>
-            <form
-              onSubmit={handleSubmit}
-              className="bg-gray-800 p-8 rounded-2xl shadow-2xl"
-            >
-              <h3 className="text-2xl font-bold mb-6">Send Message</h3>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
-                    placeholder="John Doe"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
-                  placeholder="Project Discussion"
-                />
-              </div>
-
-              <div className="mb-8">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={
-                  !isSubmitting && submitStatus !== "success"
-                    ? {
-                        scale: 1.05,
-                        boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
-                      }
-                    : {}
-                }
-                whileTap={
-                  !isSubmitting && submitStatus !== "success"
-                    ? { scale: 0.95 }
-                    : {}
-                }
-                className={`w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 ${
-                  isSubmitting
-                    ? "bg-gray-600 cursor-not-allowed"
-                    : submitStatus === "success"
-                    ? "bg-green-600 hover:bg-green-700"
-                    : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
-                } shadow-lg`}
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Sending...</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">
+                  Get in Touch
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-800">Email</h4>
+                      <p className="text-slate-600">erenahmed3@gmail.com</p>
+                    </div>
                   </div>
-                ) : submitStatus === "success" ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <span>✅</span>
-                    <span>Message Sent!</span>
-                  </div>
-                ) : (
-                  "Send Message"
-                )}
-              </motion.button>
 
-              {submitStatus === "success" && (
-                <p className="mt-4 text-green-400 text-center text-sm">
-                  Thank you! I&apos;ll get back to you as soon as possible.
-                </p>
-              )}
-            </form>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-800">Location</h4>
+                      <p className="text-slate-600">Skopje, Macedonia</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-800">
+                        Response Time
+                      </h4>
+                      <p className="text-slate-600">Usually within 24 hours</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-4">
+                  What I Can Help With
+                </h3>
+                <ul className="space-y-2 text-slate-600">
+                  <li className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    <span>Spring Boot & Backend Development</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    <span>React & Next.js Applications</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    <span>AR Development & Innovation</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    <span>Enterprise Solution Architecture</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    <span>Microservices & API Development</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <ContactForm />
           </div>
         </div>
       </div>

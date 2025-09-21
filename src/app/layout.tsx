@@ -73,6 +73,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* DNS prefetch for better loading */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        
         {/* Preload critical fonts */}
         <link
           rel="preload"
@@ -94,6 +97,14 @@ export default function RootLayout({
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
+        />
+        
+        {/* Preload critical images */}
+        <link
+          rel="preload"
+          href="/profileimage.webp"
+          as="image"
+          type="image/webp"
         />
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://upload.wikimedia.org" />
