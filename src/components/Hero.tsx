@@ -107,8 +107,8 @@ export default function Hero() {
             <div className="space-y-4">
               <DecryptedText
                 text="Eren Ahmed"
-                speed={20}
-                maxIterations={3}
+                speed={30}
+                maxIterations={2}
                 animateOn="view"
                 revealDirection="center"
                 className="text-5xl md:text-6xl font-bold text-slate-800"

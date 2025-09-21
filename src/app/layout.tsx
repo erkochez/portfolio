@@ -76,7 +76,7 @@ export default function RootLayout({
         {/* DNS prefetch for better loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         
-        {/* Preload critical fonts */}
+        {/* Preload critical fonts - prioritize for desktop */}
         <link
           rel="preload"
           href="/fonts/JosefinSans-Regular.ttf"
@@ -90,6 +90,7 @@ export default function RootLayout({
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
+          media="(min-width: 768px)"
         />
         <link
           rel="preload"
@@ -97,14 +98,30 @@ export default function RootLayout({
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
+          media="(min-width: 768px)"
         />
         
-        {/* Preload critical images */}
+        {/* Preload critical images - mobile first */}
+        <link
+          rel="preload"
+          href="/profileimage-mobile.webp"
+          as="image"
+          type="image/webp"
+          media="(max-width: 768px)"
+        />
         <link
           rel="preload"
           href="/profileimage.webp"
           as="image"
           type="image/webp"
+          media="(min-width: 769px)"
+        />
+        <link
+          rel="preload"
+          href="/hiemoji-mobile.webp"
+          as="image"
+          type="image/webp"
+          media="(max-width: 768px)"
         />
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://upload.wikimedia.org" />

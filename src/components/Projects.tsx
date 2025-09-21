@@ -30,10 +30,11 @@ const Projects = () => {
       if (window.innerWidth < 1024) return;
 
       // Throttle scroll events to prevent animation conflicts
+      // Optimize for mobile performance
       ScrollTrigger.config({
         autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
         ignoreMobileResize: true,
-        syncInterval: 60
+        syncInterval: window.innerWidth < 768 ? 120 : 60 // Slower refresh on mobile
       });
       
       // Header animation
