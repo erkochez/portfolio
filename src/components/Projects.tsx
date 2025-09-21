@@ -346,7 +346,7 @@ const Projects = () => {
 
                 {/* Auction Page Content */}
                 <div
-                  className="p-8 h-full absolute inset-0 opacity-0 transition-opacity duration-500"
+                  className="p-4 h-full absolute inset-0 opacity-0 transition-opacity duration-500"
                   id="auction-content"
                 >
                   {/* Header */}
