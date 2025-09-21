@@ -537,7 +537,7 @@ const Projects = () => {
               <div ref={iconsRef} className="flex gap-6 mb-8">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                    src="/react.webp"
                     alt="React"
                     className="w-full h-full object-contain"
                   />
@@ -551,14 +551,14 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://images.icon-icons.com/2415/PNG/512/redis_original_wordmark_logo_icon_146369.png"
+                    src="/redis.webp"
                     alt="Redis"
                     className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                    src="/postgresql.webp"
                     alt="PostgreSQL"
                     className="w-full h-full object-contain"
                   />
@@ -1083,7 +1083,7 @@ const Projects = () => {
               <div ref={iconsRef2} className="flex gap-6 mb-8">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                    src="/react.webp"
                     alt="React"
                     className="w-full h-full object-contain"
                   />
@@ -1097,7 +1097,7 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                    src="/postgresql.webp"
                     alt="PostgreSQL"
                     className="w-full h-full object-contain"
                   />
@@ -1669,7 +1669,7 @@ const Projects = () => {
               <div ref={iconsRef3} className="flex gap-6 mb-8">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+                    src="/react.webp"
                     alt="React"
                     className="w-full h-full object-contain"
                   />
@@ -1683,7 +1683,7 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Logo_PostgreSQL.png"
+                    src="/postgresql.webp"
                     alt="PostgreSQL"
                     className="w-full h-full object-contain"
                   />
