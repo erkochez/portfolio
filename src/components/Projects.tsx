@@ -410,7 +410,7 @@ const Projects = () => {
                   <div className="grid grid-cols-2 gap-2">
                     <div className="border rounded p-2">
                       <img
-                        src="/macbookpro.webp"
+                        src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/macbookpro-mobile.webp' : '/macbookpro.webp'}
                         alt="MacBook Pro"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -434,7 +434,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/macbookpro.webp"
+                        src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/macbookpro-mobile.webp' : '/macbookpro.webp'}
                         alt="MacBook Air"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -482,7 +482,7 @@ const Projects = () => {
                   {/* Product Info */}
                   <div className="flex gap-3 mb-10">
                     <img
-                      src="/macbookpro.webp"
+                      src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/macbookpro-mobile.webp' : '/macbookpro.webp'}
                       alt="MacBook Pro"
                       className="w-20 h-18 object-contain rounded"
                     />
@@ -699,7 +699,7 @@ const Projects = () => {
                   {/* Product Info */}
                   <div className="flex gap-2 mb-2">
                     <img
-                      src="/macbookpro.jpg"
+                      src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/macbookpro-mobile.webp' : '/macbookpro.webp'}
                       alt="MacBook Pro"
                       className="w-12 h-10 object-contain rounded"
                     />
@@ -778,7 +778,7 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="/springlogo.png"
+                  src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/springlogo-mobile.webp' : '/springlogo.webp'}
                   alt="Java"
                   className="w-full h-full object-contain"
                 />
@@ -1289,7 +1289,7 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="/springlogo.png"
+                  src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/springlogo-mobile.webp' : '/springlogo.webp'}
                   alt="Java"
                   className="w-full h-full object-contain"
                 />
@@ -1849,7 +1849,7 @@ const Projects = () => {
                     <div className="bg-white border rounded p-1">
                       <div className="relative">
                         <img
-                          src="/chickenwings.jpg"
+                          src="/chickenwings.webp"
                           alt="Spicy Chicken Wings"
                           className="w-full h-10 object-cover rounded mb-1"
                         />
@@ -2052,7 +2052,7 @@ const Projects = () => {
               </div>
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img
-                  src="/springlogo.png"
+                  src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/springlogo-mobile.webp' : '/springlogo.webp'}
                   alt="Java"
                   className="w-full h-full object-contain"
                 />
