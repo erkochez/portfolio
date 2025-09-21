@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -9,6 +12,10 @@ import SkillsLogos from '@/components/ui/SkillsLogos';
 import CursorRibbons from '@/components/ui/CursorRibbons';
 
 export default function Home() {
+  useEffect(() => {
+    // Scroll to top on page refresh/load
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="min-h-screen">
       <Header />

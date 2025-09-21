@@ -9,15 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const rectangleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const iconsRef = useRef<HTMLDivElement>(null);
-
+  
   // Refs for second section
   const rectangleRef2 = useRef<HTMLDivElement>(null);
   const contentRef2 = useRef<HTMLDivElement>(null);
   const iconsRef2 = useRef<HTMLDivElement>(null);
-
+  
   // Refs for third section
   const rectangleRef3 = useRef<HTMLDivElement>(null);
   const contentRef3 = useRef<HTMLDivElement>(null);
@@ -27,7 +28,101 @@ const Projects = () => {
     () => {
       // Only run animations on desktop (lg and above)
       if (window.innerWidth < 1024) return;
+      
+      // Header animation
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('h2');
+        const description = headerRef.current.querySelector('p');
+        
+        gsap.set([title, description], { opacity: 0, y: 60 });
+        gsap.to([title, description], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+      
+      // Initial stage animations for all sections (entrance animations)
+      const sections = [
+        { 
+          section: ".section-1", 
+          rectangle: rectangleRef.current, 
+          content: contentRef.current, 
+          icons: iconsRef.current,
+          title: ".section-1 .hidden.lg\\:flex h1" // Desktop title
+        },
+        { 
+          section: ".section-2", 
+          rectangle: rectangleRef2.current, 
+          content: contentRef2.current, 
+          icons: iconsRef2.current,
+          title: ".section-2 .hidden.lg\\:flex h1" // Desktop title
+        },
+        { 
+          section: ".section-3", 
+          rectangle: rectangleRef3.current, 
+          content: contentRef3.current, 
+          icons: iconsRef3.current,
+          title: ".section-3 .hidden.lg\\:flex h1" // Desktop title
+        }
+      ];
 
+      sections.forEach(({ section, rectangle, content, icons, title }) => {
+        // Set initial states (hidden)
+        gsap.set([title, rectangle, content, icons], {
+          opacity: 0,
+          y: 60,
+          scale: 0.9
+        });
+
+        // Create entrance timeline
+        const entranceTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse"
+          }
+        });
+
+        // Animate elements in sequence
+        entranceTl
+          .to(title, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+          })
+          .to(rectangle, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power2.out"
+          }, "-=0.4")
+          .to(content, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out"
+          }, "-=0.6")
+          .to(icons, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out"
+          }, "-=0.4");
+      });
+      
       // First section animation
       const tl1 = gsap.timeline({
         scrollTrigger: {
@@ -216,7 +311,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 bg-slate-50 overflow-x-hidden">
-      <div className="container mx-auto px-4 mb-16">
+      <div className="container mx-auto px-4 mb-16" ref={headerRef}>
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
             Featured Projects
@@ -233,15 +328,19 @@ const Projects = () => {
       >
         {/* Section 1: Auction Platform */}
         <div className="section-1 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
-          {/* Title */}
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+          {/* Mobile Title */}
+          <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
             Online Auction Center
           </h1>
 
-          {/* Desktop Layout */}
-          <div className="hidden lg:flex">
-            {/* Left side with rectangle and icons */}
-            <div className="w-1/2 pr-8">
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex items-center min-h-[80vh]">
+          {/* Left side with rectangle and icons */}
+          <div className="w-1/2 pr-8">
+            {/* Title positioned with rectangle */}
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+              Online Auction Center
+            </h1>
               {/* Rectangle with content */}
               <div
                 ref={rectangleRef}

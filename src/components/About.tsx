@@ -15,6 +15,56 @@ export default function About() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Title and description animations
+    const title = sectionRef.current?.querySelector('h2');
+    const description = sectionRef.current?.querySelector('p');
+    const aboutText = sectionRef.current?.querySelector('.space-y-6');
+    const profileGrid = sectionRef.current?.querySelector('.grid');
+
+    // Set initial states
+    gsap.set([title, description, aboutText, profileGrid], {
+      opacity: 0,
+      y: 60
+    });
+
+    // Create entrance timeline
+    const entranceTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    if (title) entranceTl.to(title, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+    
+    if (description) entranceTl.to(description, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4");
+    
+    if (aboutText) entranceTl.to(aboutText, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.3");
+    
+    if (profileGrid) entranceTl.to(profileGrid, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.5");
+
     const timelineItems =
       timelineRef.current?.querySelectorAll(".timeline-item");
 

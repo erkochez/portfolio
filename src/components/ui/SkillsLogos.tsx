@@ -1,6 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LogoLoop from "./LogoLoop";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import {
   SiReact,
   SiNextdotjs,
@@ -156,10 +163,38 @@ const techLogos = [
 ];
 
 export default function SkillsLogos() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (sectionRef.current) {
+      const title = sectionRef.current.querySelector('h2');
+      const subtitle = sectionRef.current.querySelector('p');
+      
+      gsap.set([title, subtitle], { opacity: 0, y: 60 });
+      gsap.to([title, subtitle], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
   return (
     <div className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" ref={sectionRef}>
           <h2 className="text-5xl md:text-6xl font-bold text-slate-800 mb-6 font-recoleta">
             Technologies and Tools
           </h2>

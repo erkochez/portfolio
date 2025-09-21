@@ -26,22 +26,59 @@ export default function Contact() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    gsap.fromTo(
-      formRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-        },
+    // Get elements for animation
+    const title = sectionRef.current?.querySelector('h2');
+    const description = sectionRef.current?.querySelector('p');
+    const contactInfo = sectionRef.current?.querySelector('.space-y-8');
+
+    // Filter out null elements
+    const elements = [title, description, contactInfo, formRef.current].filter(Boolean);
+
+    if (elements.length === 0) return;
+
+    // Set initial states
+    gsap.set(elements, {
+      opacity: 0,
+      y: 60
+    });
+
+    // Create entrance timeline
+    const entranceTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
       }
-    );
+    });
+
+    if (title) entranceTl.to(title, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+    
+    if (description) entranceTl.to(description, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4");
+    
+    if (contactInfo) entranceTl.to(contactInfo, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.3");
+    
+    if (formRef.current) entranceTl.to(formRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.5");
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
