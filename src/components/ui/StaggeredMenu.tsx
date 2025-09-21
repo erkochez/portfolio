@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './StaggeredMenu.css';
 
 export interface StaggeredMenuItem {
@@ -95,44 +94,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     return () => ctx.revert();
   }, [menuButtonColor, position]);
 
-  // Navbar text color change on scroll
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const navbar = document.querySelector('.staggered-menu-header') as HTMLElement;
-    const footer = document.querySelector('section[id="contact"]') as HTMLElement;
-    
-    if (!navbar || !footer) return;
-
-    // Create ScrollTrigger to add CSS classes when reaching Contact section
-    ScrollTrigger.create({
-      trigger: footer,
-      start: "top top",
-      end: "bottom top",
-      onEnter: () => {
-        console.log('ScrollTrigger onEnter - adding white class');
-        navbar.classList.add('navbar-in-contact');
-      },
-      onLeave: () => {
-        console.log('ScrollTrigger onLeave - removing white class');
-        navbar.classList.remove('navbar-in-contact');
-      },
-      onEnterBack: () => {
-        console.log('ScrollTrigger onEnterBack - adding white class');
-        navbar.classList.add('navbar-in-contact');
-      },
-      onLeaveBack: () => {
-        console.log('ScrollTrigger onLeaveBack - removing white class');
-        navbar.classList.remove('navbar-in-contact');
-      }
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  // Navbar text color change on scroll - DISABLED
+  // Removed scroll-based color change since contact page is no longer dark
 
   const buildOpenTimeline = useCallback(() => {
     const panel = panelRef.current;

@@ -40,9 +40,9 @@ export default function Header() {
         menuButtonColor="#000"
         openMenuButtonColor="#000"
         changeMenuColorOnOpen={false}
+        accentColor="#000"
         colors={['#0ea5e9', '#3b82f6']}
         logoUrl=""
-        accentColor="#0ea5e9"
         onMenuOpen={() => console.log('Menu opened')}
         onMenuClose={() => console.log('Menu closed')}
       />
