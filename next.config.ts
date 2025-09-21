@@ -5,17 +5,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
-  },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.tsx': {
-          loaders: ['swc-loader'],
-          as: '*.js',
-        },
-      },
-    },
-  },
+  }
 };
 
 export default nextConfig;

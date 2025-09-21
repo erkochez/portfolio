@@ -162,12 +162,8 @@ export default function Skills() {
           </h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {achievements.map((achievement, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
                 className="p-6 bg-slate-50 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex items-start justify-between mb-3">
@@ -181,7 +177,7 @@ export default function Skills() {
                 <p className="text-slate-600 leading-relaxed">
                   {achievement.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
