@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -10,14 +7,12 @@ import Contact from '@/components/Contact';
 import { ClientOnly } from '@/components/ui/ClientOnly';
 import SkillsLogos from '@/components/ui/SkillsLogos';
 import CursorRibbons from '@/components/ui/CursorRibbons';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 export default function Home() {
-  useEffect(() => {
-    // Scroll to top on page refresh/load
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <main className="min-h-screen">
+      <ScrollToTop />
       <Header />
       <Hero />
       <About />
