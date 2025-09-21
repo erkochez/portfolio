@@ -1,4 +1,5 @@
 import AboutAnimations from './ui/AboutAnimations';
+import Image from 'next/image';
 
 export default function About() {
 
@@ -63,10 +64,13 @@ export default function About() {
           <div className="space-y-6">
             {/* Memoji and Text on same line */}
             <div className="flex items-start gap-4">
-              <img
-                src="/hiemoji.jpeg"
+              <Image
+                src="/hiemoji.webp"
                 alt="Eren Ahmed Memoji"
+                width={96}
+                height={96}
                 className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover flex-shrink-0"
+                priority
               />
               <div className="prose prose-lg">
                 <p className="text-slate-600 leading-relaxed">

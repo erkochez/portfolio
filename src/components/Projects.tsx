@@ -359,7 +359,7 @@ const Projects = () => {
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-600">100 $</span>
                       <img
-                        src="/avatar.png"
+                        src="/avatar.webp"
                         alt="Avatar"
                         className="w-6 h-6 rounded-full object-cover"
                       />
@@ -394,7 +394,7 @@ const Projects = () => {
                   <div className="grid grid-cols-2 gap-2">
                     <div className="border rounded p-2">
                       <img
-                        src="/macbookpro.jpg"
+                        src="/macbookpro.webp"
                         alt="MacBook Pro"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -406,7 +406,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/iphone.jpg"
+                        src="/iphone.webp"
                         alt="iPhone 15"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -418,7 +418,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/macbookpro.jpg"
+                        src="/macbookpro.webp"
                         alt="MacBook Air"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -430,7 +430,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/iphone.jpg"
+                        src="/iphone.webp"
                         alt="iPhone 14"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
@@ -456,7 +456,7 @@ const Projects = () => {
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-600">100 $</span>
                       <img
-                        src="/avatar.png"
+                        src="/avatar.webp"
                         alt="Avatar"
                         className="w-6 h-6 rounded-full object-cover"
                       />
@@ -508,7 +508,7 @@ const Projects = () => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-3 text-xs">
                         <img
-                          src="/chris.png"
+                          src="/chris.webp"
                           alt="Chris"
                           className="w-8 h-8 rounded-full object-cover"
                         />
@@ -519,7 +519,7 @@ const Projects = () => {
                       </div>
                       <div className="flex items-center gap-3 text-xs">
                         <img
-                          src="/oliver.png"
+                          src="/oliver.webp"
                           alt="Oliver"
                           className="w-8 h-8 rounded-full object-cover"
                         />
@@ -544,7 +544,7 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="/springlogo.png"
+                    src="/springlogo.webp"
                     alt="Java"
                     className="w-full h-full object-contain"
                   />
@@ -606,7 +606,7 @@ const Projects = () => {
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-gray-600">100 $</span>
                       <img
-                        src="/avatar.png"
+                        src="/avatar.webp"
                         alt="Avatar"
                         className="w-4 h-4 rounded-full object-cover"
                       />
@@ -641,7 +641,7 @@ const Projects = () => {
                   <div className="grid grid-cols-2 gap-1">
                     <div className="border rounded p-1">
                       <img
-                        src="/macbookpro.jpg"
+                        src="/macbookpro.webp"
                         alt="MacBook Pro"
                         className="w-full h-8 object-contain rounded mb-1"
                       />
@@ -650,7 +650,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-1">
                       <img
-                        src="/iphone.jpg"
+                        src="/iphone.webp"
                         alt="iPhone 15"
                         className="w-full h-8 object-contain rounded mb-1"
                       />
@@ -673,7 +673,7 @@ const Projects = () => {
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-gray-600">100 $</span>
                       <img
-                        src="/avatar.png"
+                        src="/avatar.webp"
                         alt="Avatar"
                         className="w-4 h-4 rounded-full object-cover"
                       />
@@ -725,7 +725,7 @@ const Projects = () => {
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 text-xs">
                         <img
-                          src="/chris.png"
+                          src="/chris.webp"
                           alt="Chris"
                           className="w-4 h-4 rounded-full object-cover"
                         />
@@ -736,7 +736,7 @@ const Projects = () => {
                       </div>
                       <div className="flex items-center gap-2 text-xs">
                         <img
-                          src="/oliver.png"
+                          src="/oliver.webp"
                           alt="Oliver"
                           className="w-4 h-4 rounded-full object-cover"
                         />
@@ -830,7 +830,7 @@ const Projects = () => {
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-600">Joe Evans</span>
                       <img
-                        src="/employee.png"
+                        src="/employee.webp"
                         alt="employee"
                         className="w-6 h-6 rounded-full object-cover"
                       />
@@ -979,7 +979,7 @@ const Projects = () => {
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-2">
                       <img
-                        src="/johnsmith.png"
+                        src="/johnsmith.webp"
                         alt="Client"
                         className="w-8 h-8 rounded-full object-cover"
                       />
@@ -1090,7 +1090,7 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="/springlogo.png"
+                    src="/springlogo.webp"
                     alt="Java"
                     className="w-full h-full object-contain"
                   />
@@ -1143,7 +1143,7 @@ const Projects = () => {
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-gray-600">Joe Evans</span>
                       <img
-                        src="/employee.png"
+                        src="/employee.webp"
                         alt="employee"
                         className="w-4 h-4 rounded-full object-cover"
                       />
@@ -1209,7 +1209,7 @@ const Projects = () => {
                   <div className="mb-2">
                     <div className="flex items-center gap-1 mb-1">
                       <img
-                        src="/johnsmith.png"
+                        src="/johnsmith.webp"
                         alt="Client"
                         className="w-6 h-6 rounded-full object-cover"
                       />
@@ -1428,7 +1428,7 @@ const Projects = () => {
                       <div className="bg-white border rounded p-2">
                         <div className="relative">
                           <img
-                            src="/chickenwings.jpg"
+                            src="/chickenwings.webp"
                             alt="Spicy Chicken Wings"
                             className="w-full h-16 object-cover rounded mb-2"
                           />
@@ -1676,7 +1676,7 @@ const Projects = () => {
                 </div>
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img
-                    src="/springlogo.png"
+                    src="/springlogo.webp"
                     alt="Java"
                     className="w-full h-full object-contain"
                   />
