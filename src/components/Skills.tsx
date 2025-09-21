@@ -1,10 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { WordPullUp, FadeInBlur } from "./ui/TextAnimations";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
