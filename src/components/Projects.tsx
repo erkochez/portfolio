@@ -379,7 +379,7 @@ const Projects = () => {
           {/* Left side with rectangle and icons */}
           <div className="w-1/2 pr-8">
             {/* Desktop Title positioned just above rectangle */}
-            <h1 className="bg-green-500 text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left">
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left">
               Online Auction Center
             </h1>
               {/* Rectangle with content */}
