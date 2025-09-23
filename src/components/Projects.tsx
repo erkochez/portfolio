@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
@@ -28,6 +28,14 @@ const Projects = () => {
     () => {
       // Only run animations on desktop (lg and above)
       if (window.innerWidth < 1024) return;
+
+      // Kill all existing ScrollTriggers to prevent conflicts
+      ScrollTrigger.killAll();
+
+      // Reset all elements to initial state
+      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
+        clearProps: "all"
+      });
 
       // Throttle scroll events to prevent animation conflicts
       // Optimize for mobile performance
@@ -346,8 +354,22 @@ const Projects = () => {
         )
         .to({}, { duration: 0.7 }); // Pause at the end
     },
-    { scope: containerRef }
+    { 
+      scope: containerRef,
+      dependencies: [],
+      revertOnUpdate: true
+    }
   );
+
+  // Cleanup function to reset everything on unmount
+  React.useEffect(() => {
+    return () => {
+      ScrollTrigger.killAll();
+      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
+        clearProps: "all"
+      });
+    };
+  }, []);
 
   return (
     <section id="projects" className="py-20 bg-slate-50 overflow-x-hidden">
