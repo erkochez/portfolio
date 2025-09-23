@@ -64,21 +64,21 @@ const Projects = () => {
           rectangle: rectangleRef.current, 
           content: contentRef.current, 
           icons: iconsRef.current,
-          title: ".section-1 .hidden.lg\\:flex h1" // Desktop title
+          title: ".section-1 .w-1\\/2 h1" // Desktop title inside left container
         },
         { 
           section: ".section-2", 
           rectangle: rectangleRef2.current, 
           content: contentRef2.current, 
           icons: iconsRef2.current,
-          title: ".section-2 .hidden.lg\\:flex h1" // Desktop title
+          title: ".section-2 .w-1\\/2 h1" // Desktop title inside left container
         },
         { 
           section: ".section-3", 
           rectangle: rectangleRef3.current, 
           content: contentRef3.current, 
           icons: iconsRef3.current,
-          title: ".section-3 .hidden.lg\\:flex h1" // Desktop title
+          title: ".section-3 .w-1\\/2 h1" // Desktop title inside left container
         }
       ];
 
@@ -166,10 +166,18 @@ const Projects = () => {
         .to(
           rectangleRef.current,
           {
-            x: "50vw",
-            y: "40vh",
-            xPercent: -50,
-            yPercent: -50,
+            x: () => {
+              const rect = rectangleRef.current?.getBoundingClientRect();
+              const windowWidth = window.innerWidth;
+              const rectWidth = rect?.width || 600;
+              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+            },
+            y: () => {
+              const rect = rectangleRef.current?.getBoundingClientRect();
+              const windowHeight = window.innerHeight;
+              const rectHeight = rect?.height || 400;
+              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+            },
             scale: 1.2,
             duration: 1.3,
             ease: "power2.inOut",
@@ -229,10 +237,18 @@ const Projects = () => {
         .to(
           rectangleRef2.current,
           {
-            x: "50vw",
-            y: "35vh",
-            xPercent: -50,
-            yPercent: -50,
+            x: () => {
+              const rect = rectangleRef2.current?.getBoundingClientRect();
+              const windowWidth = window.innerWidth;
+              const rectWidth = rect?.width || 600;
+              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+            },
+            y: () => {
+              const rect = rectangleRef2.current?.getBoundingClientRect();
+              const windowHeight = window.innerHeight;
+              const rectHeight = rect?.height || 400;
+              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+            },
             scale: 1.2,
             duration: 1.3,
             ease: "power2.inOut",
@@ -292,10 +308,18 @@ const Projects = () => {
         .to(
           rectangleRef3.current,
           {
-            x: "50vw",
-            y: "35vh",
-            xPercent: -50,
-            yPercent: -50,
+            x: () => {
+              const rect = rectangleRef3.current?.getBoundingClientRect();
+              const windowWidth = window.innerWidth;
+              const rectWidth = rect?.width || 200;
+              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+            },
+            y: () => {
+              const rect = rectangleRef3.current?.getBoundingClientRect();
+              const windowHeight = window.innerHeight;
+              const rectHeight = rect?.height || 400;
+              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+            },
             scale: 1.2,
             duration: 1.3,
             ease: "power2.inOut",
@@ -343,7 +367,8 @@ const Projects = () => {
         className="min-h-0 lg:min-h-[900vh] overflow-x-hidden"
       >
         {/* Section 1: Auction Platform */}
-        <div className="section-1 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
+        <div className="section-1 min-h-screen lg:h-screen relative py-8 lg:py-12 overflow-x-hidden">
+          <div className="container mx-auto px-4">
           {/* Mobile Title */}
           <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
             Online Auction Center
@@ -353,8 +378,8 @@ const Projects = () => {
         <div className="hidden lg:flex items-center min-h-[80vh]">
           {/* Left side with rectangle and icons */}
           <div className="w-1/2 pr-8">
-            {/* Title positioned with rectangle */}
-            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+            {/* Desktop Title positioned just above rectangle */}
+            <h1 className="bg-green-500 text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left">
               Online Auction Center
             </h1>
               {/* Rectangle with content */}
@@ -584,7 +609,7 @@ const Projects = () => {
 
             {/* Right side text */}
             <div ref={contentRef} className="w-1/2 pl-8">
-              <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
+              <h2 className="text-4xl font-bold text-slate-800 leading-tight uppercase mb-8">
                 NEXT-GEN AUCTION PLATFORM
               </h2>
               <p className="text-2xl text-slate-600 mb-6">
@@ -819,20 +844,27 @@ const Projects = () => {
               </ul>
             </div>
           </div>
+          </div>
         </div>
 
         {/* Section 2: Bank Loan Management */}
-        <div className="section-2 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+        <div className="section-2 min-h-screen lg:h-screen relative py-8 lg:py-12 overflow-x-hidden">
+          <div className="container mx-auto px-4">
+          {/* Mobile Title */}
+          <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
             Bank Workflow
           </h1>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex items-center min-h-[80vh]">
             <div className="w-1/2 pr-8">
+            {/* Desktop Title positioned just above rectangle */}
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
+              Bank Workflow
+            </h1>
               <div
                 ref={rectangleRef2}
-                className="w-[600px] h-[400px] bg-white rounded-lg mb-8 overflow-hidden relative"
+                className="w-[600px] h-[400px] bg-white rounded-lg mb-8 overflow-hidden relative ml-0"
               >
                 {/* Landing Content */}
                 <div
@@ -1122,7 +1154,7 @@ const Projects = () => {
             </div>
 
             <div ref={contentRef2} className="w-1/2 pl-8">
-              <h2 className="text-6xl font-bold text-slate-800 leading-tight uppercase mb-8">
+              <h2 className="text-4xl font-bold text-slate-800 leading-tight uppercase mb-8">
                 BANK WORKFLOW
                 <br />
                 MANAGEMENT
@@ -1321,20 +1353,27 @@ const Projects = () => {
               </ul>
             </div>
           </div>
+          </div>
         </div>
 
         {/* Section 3: AR Restaurant Menu App */}
-        <div className="section-3 min-h-screen lg:h-screen relative px-4 lg:px-8 py-8 lg:py-12 overflow-x-hidden">
-          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 lg:mb-8">
+        <div className="section-3 min-h-screen lg:h-screen relative py-8 lg:py-12 overflow-x-hidden">
+          <div className="container mx-auto px-4">
+          {/* Mobile Title */}
+          <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
             AR Menu App
           </h1>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex items-center min-h-[80vh]">
             <div className="w-1/2 pr-8">
+            {/* Desktop Title positioned just above rectangle */}
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
+              AR Menu App
+            </h1>
               <div
                 ref={rectangleRef3}
-                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative"
+                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative ml-0"
                 style={{ boxShadow: "0 0 0 8px #1f2937, 0 0 0 12px #374151" }}
               >
                 {/* Landing Content */}
@@ -2083,6 +2122,7 @@ const Projects = () => {
                 <li>• Real-time order processing and payment integration</li>
               </ul>
             </div>
+          </div>
           </div>
         </div>
       </div>

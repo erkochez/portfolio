@@ -135,7 +135,7 @@ export default function About() {
           <div className="timeline-container relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-blue-600"></div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {timeline.map((item, index) => (
                 <div
                   key={index}
