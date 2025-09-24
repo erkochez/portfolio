@@ -1395,8 +1395,8 @@ const Projects = () => {
             </h1>
               <div
                 ref={rectangleRef3}
-                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative ml-0"
-                style={{ boxShadow: "0 0 0 8px #1f2937, 0 0 0 12px #374151" }}
+                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative ml-0 border-4 border-gray-600"
+                style={{ boxShadow: "0 0 0 8px #1f2937, 0 0 0 12px #374151, 0 8px 32px rgba(0,0,0,0.3)" }}
               >
                 {/* Landing Content */}
                 <div
@@ -1797,8 +1797,8 @@ const Projects = () => {
             <div className="flex gap-4 justify-center">
               {/* Initial state phone */}
               <div
-                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
-                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151" }}
+                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative border-2 border-gray-600"
+                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151, 0 4px 16px rgba(0,0,0,0.3)" }}
               >
                 {/* Landing Content */}
                 <div className="h-full bg-white">
@@ -1961,8 +1961,8 @@ const Projects = () => {
 
               {/* Final state phone */}
               <div
-                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
-                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151" }}
+                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative border-2 border-gray-600"
+                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151, 0 4px 16px rgba(0,0,0,0.3)" }}
               >
                 {/* Detail Content */}
                 <div className="h-full bg-white">
