@@ -5,30 +5,30 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 py-8 lg:py-20"
     >
       <ContactAnimations sectionId="contact" />
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 w-full">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
+          <div className="text-center mb-8 lg:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
               Let&apos;s Work Together
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
               Ready to bring your project to life? I&apos;m available for freelance
               work and exciting opportunities. Let&apos;s discuss how we can build
               something amazing together.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-6 lg:space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">
+                <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-4 lg:mb-6">
                   Get in Touch
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 lg:space-y-4">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                       <svg
@@ -106,10 +106,10 @@ export default function Contact() {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4">
+                <h3 className="text-lg lg:text-xl font-bold text-slate-800 mb-3 lg:mb-4">
                   What I Can Help With
                 </h3>
-                <ul className="space-y-2 text-slate-600">
+                <ul className="space-y-1.5 lg:space-y-2 text-sm lg:text-base text-slate-600">
                   <li className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
                     <span>Spring Boot & Backend Development</span>
