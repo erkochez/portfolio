@@ -33,24 +33,30 @@ const Projects = () => {
       ScrollTrigger.killAll();
       
       // Reset all elements to initial state with more comprehensive clearing
-      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
-        clearProps: "all",
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotation: 0,
-        skewX: 0,
-        skewY: 0,
-        transformOrigin: "50% 50%"
-      });
+      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
+      const contentElements = [contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current].filter(Boolean);
       
-      // Reset content and icons elements
-      gsap.set([contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current], {
-        clearProps: "all",
-        opacity: 1,
-        y: 0,
-        scale: 1
-      });
+      if (rectangles.length > 0) {
+        gsap.set(rectangles, {
+          clearProps: "all",
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          skewX: 0,
+          skewY: 0,
+          transformOrigin: "50% 50%"
+        });
+      }
+      
+      if (contentElements.length > 0) {
+        gsap.set(contentElements, {
+          clearProps: "all",
+          opacity: 1,
+          y: 0,
+          scale: 1
+        });
+      }
 
       // Throttle scroll events to prevent animation conflicts
       // Optimize for mobile performance
@@ -381,23 +387,9 @@ const Projects = () => {
     const handleResize = () => {
       // Reset animations on resize
       ScrollTrigger.killAll();
-      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
-        clearProps: "all",
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotation: 0,
-        skewX: 0,
-        skewY: 0,
-        transformOrigin: "50% 50%"
-      });
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        // Reset animations when page becomes visible
-        ScrollTrigger.killAll();
-        gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
+      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
+      if (rectangles.length > 0) {
+        gsap.set(rectangles, {
           clearProps: "all",
           x: 0,
           y: 0,
@@ -407,6 +399,26 @@ const Projects = () => {
           skewY: 0,
           transformOrigin: "50% 50%"
         });
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        // Reset animations when page becomes visible
+        ScrollTrigger.killAll();
+        const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
+        if (rectangles.length > 0) {
+          gsap.set(rectangles, {
+            clearProps: "all",
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            skewX: 0,
+            skewY: 0,
+            transformOrigin: "50% 50%"
+          });
+        }
       }
     };
 
@@ -421,24 +433,30 @@ const Projects = () => {
       ScrollTrigger.killAll();
       
       // Reset all elements to initial state
-      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
-        clearProps: "all",
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotation: 0,
-        skewX: 0,
-        skewY: 0,
-        transformOrigin: "50% 50%"
-      });
+      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
+      const contentElements = [contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current].filter(Boolean);
       
-      // Reset content and icons elements
-      gsap.set([contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current], {
-        clearProps: "all",
-        opacity: 1,
-        y: 0,
-        scale: 1
-      });
+      if (rectangles.length > 0) {
+        gsap.set(rectangles, {
+          clearProps: "all",
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          skewX: 0,
+          skewY: 0,
+          transformOrigin: "50% 50%"
+        });
+      }
+      
+      if (contentElements.length > 0) {
+        gsap.set(contentElements, {
+          clearProps: "all",
+          opacity: 1,
+          y: 0,
+          scale: 1
+        });
+      }
     };
   }, []);
 
