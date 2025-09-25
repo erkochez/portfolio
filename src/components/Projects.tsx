@@ -31,10 +31,25 @@ const Projects = () => {
 
       // Kill all existing ScrollTriggers to prevent conflicts
       ScrollTrigger.killAll();
-
-      // Reset all elements to initial state
+      
+      // Reset all elements to initial state with more comprehensive clearing
       gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
-        clearProps: "all"
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+        skewX: 0,
+        skewY: 0,
+        transformOrigin: "50% 50%"
+      });
+      
+      // Reset content and icons elements
+      gsap.set([contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current], {
+        clearProps: "all",
+        opacity: 1,
+        y: 0,
+        scale: 1
       });
 
       // Throttle scroll events to prevent animation conflicts
@@ -363,10 +378,66 @@ const Projects = () => {
 
   // Cleanup function to reset everything on unmount
   React.useEffect(() => {
-    return () => {
+    const handleResize = () => {
+      // Reset animations on resize
       ScrollTrigger.killAll();
       gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
-        clearProps: "all"
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+        skewX: 0,
+        skewY: 0,
+        transformOrigin: "50% 50%"
+      });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        // Reset animations when page becomes visible
+        ScrollTrigger.killAll();
+        gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
+          clearProps: "all",
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          skewX: 0,
+          skewY: 0,
+          transformOrigin: "50% 50%"
+        });
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Kill all ScrollTriggers
+      ScrollTrigger.killAll();
+      
+      // Reset all elements to initial state
+      gsap.set([rectangleRef.current, rectangleRef2.current, rectangleRef3.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+        skewX: 0,
+        skewY: 0,
+        transformOrigin: "50% 50%"
+      });
+      
+      // Reset content and icons elements
+      gsap.set([contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current], {
+        clearProps: "all",
+        opacity: 1,
+        y: 0,
+        scale: 1
       });
     };
   }, []);
