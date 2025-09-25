@@ -19,6 +19,17 @@ export default function ContactAnimations({ sectionId }: ContactAnimationsProps)
     const sectionElement = document.getElementById(sectionId);
     if (!sectionElement) return;
 
+    // Add scroll throttling to prevent fast scrolling from breaking animations
+    let scrollTimeout: NodeJS.Timeout;
+    const throttledScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100); // Throttle scroll refresh to every 100ms
+    };
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+
     // Get elements for animation
     const title = sectionElement.querySelector('h2');
     const description = sectionElement.querySelector('p');
@@ -75,6 +86,7 @@ export default function ContactAnimations({ sectionId }: ContactAnimationsProps)
     }, "-=0.5");
 
     return () => {
+      window.removeEventListener('scroll', throttledScroll);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [sectionId]);

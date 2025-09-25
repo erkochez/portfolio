@@ -59,12 +59,14 @@ const Projects = () => {
       }
 
       // Throttle scroll events to prevent animation conflicts
-      // Optimize for mobile performance
+      // Optimize for mobile performance and prevent fast scrolling issues
       ScrollTrigger.config({
         autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
         ignoreMobileResize: true,
-        syncInterval: window.innerWidth < 768 ? 120 : 60 // Slower refresh on mobile
+        syncInterval: window.innerWidth < 768 ? 120 : 60, // Slower refresh on mobile
+        limitCallbacks: true // Limit callback frequency
       });
+      
       
       // Header animation
       if (headerRef.current) {
@@ -422,12 +424,25 @@ const Projects = () => {
       }
     };
 
+    // Add scroll throttling to prevent fast scrolling from breaking animations
+    let scrollTimeout: NodeJS.Timeout;
+    const throttledScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100); // Throttle scroll refresh to every 100ms
+    };
+
     window.addEventListener('resize', handleResize);
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('scroll', throttledScroll, { passive: true });
     
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Remove scroll throttling listener
+      window.removeEventListener('scroll', throttledScroll);
       
       // Kill all ScrollTriggers
       ScrollTrigger.killAll();
