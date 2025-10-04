@@ -180,7 +180,7 @@ const EvidencePage = () => {
                       </div>
                       <div className="bg-green-50 p-3 rounded border-l-4 border-green-500">
                         <div className="text-sm font-semibold text-green-800">Core Question</div>
-                        <div className="text-xs text-green-700">"Do I have enough evidence?"</div>
+                        <div className="text-xs text-green-700">&ldquo;Do I have enough evidence?&rdquo;</div>
                       </div>
                       <div className="bg-purple-50 p-3 rounded border-l-4 border-purple-500">
                         <div className="text-sm font-semibold text-purple-800">Solution</div>
@@ -551,7 +551,7 @@ const EvidencePage = () => {
               <strong>Problem Solved:</strong>
             </p>
             <p className="text-lg text-slate-600 mb-6">
-              The biggest question for investigators and prosecutors: "Do I have enough evidence?" 
+              The biggest question for investigators and prosecutors: &ldquo;Do I have enough evidence?&rdquo; 
               E-Evidence provides a systematic approach to answer this critical question through 
               structured case analysis and evidence scoring.
             </p>
@@ -562,7 +562,7 @@ const EvidencePage = () => {
               <li>• Create investigations with court and criminal act details</li>
               <li>• Add entities (suspects, victims, witnesses) to cases</li>
               <li>• Use Blueprint Matrix to break down laws by elements</li>
-              <li>• Track evidence with "What we have" vs "What we lack"</li>
+              <li>• Track evidence with &ldquo;What we have&rdquo; vs &ldquo;What we lack&rdquo;</li>
               <li>• Score evidence strength and investigation progress</li>
               <li>• Determine court readiness automatically</li>
             </ul>
