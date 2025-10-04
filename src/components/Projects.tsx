@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
@@ -23,153 +24,94 @@ const Projects = () => {
   const rectangleRef3 = useRef<HTMLDivElement>(null);
   const contentRef3 = useRef<HTMLDivElement>(null);
   const iconsRef3 = useRef<HTMLDivElement>(null);
+  
+  // Refs for fourth section
+  const rectangleRef4 = useRef<HTMLDivElement>(null);
+  const contentRef4 = useRef<HTMLDivElement>(null);
+  const iconsRef4 = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       // Only run animations on desktop (lg and above)
       if (window.innerWidth < 1024) return;
 
-      // Kill all existing ScrollTriggers to prevent conflicts
+      // Kill all existing ScrollTriggers to prevent conflicts (LIKE INDIVIDUAL PAGES)
       ScrollTrigger.killAll();
-      
-      // Reset all elements to initial state with more comprehensive clearing
-      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
-      const contentElements = [contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current].filter(Boolean);
-      
-      if (rectangles.length > 0) {
-        gsap.set(rectangles, {
-          clearProps: "all",
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          skewX: 0,
-          skewY: 0,
-          transformOrigin: "50% 50%"
-        });
-      }
-      
-      if (contentElements.length > 0) {
-        gsap.set(contentElements, {
-          clearProps: "all",
-          opacity: 1,
-          y: 0,
-          scale: 1
-        });
-      }
 
-      // Throttle scroll events to prevent animation conflicts
-      // Optimize for mobile performance and prevent fast scrolling issues
-      ScrollTrigger.config({
-        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
-        ignoreMobileResize: true,
-        syncInterval: window.innerWidth < 768 ? 120 : 60, // Slower refresh on mobile
-        limitCallbacks: true // Limit callback frequency
+      // Reset all elements to initial state (LIKE INDIVIDUAL PAGES)
+      gsap.set([rectangleRef.current, contentRef.current, iconsRef.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef2.current, contentRef2.current, iconsRef2.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef3.current, contentRef3.current, iconsRef3.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef4.current, contentRef4.current, iconsRef4.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+
+      // Set initial states (VISIBLE initially like individual pages)
+      gsap.set([contentRef.current, iconsRef.current], {
+        opacity: 1,
+        y: 0
+      });
+      gsap.set(rectangleRef.current, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([contentRef2.current, iconsRef2.current], {
+        opacity: 1,
+        y: 0
+      });
+      gsap.set(rectangleRef2.current, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([contentRef3.current, iconsRef3.current], {
+        opacity: 1,
+        y: 0
+      });
+      gsap.set(rectangleRef3.current, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([contentRef4.current, iconsRef4.current], {
+        opacity: 1,
+        y: 0
+      });
+      gsap.set(rectangleRef4.current, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1
       });
       
-      
-      // Header animation
-      if (headerRef.current) {
-        const title = headerRef.current.querySelector('h2');
-        const description = headerRef.current.querySelector('p');
-        
-        gsap.set([title, description], { opacity: 0, y: 60 });
-        gsap.to([title, description], {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
-        });
-      }
-      
-      // Initial stage animations for all sections (entrance animations)
-      const sections = [
-        { 
-          section: ".section-1", 
-          rectangle: rectangleRef.current, 
-          content: contentRef.current, 
-          icons: iconsRef.current,
-          title: ".section-1 .w-1\\/2 h1" // Desktop title inside left container
-        },
-        { 
-          section: ".section-2", 
-          rectangle: rectangleRef2.current, 
-          content: contentRef2.current, 
-          icons: iconsRef2.current,
-          title: ".section-2 .w-1\\/2 h1" // Desktop title inside left container
-        },
-        { 
-          section: ".section-3", 
-          rectangle: rectangleRef3.current, 
-          content: contentRef3.current, 
-          icons: iconsRef3.current,
-          title: ".section-3 .w-1\\/2 h1" // Desktop title inside left container
-        }
-      ];
-
-      sections.forEach(({ section, rectangle, content, icons, title }) => {
-        // Set initial states (hidden)
-        gsap.set([title, rectangle, content, icons], {
-          opacity: 0,
-          y: 60,
-          scale: 0.9
-        });
-
-          // Create entrance timeline with proper queuing
-          const entranceTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
-              end: "top 20%",
-              toggleActions: "play none none reverse",
-              fastScrollEnd: true,
-              preventOverlaps: true
-            }
-          });
-
-        // Animate elements in sequence
-        entranceTl
-          .to(title, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out"
-          })
-          .to(rectangle, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: "power2.out"
-          }, "-=0.4")
-          .to(content, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "power2.out"
-          }, "-=0.6")
-          .to(icons, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            ease: "power2.out"
-          }, "-=0.4");
-      });
-      
-      // First section animation
+      // First section animation - EXACT COPY from auction page
       const tl1 = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-1",
           start: "top top",
-          end: "+=300%",
+          end: "+=800%",
           scrub: 0.5,
           pin: true,
           fastScrollEnd: true,
@@ -177,70 +119,51 @@ const Projects = () => {
         },
       });
 
-      tl1.to(".section-1 .h-screen", {
-        y: "-100vh",
+      // Hide content, icons, and title when scrolling starts (EXACT COPY from auction page)
+      tl1.to([contentRef.current, iconsRef.current, ".section-1 h1"], {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, "-=0.9");
+
+      // Move rectangle to center using getBoundingClientRect (EXACT COPY from auction page)
+      tl1.to(rectangleRef.current, {
+        x: () => {
+          const rect = rectangleRef.current?.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+          const rectWidth = rect?.width || 600;
+          return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+        },
+        y: () => {
+          const rect = rectangleRef.current?.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const rectHeight = rect?.height || 400;
+          return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+        },
+        scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
-      });
+      }, "-=0.7");
 
-      tl1.to(
-        [contentRef.current, iconsRef.current],
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.inOut",
-        },
-        "-=0.9"
-      );
+      // Content transitions inside rectangle (EXACT COPY from auction page)
+      tl1.to("#landing-content", {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.8")
+      .to("#auction-content", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.2")
+      .to({}, { duration: 0.7 }); // Pause at the end
 
-      tl1
-        .to(
-          rectangleRef.current,
-          {
-            x: () => {
-              const rect = rectangleRef.current?.getBoundingClientRect();
-              const windowWidth = window.innerWidth;
-              const rectWidth = rect?.width || 600;
-              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
-            },
-            y: () => {
-              const rect = rectangleRef.current?.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-              const rectHeight = rect?.height || 400;
-              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
-            },
-            scale: 1.2,
-            duration: 1.3,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#landing-content",
-          {
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#auction-content",
-          {
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.3"
-        )
-        .to({}, { duration: 0.7 }); // Pause at the end
-
-      // Second section animations
+      // Second section animation - EXACT COPY from bank page
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-2",
           start: "top top",
-          end: "+=300%",
+          end: "+=800%",
           scrub: 0.5,
           pin: true,
           fastScrollEnd: true,
@@ -248,70 +171,51 @@ const Projects = () => {
         },
       });
 
-      tl2.to(".section-2 .h-screen", {
-        y: "-100vh",
+      // Hide content, icons, and title when scrolling starts (EXACT COPY from bank page)
+      tl2.to([contentRef2.current, iconsRef2.current, ".section-2 h1"], {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, "-=0.9");
+
+      // Move rectangle to center using getBoundingClientRect (EXACT COPY from bank page)
+      tl2.to(rectangleRef2.current, {
+        x: () => {
+          const rect = rectangleRef2.current?.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+          const rectWidth = rect?.width || 600;
+          return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+        },
+        y: () => {
+          const rect = rectangleRef2.current?.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const rectHeight = rect?.height || 400;
+          return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+        },
+        scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
-      });
+      }, "-=0.7");
 
-      tl2.to(
-        [contentRef2.current, iconsRef2.current],
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.inOut",
-        },
-        "-=0.9"
-      );
+      // Content transitions inside rectangle (EXACT COPY from bank page)
+      tl2.to("#landing-content-2", {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.8")
+      .to("#detail-content-2", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.2")
+      .to({}, { duration: 0.7 }); // Pause at the end
 
-      tl2
-        .to(
-          rectangleRef2.current,
-          {
-            x: () => {
-              const rect = rectangleRef2.current?.getBoundingClientRect();
-              const windowWidth = window.innerWidth;
-              const rectWidth = rect?.width || 600;
-              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
-            },
-            y: () => {
-              const rect = rectangleRef2.current?.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-              const rectHeight = rect?.height || 400;
-              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
-            },
-            scale: 1.2,
-            duration: 1.3,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#landing-content-2",
-          {
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#detail-content-2",
-          {
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.3"
-        )
-        .to({}, { duration: 0.7 }); // Pause at the end
-
-      // Third section animations
+      // Third section animation - EXACT COPY from armenu page
       const tl3 = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-3",
           start: "top top",
-          end: "+=300%",
+          end: "+=800%",
           scrub: 0.5,
           pin: true,
           fastScrollEnd: true,
@@ -319,159 +223,128 @@ const Projects = () => {
         },
       });
 
-      tl3.to(".section-3 .h-screen", {
-        y: "-100vh",
+      // Hide content, icons, and title when scrolling starts (EXACT COPY from armenu page)
+      tl3.to([contentRef3.current, iconsRef3.current, ".section-3 h1"], {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, "-=0.9");
+
+      // Move rectangle to center using getBoundingClientRect (EXACT COPY from armenu page)
+      tl3.to(rectangleRef3.current, {
+        x: () => {
+          const rect = rectangleRef3.current?.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+          const rectWidth = rect?.width || 200;
+          return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+        },
+        y: () => {
+          const rect = rectangleRef3.current?.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const rectHeight = rect?.height || 400;
+          return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+        },
+        scale: 1.2,
         duration: 1.3,
         ease: "power2.inOut",
+      }, "-=0.7");
+
+      // Content transitions inside rectangle (EXACT COPY from armenu page)
+      tl3.to("#landing-content-3", {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.8")
+      .to("#detail-content-3", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.2")
+      .to({}, { duration: 0.7 }); // Pause at the end
+
+      // Fourth section animation - EXACT COPY from evidence page
+      const tl4 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-4",
+          start: "top top",
+          end: "+=800%",
+          scrub: 0.5,
+          pin: true,
+          fastScrollEnd: true,
+          preventOverlaps: true
+        },
       });
 
-      tl3.to(
-        [contentRef3.current, iconsRef3.current],
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.inOut",
-        },
-        "-=0.9"
-      );
+      // Hide content, icons, and title when scrolling starts (EXACT COPY from evidence page)
+      tl4.to([contentRef4.current, iconsRef4.current, ".section-4 h1"], {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, "-=0.9");
 
-      tl3
-        .to(
-          rectangleRef3.current,
-          {
-            x: () => {
-              const rect = rectangleRef3.current?.getBoundingClientRect();
-              const windowWidth = window.innerWidth;
-              const rectWidth = rect?.width || 200;
-              return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
-            },
-            y: () => {
-              const rect = rectangleRef3.current?.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-              const rectHeight = rect?.height || 400;
-              return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
-            },
-            scale: 1.2,
-            duration: 1.3,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#landing-content-3",
-          {
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.7"
-        )
-        .to(
-          "#detail-content-3",
-          {
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "-=0.3"
-        )
-        .to({}, { duration: 0.7 }); // Pause at the end
+      // Move rectangle to center using getBoundingClientRect (EXACT COPY from evidence page)
+      tl4.to(rectangleRef4.current, {
+        x: () => {
+          const rect = rectangleRef4.current?.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+          const rectWidth = rect?.width || 600;
+          return (windowWidth - rectWidth) / 2 - (rect?.left || 0);
+        },
+        y: () => {
+          const rect = rectangleRef4.current?.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const rectHeight = rect?.height || 400;
+          return (windowHeight - rectHeight) / 2 - (rect?.top || 0);
+        },
+        scale: 1.2,
+        duration: 1.3,
+        ease: "power2.inOut",
+      }, "-=0.7");
+
+      // Content transitions inside rectangle (EXACT COPY from evidence page)
+      tl4.to("#landing-content-4", {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.8")
+      .to("#detail-content-4", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      }, "-=0.2")
+      .to({}, { duration: 0.7 }); // Pause at the end
     },
-    { 
-      scope: containerRef,
-      dependencies: [],
-      revertOnUpdate: true
-    }
+    { scope: containerRef, dependencies: [] }
   );
 
-  // Cleanup function to reset everything on unmount
+  // Cleanup function to reset everything on unmount (LIKE INDIVIDUAL PAGES)
   React.useEffect(() => {
-    const handleResize = () => {
-      // Reset animations on resize
-      ScrollTrigger.killAll();
-      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
-      if (rectangles.length > 0) {
-        gsap.set(rectangles, {
-          clearProps: "all",
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          skewX: 0,
-          skewY: 0,
-          transformOrigin: "50% 50%"
-        });
-      }
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        // Reset animations when page becomes visible
-        ScrollTrigger.killAll();
-        const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
-        if (rectangles.length > 0) {
-          gsap.set(rectangles, {
-            clearProps: "all",
-            x: 0,
-            y: 0,
-            scale: 1,
-            rotation: 0,
-            skewX: 0,
-            skewY: 0,
-            transformOrigin: "50% 50%"
-          });
-        }
-      }
-    };
-
-    // Add scroll throttling to prevent fast scrolling from breaking animations
-    let scrollTimeout: NodeJS.Timeout;
-    const throttledScroll = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 100); // Throttle scroll refresh to every 100ms
-    };
-
-    window.addEventListener('resize', handleResize);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    
     return () => {
-      window.removeEventListener('resize', handleResize);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      
-      // Remove scroll throttling listener
-      window.removeEventListener('scroll', throttledScroll);
-      
-      // Kill all ScrollTriggers
       ScrollTrigger.killAll();
-      
-      // Reset all elements to initial state
-      const rectangles = [rectangleRef.current, rectangleRef2.current, rectangleRef3.current].filter(Boolean);
-      const contentElements = [contentRef.current, contentRef2.current, contentRef3.current, iconsRef.current, iconsRef2.current, iconsRef3.current].filter(Boolean);
-      
-      if (rectangles.length > 0) {
-        gsap.set(rectangles, {
-          clearProps: "all",
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          skewX: 0,
-          skewY: 0,
-          transformOrigin: "50% 50%"
-        });
-      }
-      
-      if (contentElements.length > 0) {
-        gsap.set(contentElements, {
-          clearProps: "all",
-          opacity: 1,
-          y: 0,
-          scale: 1
-        });
-      }
+      gsap.set([rectangleRef.current, contentRef.current, iconsRef.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef2.current, contentRef2.current, iconsRef2.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef3.current, contentRef3.current, iconsRef3.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
+      gsap.set([rectangleRef4.current, contentRef4.current, iconsRef4.current], {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        scale: 1
+      });
     };
   }, []);
 
@@ -490,7 +363,7 @@ const Projects = () => {
       </div>
       <div
         ref={containerRef}
-        className="min-h-0 lg:min-h-[900vh] overflow-x-hidden"
+        className="min-h-0 lg:min-h-[3200vh] overflow-x-hidden"
       >
         {/* Section 1: Auction Platform */}
         <div className="section-1 min-h-screen lg:h-screen relative py-8 lg:py-12 overflow-x-hidden">
@@ -505,7 +378,7 @@ const Projects = () => {
           {/* Left side with rectangle and icons */}
           <div className="w-1/2 pr-8">
             {/* Desktop Title positioned just above rectangle */}
-            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left">
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left font-recoleta">
               Online Auction Center
             </h1>
               {/* Rectangle with content */}
@@ -978,15 +851,15 @@ const Projects = () => {
           <div className="container mx-auto px-4">
           {/* Mobile Title */}
           <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
-            Bank Workflow
+            Bank Workflow Management
           </h1>
 
           {/* Desktop Layout */}
           <div className="hidden lg:flex items-center min-h-[80vh]">
             <div className="w-1/2 pr-8">
             {/* Desktop Title positioned just above rectangle */}
-            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
-              Bank Workflow
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left font-recoleta">
+              Bank Workflow Management
             </h1>
               <div
                 ref={rectangleRef2}
@@ -1494,13 +1367,13 @@ const Projects = () => {
           <div className="hidden lg:flex items-center min-h-[80vh]">
             <div className="w-1/2 pr-8">
             {/* Desktop Title positioned just above rectangle */}
-            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 font-recoleta">
               AR Menu App
             </h1>
               <div
                 ref={rectangleRef3}
-                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative ml-0 border-4 border-gray-600"
-                style={{ boxShadow: "0 0 0 8px #1f2937, 0 0 0 12px #374151, 0 8px 32px rgba(0,0,0,0.3)" }}
+                className="w-[200px] h-[400px] bg-gray-800 rounded-[40px] mb-8 overflow-hidden relative ml-0"
+                style={{ boxShadow: "0 0 0 8px #1f2937, 0 0 0 12px #374151" }}
               >
                 {/* Landing Content */}
                 <div
@@ -1901,8 +1774,8 @@ const Projects = () => {
             <div className="flex gap-4 justify-center">
               {/* Initial state phone */}
               <div
-                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative border-2 border-gray-600"
-                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151, 0 4px 16px rgba(0,0,0,0.3)" }}
+                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
+                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151" }}
               >
                 {/* Landing Content */}
                 <div className="h-full bg-white">
@@ -2065,8 +1938,8 @@ const Projects = () => {
 
               {/* Final state phone */}
               <div
-                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative border-2 border-gray-600"
-                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151, 0 4px 16px rgba(0,0,0,0.3)" }}
+                className="w-[150px] h-[300px] bg-gray-800 rounded-[20px] overflow-hidden relative"
+                style={{ boxShadow: "0 0 0 4px #1f2937, 0 0 0 6px #374151" }}
               >
                 {/* Detail Content */}
                 <div className="h-full bg-white">
@@ -2246,6 +2119,525 @@ const Projects = () => {
                 <li>• Multi-language and multi-currency support</li>
                 <li>• Dynamic menu management for restaurant owners</li>
                 <li>• Real-time order processing and payment integration</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        {/* Section 4: E-Evidence System */}
+        <div className="section-4 min-h-screen lg:h-screen relative py-8 lg:py-12 overflow-x-hidden">
+          <div className="container mx-auto px-4">
+          {/* Mobile Title */}
+          <h1 className="lg:hidden text-2xl font-bold text-slate-800 mb-4">
+            E-Evidence System
+          </h1>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex items-center min-h-[80vh]">
+          {/* Left side with rectangle and icons */}
+          <div className="w-1/2 pr-8">
+            {/* Desktop Title positioned just above rectangle */}
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4 text-left font-recoleta">
+              E-Evidence System
+            </h1>
+              {/* Rectangle with content */}
+              <div
+                ref={rectangleRef4}
+                className="w-[600px] h-[400px] bg-white rounded-lg mb-8 overflow-hidden relative"
+              >
+                {/* Landing Page Content */}
+                <div
+                  className="p-4 h-full absolute inset-0 transition-opacity duration-500"
+                  id="landing-content-4"
+                >
+                  {/* Header */}
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-bold text-blue-600">
+                      Investigation Dashboard
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-600">INV-2025-09-00386</span>
+                      <img
+                        src="/employee.webp"
+                        alt="Investigator"
+                        className="w-6 h-6 rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Search Bar */}
+                  <div className="mb-4">
+                    <div className="flex items-center border rounded-lg px-3 py-2">
+                      <input
+                        type="text"
+                        placeholder="Search investigations..."
+                        className="flex-1 text-sm outline-none"
+                      />
+                      <svg
+                        className="w-4 h-4 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Dashboard Grid */}
+                  <div className="grid grid-cols-2 gap-2 h-64">
+                    {/* Calendar */}
+                    <div className="bg-gray-50 p-2 rounded border border-gray-300">
+                      <div className="flex justify-between items-center mb-1">
+                        <div className="text-xs font-semibold text-gray-800">Calendar</div>
+                        <div className="flex space-x-1">
+                          <button className="text-xs text-gray-500">‹</button>
+                          <button className="text-xs text-gray-500">›</button>
+                        </div>
+                      </div>
+                      <div className="text-xs text-center text-gray-600 mb-1">September 2025</div>
+                      <div className="grid grid-cols-7 gap-0.5 text-xs">
+                        <div className="text-center text-gray-500 font-semibold">Su</div>
+                        <div className="text-center text-gray-500 font-semibold">Mo</div>
+                        <div className="text-center text-gray-500 font-semibold">Tu</div>
+                        <div className="text-center text-gray-500 font-semibold">We</div>
+                        <div className="text-center text-gray-500 font-semibold">Th</div>
+                        <div className="text-center text-gray-500 font-semibold">Fr</div>
+                        <div className="text-center text-gray-500 font-semibold">Sa</div>
+                        
+                        <div className="text-center text-gray-400 p-0.5">31</div>
+                        <div className="text-center p-0.5">1</div>
+                        <div className="text-center p-0.5">2</div>
+                        <div className="text-center p-0.5">3</div>
+                        <div className="text-center p-0.5">4</div>
+                        <div className="text-center p-0.5">5</div>
+                        <div className="text-center p-0.5">6</div>
+                        
+                        <div className="text-center p-0.5 text-red-600 font-bold">7</div>
+                        <div className="text-center p-0.5">8</div>
+                        <div className="text-center p-0.5">9</div>
+                        <div className="text-center p-0.5 bg-red-100 rounded text-red-800">10</div>
+                        <div className="text-center p-0.5">11</div>
+                        <div className="text-center p-0.5">12</div>
+                        <div className="text-center p-0.5">13</div>
+                        
+                        <div className="text-center p-0.5">14</div>
+                        <div className="text-center p-0.5">15</div>
+                        <div className="text-center p-0.5">16</div>
+                        <div className="text-center p-0.5">17</div>
+                        <div className="text-center p-0.5">18</div>
+                        <div className="text-center p-0.5">19</div>
+                        <div className="text-center p-0.5">20</div>
+                        
+                        <div className="text-center p-0.5 text-red-600">21</div>
+                        <div className="text-center p-0.5 bg-gray-800 text-white rounded font-bold">22</div>
+                        <div className="text-center p-0.5">23</div>
+                        <div className="text-center p-0.5">24</div>
+                        <div className="text-center p-0.5">25</div>
+                        <div className="text-center p-0.5">26</div>
+                        <div className="text-center p-0.5 bg-blue-100 rounded text-blue-800">27</div>
+                      </div>
+                    </div>
+
+                    {/* Active Investigations by Priority */}
+                    <div className="bg-gray-50 p-2 rounded border border-gray-300">
+                      <div className="text-xs font-semibold text-gray-800 mb-1">Priority</div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {/* Critical */}
+                        <div className="text-center">
+                          <div className="relative w-8 h-8 mx-auto mb-1">
+                            <svg className="w-8 h-8 transform -rotate-90">
+                              <circle cx="16" cy="16" r="12" stroke="#e5e7eb" strokeWidth="2" fill="transparent"/>
+                              <circle cx="16" cy="16" r="12" stroke="#dc2626" strokeWidth="2" fill="transparent" 
+                                      strokeDasharray="75" strokeDashoffset="73" className="transition-all duration-300"/>
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-xs font-bold text-red-600">1%</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-center space-x-1">
+                            <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Critical</span>
+                          </div>
+                        </div>
+
+                        {/* High */}
+                        <div className="text-center">
+                          <div className="relative w-8 h-8 mx-auto mb-1">
+                            <svg className="w-8 h-8 transform -rotate-90">
+                              <circle cx="16" cy="16" r="12" stroke="#e5e7eb" strokeWidth="2" fill="transparent"/>
+                              <circle cx="16" cy="16" r="12" stroke="#f59e0b" strokeWidth="2" fill="transparent" 
+                                      strokeDasharray="75" strokeDashoffset="71" className="transition-all duration-300"/>
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-xs font-bold text-yellow-600">2%</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-center space-x-1">
+                            <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full"></div>
+                            <span className="text-xs text-gray-700">High</span>
+                          </div>
+                        </div>
+
+                        {/* Medium */}
+                        <div className="text-center">
+                          <div className="relative w-8 h-8 mx-auto mb-1">
+                            <svg className="w-8 h-8 transform -rotate-90">
+                              <circle cx="16" cy="16" r="12" stroke="#e5e7eb" strokeWidth="2" fill="transparent"/>
+                              <circle cx="16" cy="16" r="12" stroke="#3b82f6" strokeWidth="2" fill="transparent" 
+                                      strokeDasharray="75" strokeDashoffset="60" className="transition-all duration-300"/>
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-xs font-bold text-blue-600">15%</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-center space-x-1">
+                            <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Medium</span>
+                          </div>
+                        </div>
+
+                        {/* Low */}
+                        <div className="text-center">
+                          <div className="relative w-8 h-8 mx-auto mb-1">
+                            <svg className="w-8 h-8 transform -rotate-90">
+                              <circle cx="16" cy="16" r="12" stroke="#e5e7eb" strokeWidth="2" fill="transparent"/>
+                              <circle cx="16" cy="16" r="12" stroke="#10b981" strokeWidth="2" fill="transparent" 
+                                      strokeDasharray="75" strokeDashoffset="45" className="transition-all duration-300"/>
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-xs font-bold text-green-600">30%</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-center space-x-1">
+                            <div className="w-1.5 h-1.5 bg-green-600 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Low</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Investigations by Status */}
+                    <div className="bg-gray-50 p-2 rounded border border-gray-300">
+                      <div className="text-xs font-semibold text-gray-800 mb-1">By Status</div>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center space-x-1">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Active</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-800">24</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center space-x-1">
+                            <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Pending</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-800">8</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center space-x-1">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Review</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-800">12</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center space-x-1">
+                            <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
+                            <span className="text-xs text-gray-700">Closed</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-800">3</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Investigations over time */}
+                    <div className="bg-gray-50 p-2 rounded border border-gray-300">
+                      <div className="text-xs font-semibold text-gray-800 mb-1">Over Time</div>
+                      <div className="h-16 bg-white rounded flex items-end justify-between px-1">
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "60%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "80%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "45%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "90%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "70%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "85%" }}></div>
+                        <div className="bg-blue-400 w-2 rounded-t" style={{ height: "95%" }}></div>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1 text-center">Last 7 days</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Detail Content */}
+                <div
+                  className="p-4 h-full absolute inset-0 opacity-0 transition-opacity duration-500"
+                  id="detail-content-4"
+                >
+                  {/* Header */}
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-bold text-blue-600">
+                      Blueprint Matrix
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-600">Financial Fraud</span>
+                      <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Legal Elements Table */}
+                  <div className="mb-4">
+                    <div className="text-xs font-semibold mb-2">Legal Elements</div>
+                    <div className="space-y-1">
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="font-semibold text-gray-700">Element</div>
+                        <div className="font-semibold text-blue-700">Have</div>
+                        <div className="font-semibold text-red-700">Lack</div>
+                        <div className="font-semibold text-green-700">Tasks</div>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="bg-gray-100 p-1 rounded">1. A person who</div>
+                        <div className="bg-blue-50 p-1 rounded text-blue-800">Suspect identified</div>
+                        <div className="bg-red-50 p-1 rounded text-red-800">Financial records</div>
+                        <div className="bg-green-50 p-1 rounded text-green-800">Bank audit</div>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="bg-gray-100 p-1 rounded">2. Person</div>
+                        <div className="bg-blue-50 p-1 rounded text-blue-800">Transaction logs</div>
+                        <div className="bg-red-50 p-1 rounded text-red-800">Digital signatures</div>
+                        <div className="bg-green-50 p-1 rounded text-green-800">IT analysis</div>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="bg-gray-100 p-1 rounded">3. Who received</div>
+                        <div className="bg-blue-50 p-1 rounded text-blue-800">Receipt records</div>
+                        <div className="bg-red-50 p-1 rounded text-red-800">Witness statements</div>
+                        <div className="bg-green-50 p-1 rounded text-green-800">Interview witnesses</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="mt-3 bg-yellow-50 p-2 rounded text-xs">
+                    <div className="font-semibold text-yellow-800">Progress: 25%</div>
+                    <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
+                      <div className="bg-yellow-500 h-1 rounded-full" style={{width: '25%'}}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tech stack icons */}
+              <div ref={iconsRef4} className="flex gap-6 mb-8">
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+                  <img
+                    src="/react.webp"
+                    alt="React"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+                  <img
+                    src="/springlogo.webp"
+                    alt="Java"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+                  <img
+                    src="/postgresql.webp"
+                    alt="PostgreSQL"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right side text */}
+            <div ref={contentRef4} className="w-1/2 pl-8">
+              <h2 className="text-4xl font-bold text-slate-800 leading-tight uppercase mb-8">
+                E-EVIDENCE
+                <br />
+                INVESTIGATION SYSTEM
+              </h2>
+              <p className="text-2xl text-slate-600 mb-6">
+                A comprehensive investigation management system for legal professionals.
+                Streamlines case analysis, tracks evidence, and determines court readiness.
+              </p>
+              <p className="text-xl text-slate-700 mb-4">
+                <strong>Key Features:</strong>
+              </p>
+              <ul className="text-lg text-slate-600 space-y-2">
+                <li>
+                  • Blueprint Matrix for systematic legal breakdown
+                </li>
+                <li>• Evidence scoring and progress tracking</li>
+                <li>• Entity management for suspects and witnesses</li>
+                <li>• Court readiness assessment automation</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="lg:hidden space-y-6">
+            {/* Two rectangles stacked vertically */}
+            <div className="flex flex-col gap-4 items-center">
+              {/* Initial state rectangle */}
+              <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+                {/* Landing Page Content */}
+                <div className="p-3 h-full">
+                  {/* Header */}
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="text-sm font-bold text-blue-600">
+                      Investigation Dashboard
+                    </h3>
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-600">INV-2025-09-00386</span>
+                      <img
+                        src="/employee.webp"
+                        alt="Investigator"
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Search Bar */}
+                  <div className="mb-2">
+                    <div className="flex items-center border rounded px-2 py-1">
+                      <input
+                        type="text"
+                        placeholder="Search investigations..."
+                        className="flex-1 text-xs outline-none"
+                      />
+                      <svg
+                        className="w-3 h-3 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-1">
+                    <div className="border rounded p-1">
+                      <div className="text-xs font-semibold text-green-600">Active</div>
+                      <div className="text-xs text-blue-600">24</div>
+                    </div>
+                    <div className="border rounded p-1">
+                      <div className="text-xs font-semibold text-blue-600">Total</div>
+                      <div className="text-xs text-blue-600">156</div>
+                    </div>
+                    <div className="border rounded p-1">
+                      <div className="text-xs font-semibold text-orange-600">Pending</div>
+                      <div className="text-xs text-blue-600">8</div>
+                    </div>
+                    <div className="border rounded p-1">
+                      <div className="text-xs font-semibold text-red-600">Closed</div>
+                      <div className="text-xs text-blue-600">3</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Final state rectangle */}
+              <div className="w-[350px] h-[220px] bg-white rounded-lg overflow-hidden relative">
+                {/* Detail Content */}
+                <div className="p-3 h-full">
+                  {/* Header */}
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="text-sm font-bold text-blue-600">
+                      Blueprint Matrix
+                    </h3>
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-600">Financial Fraud</span>
+                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Legal Elements */}
+                  <div className="mb-2">
+                    <div className="text-xs font-semibold mb-1">Legal Elements</div>
+                    <div className="space-y-1">
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="font-semibold text-gray-700">Element</div>
+                        <div className="font-semibold text-blue-700">Have</div>
+                        <div className="font-semibold text-red-700">Lack</div>
+                        <div className="font-semibold text-green-700">Tasks</div>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="bg-gray-100 p-1 rounded">1. A person who</div>
+                        <div className="bg-blue-50 p-1 rounded text-blue-800">Suspect identified</div>
+                        <div className="bg-red-50 p-1 rounded text-red-800">Financial records</div>
+                        <div className="bg-green-50 p-1 rounded text-green-800">Bank audit</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="mt-2 bg-yellow-50 p-1 rounded text-xs">
+                    <div className="font-semibold text-yellow-800">Progress: 25%</div>
+                    <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
+                      <div className="bg-yellow-500 h-1 rounded-full" style={{width: '25%'}}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Tech stack icons */}
+            <div className="flex gap-4 justify-center mb-6">
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+                <img
+                  src="/react.webp"
+                  alt="React"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+                <img
+                  src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/springlogo-mobile.webp' : '/springlogo.webp'}
+                  alt="Java"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+                <img
+                  src="/postgresql.webp"
+                  alt="PostgreSQL"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div className="text-left">
+              <p className="text-lg text-slate-600 mb-4">
+                A comprehensive investigation management system for legal professionals.
+                Streamlines case analysis, tracks evidence, and determines court readiness.
+              </p>
+              <p className="text-base text-slate-700 mb-3">
+                <strong>Key Features:</strong>
+              </p>
+              <ul className="text-sm text-slate-600 space-y-1">
+                <li>
+                  • Blueprint Matrix for systematic legal breakdown
+                </li>
+                <li>• Evidence scoring and progress tracking</li>
+                <li>• Entity management for suspects and witnesses</li>
+                <li>• Court readiness assessment automation</li>
               </ul>
             </div>
           </div>

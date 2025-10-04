@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Projects from '@/components/Projects';
+import ProjectsStoryline from '@/components/ProjectsStoryline';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import { ClientOnly } from '@/components/ui/ClientOnly';
@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Projects />
+      <ProjectsStoryline />
       <Skills />
       <SkillsLogos />
   

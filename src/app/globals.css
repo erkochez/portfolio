@@ -155,6 +155,10 @@ body {
 /* Recoleta Title Utility Class */
 .font-recoleta {
   font-family: var(--font-recoleta);
+  font-feature-settings: "liga" 0; /* Disable ligatures */
+  -webkit-font-feature-settings: "liga" 0;
+  -moz-font-feature-settings: "liga" 0;
+  -ms-font-feature-settings: "liga" 0;
 }
 
 /* Custom scrollbar */
