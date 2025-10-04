@@ -73,8 +73,8 @@ const ProjectsStoryline = () => {
   useGSAP(() => {
     const sections = gsap.utils.toArray('.project-section');
     
-    sections.forEach((section: any, index) => {
-      gsap.fromTo(section, 
+    sections.forEach((section: unknown) => {
+      gsap.fromTo(section as Element, 
         { opacity: 0, y: 100 },
         {
           opacity: 1,
@@ -82,7 +82,7 @@ const ProjectsStoryline = () => {
           duration: 1,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: section,
+            trigger: section as Element,
             start: "top 80%",
             end: "bottom 20%",
             toggleActions: "play none none reverse"
