@@ -194,8 +194,8 @@ const ProjectsStoryline = () => {
                               {[
                                 { name: "MacBook Pro", price: "$800", bidders: "42", image: "/macbookpro.webp" },
                                 { name: "iPhone 15", price: "$200", bidders: "28", image: "/iphone.webp" },
-                                { name: "MacBook Air", price: "$250", bidders: "35", image: "/macbookpro.webp" },
-                                { name: "iPhone 14", price: "$100", bidders: "19", image: "/iphone.webp" },
+                                { name: "PlayStation 5", price: "$450", bidders: "35", image: "/ps5.webp" },
+                                { name: "Digital Camera", price: "$320", bidders: "19", image: "/camera.webp" },
                                 { name: "iPad Pro", price: "$300", bidders: "24", image: "/macbookpro.webp" },
                                 { name: "Apple Watch", price: "$150", bidders: "31", image: "/iphone.webp" }
                               ].map((item, idx) => (

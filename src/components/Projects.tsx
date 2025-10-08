@@ -446,26 +446,26 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/iphone.webp"
-                        alt="iPhone 15"
+                        src="/ps5.webp"
+                        alt="PlayStation 5"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
-                      <div className="text-xs font-semibold">iPhone 15</div>
-                      <div className="text-xs text-blue-600">$200</div>
+                      <div className="text-xs font-semibold">PlayStation 5</div>
+                      <div className="text-xs text-blue-600">$450</div>
                       <div className="text-xs text-gray-500">
-                        28 Participants
+                        35 Participants
                       </div>
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src={typeof window !== 'undefined' && window.innerWidth <= 768 ? '/macbookpro-mobile.webp' : '/macbookpro.webp'}
-                        alt="MacBook Air"
+                        src="/camera.webp"
+                        alt="Digital Camera"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
-                      <div className="text-xs font-semibold">MacBook Air</div>
-                      <div className="text-xs text-blue-600">$250</div>
+                      <div className="text-xs font-semibold">Digital Camera</div>
+                      <div className="text-xs text-blue-600">$320</div>
                       <div className="text-xs text-gray-500">
-                        35 Participants
+                        19 Participants
                       </div>
                     </div>
                     <div className="border rounded p-2">
