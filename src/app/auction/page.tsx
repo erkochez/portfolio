@@ -244,7 +244,7 @@ const AuctionPage = () => {
                 <div className="grid grid-cols-2 gap-2 md:gap-3">
                   {[
                     { name: "MacBook Pro", price: "$800", retail: "$2,000", image: "/macbook.webp" },
-                    { name: "iPhone 17", price: "$400", retail: "$1,200", image: "/iphone.webp" },
+                    { name: "iPhone 17", price: "$400", retail: "$1,200", image: "/iphone copy.webp" },
                     { name: "PlayStation 5", price: "$450", retail: "$600", image: "/ps5.webp" },
                     { name: "Digital Camera", price: "$320", retail: "$800", image: "/camera.png" },
                   ].map((item, idx) => (
@@ -276,7 +276,7 @@ const AuctionPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <div className="pricing-card bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 md:p-8 border-2 border-gray-700 hover:border-blue-500 transition-all">
-              <img src="/iphone.webp" alt="iPhone 17" className="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto mb-4 md:mb-6" />
+              <img src="/iphone copy.webp" alt="iPhone 17" className="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto mb-4 md:mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-center mb-3 md:mb-4">iPhone 17</h3>
               <div className="text-center mb-4 md:mb-6">
                 <div className="text-3xl md:text-4xl font-black text-blue-400 mb-2">$800</div>
