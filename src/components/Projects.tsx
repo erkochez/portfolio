@@ -458,7 +458,7 @@ const Projects = () => {
                     </div>
                     <div className="border rounded p-2">
                       <img
-                        src="/camera.webp"
+                        src="/camera.png"
                         alt="Digital Camera"
                         className="w-full h-16 object-contain rounded mb-2"
                       />
