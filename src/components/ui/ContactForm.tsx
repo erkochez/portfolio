@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function ContactForm() {
   const handleEmailClick = () => {
-    // Open mailto link in new tab/window
-    window.open('mailto:erenahmed3@gmail.com', '_blank');
+    // Open mailto link directly (opens email client)
+    window.location.href = 'mailto:erenahmed3@gmail.com';
   };
 
   return (
