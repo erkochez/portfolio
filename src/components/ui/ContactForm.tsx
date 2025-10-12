@@ -10,10 +10,6 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,26 +18,24 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-
-    try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    
+    // Create mailto link with pre-filled subject and body
+    const mailtoLink = `mailto:erenahmed3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    )}`;
+    
+    // Open the default mail app
+    window.location.href = mailtoLink;
+    
+    // Reset form after opening mail app
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
@@ -132,33 +126,12 @@ export default function ContactForm() {
 
         <motion.button
           type="submit"
-          disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          Send Message
         </motion.button>
-
-        {submitStatus === "success" && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-green-600 text-center font-medium"
-          >
-            Message sent successfully! I&apos;ll get back to you soon.
-          </motion.div>
-        )}
-
-        {submitStatus === "error" && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-red-600 text-center font-medium"
-          >
-            Failed to send message. Please try again.
-          </motion.div>
-        )}
       </motion.form>
     </div>
   );

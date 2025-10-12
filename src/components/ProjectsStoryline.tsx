@@ -93,7 +93,7 @@ const ProjectsStoryline = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20">
+    <div id="projects" ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20">
       <div className="container mx-auto px-4">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
