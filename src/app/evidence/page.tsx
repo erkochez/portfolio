@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -10,11 +10,19 @@ gsap.registerPlugin(ScrollTrigger);
 const EvidencePage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Scroll to top when page mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useGSAP(
     () => {
+      // Kill all existing ScrollTriggers to prevent conflicts
       ScrollTrigger.killAll();
 
-      const isMobile = window.innerWidth < 1024;
+      // Small delay to ensure DOM is fully rendered
+      const timer = setTimeout(() => {
+        const isMobile = window.innerWidth < 1024;
 
       // Hero section animations
       gsap.fromTo(
@@ -215,6 +223,10 @@ const EvidencePage = () => {
         yoyo: true,
         ease: "power2.inOut",
       });
+    }, 100); // Close setTimeout
+
+      // Cleanup timer on unmount
+      return () => clearTimeout(timer);
     },
     { scope: containerRef }
   );
