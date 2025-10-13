@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     siteName: 'Eren Ahmed Portfolio',
     images: [
       {
-        url: '/profileimage.webp',
+        url: '/erenprofile.webp',
         width: 400,
-        height: 400,
+        height: 559,
         alt: 'Eren Ahmed - Spring Boot Developer in Macedonia',
       },
     ],
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Eren Ahmed - Spring Boot Developer in Macedonia',
     description: 'Hire Spring Boot Developer in Macedonia. Expert React, Next.js, TypeScript developer from Skopje.',
-    images: ['/profileimage.webp'],
+    images: ['/erenprofile.webp'],
   },
   alternates: {
     canonical: 'https://erenahmed.netlify.app',
@@ -104,7 +104,7 @@ export default function RootLayout({
         {/* Preload critical images */}
         <link
           rel="preload"
-          href="/profileimage.webp"
+          href="/erenprofile.webp"
           as="image"
           type="image/webp"
         />
@@ -123,7 +123,7 @@ export default function RootLayout({
               "jobTitle": "Head Backend Developer",
               "description": "Spring Boot Developer in Macedonia specializing in React, Next.js, TypeScript, and AR development",
               "url": "https://erenahmed.netlify.app",
-              "image": "https://erenahmed.netlify.app/profileimage.webp",
+              "image": "https://erenahmed.netlify.app/erenprofile.webp",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Skopje",

@@ -77,7 +77,7 @@ export default function Hero() {
             handle="erenahmed"
             status="Available"
             contactText="Contact Me"
-            avatarUrl="/profileimage.webp"
+            avatarUrl="/erenprofile.webp"
             showUserInfo={true}
             enableTilt={false}
             enableMobileTilt={false}
@@ -99,7 +99,7 @@ export default function Hero() {
               handle="erenahmed"
               status="Available"
               contactText="Contact Me"
-              avatarUrl="/profileimage.webp"
+              avatarUrl="/erenprofile.webp"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
