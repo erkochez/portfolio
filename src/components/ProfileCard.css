@@ -256,12 +256,15 @@
 }
 
 .pc-avatar-content .avatar {
-  width: 100%;
+  width: 60%;
+  height: auto;
   position: absolute;
   left: 50%;
   transform: translateX(-50%) scale(1);
-  bottom: 2px;
+  bottom: 80px;
   opacity: calc(1.75 - var(--pointer-from-center));
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .pc-avatar-content::before {
@@ -438,6 +441,11 @@
     max-height: 450px;
   }
 
+  .pc-avatar-content .avatar {
+    width: 55%;
+    bottom: 70px;
+  }
+
   .pc-details {
     top: 2em;
   }
@@ -484,6 +492,11 @@
   .pc-card {
     height: 60svh;
     max-height: 380px;
+  }
+
+  .pc-avatar-content .avatar {
+    width: 50%;
+    bottom: 60px;
   }
 
   .pc-details {
@@ -535,6 +548,11 @@
   .pc-card {
     height: 55svh;
     max-height: 320px;
+  }
+
+  .pc-avatar-content .avatar {
+    width: 45%;
+    bottom: 50px;
   }
 
   .pc-details h3 {
