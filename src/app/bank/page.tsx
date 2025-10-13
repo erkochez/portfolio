@@ -10,9 +10,20 @@ gsap.registerPlugin(ScrollTrigger);
 const BankPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to top when page mounts
+  // Scroll to top when page mounts - more robust approach
   useEffect(() => {
+    // Force scroll to top immediately
     window.scrollTo(0, 0);
+    
+    // Also try after a small delay to ensure it works
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      // Force scroll even if browser tries to restore position
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useGSAP(
