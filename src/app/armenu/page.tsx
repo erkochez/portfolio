@@ -691,14 +691,7 @@ const ARMenuPage = () => {
           <p className="text-2xl md:text-3xl text-gray-300 mb-12">
             Modern restaurant menu with AR, 3D models, and intelligent filtering
           </p>
-          <a 
-            href="https://coresense.org/ar-menu" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white text-xl md:text-2xl font-bold px-12 py-6 rounded-full hover:scale-105 transform transition-all shadow-2xl shadow-orange-500/50"
-          >
-            EXPLORE PROJECT
-          </a>
+  
         </div>
       </section>
     </div>
