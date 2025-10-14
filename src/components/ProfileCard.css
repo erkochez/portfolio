@@ -256,7 +256,7 @@
 }
 
 .pc-avatar-content .avatar {
-  width: 60%;
+  width: 75%;
   height: auto;
   position: absolute;
   left: 50%;
@@ -442,7 +442,7 @@
   }
 
   .pc-avatar-content .avatar {
-    width: 55%;
+    width: 70%;
     bottom: 0;
   }
 
@@ -495,7 +495,7 @@
   }
 
   .pc-avatar-content .avatar {
-    width: 50%;
+    width: 65%;
     bottom: 0;
   }
 
@@ -551,7 +551,7 @@
   }
 
   .pc-avatar-content .avatar {
-    width: 45%;
+    width: 60%;
     bottom: 0;
   }
 
