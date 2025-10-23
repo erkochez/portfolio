@@ -13,10 +13,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate environment variables
+    if (!process.env.EMAIL_HOST || !process.env.EMAIL_PORT || !process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.EMAIL_FROM || !process.env.EMAIL_TO) {
+      return NextResponse.json(
+        { error: 'Email configuration is missing' },
+        { status: 500 }
+      );
+    }
+
     // Create transporter using Namecheap SMTP settings
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'coresense.org',
-      port: parseInt('process.env.EMAIL_PORT'),
+      host: process.env.EMAIL_HOST,
+      port: parseInt(process.env.EMAIL_PORT),
       secure: true, // Use SSL/TLS
       auth: {
         user: process.env.EMAIL_USER,
@@ -26,9 +34,9 @@ export async function POST(request: NextRequest) {
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'eren.ahmed@coresense.org', // Authenticated sender
+      from: process.env.EMAIL_FROM, // Authenticated sender
       replyTo: email, // Allow replies to go to user's email
-      to: process.env.EMAIL_TO || 'eren.ahmed@coresense.org',
+      to: process.env.EMAIL_TO,
       subject: `Portfolio Contact from ${name} (${email}): ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
