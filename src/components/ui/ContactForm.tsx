@@ -10,6 +10,8 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -20,20 +22,36 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission
-    console.log("Form submitted:", formData);
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    
-    // Show success message (you can replace this with a toast notification)
-    alert("Message sent successfully!");
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -111,12 +129,38 @@ export default function ContactForm() {
 
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
+            disabled={isSubmitting}
+            whileHover={!isSubmitting ? { scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" } : {}}
+            whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+            className={`w-full px-8 py-4 text-white text-lg font-semibold rounded-lg transition-colors shadow-lg ${
+              isSubmitting 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-blue-600 hover:bg-blue-700'
+            }`}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </motion.button>
+
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center"
+            >
+              ✅ Message sent successfully! I&apos;ll get back to you soon.
+            </motion.div>
+          )}
+
+          {submitStatus === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center"
+            >
+              ❌ Failed to send message. Please try again or contact me directly.
+            </motion.div>
+          )}
         </form>
       </motion.div>
     </div>
