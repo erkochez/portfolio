@@ -30,13 +30,17 @@ export async function POST(request: NextRequest) {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      // Add connection timeout and retry settings
+      connectionTimeout: 60000, // 60 seconds
+      greetingTimeout: 30000, // 30 seconds
+      socketTimeout: 60000, // 60 seconds
     });
 
-    // Email content
+    // Email content - FROM is the authenticated sender (your email), REPLY-TO is user's email
     const mailOptions = {
-      from: process.env.EMAIL_FROM, // Authenticated sender
-      replyTo: email, // Allow replies to go to user's email
-      to: process.env.EMAIL_TO,
+      from: process.env.EMAIL_FROM, // Your authenticated email (required by SMTP)
+      replyTo: email, // User's email (where replies go)
+      to: process.env.EMAIL_TO, // Your email (where messages are sent)
       subject: `Portfolio Contact from ${name} (${email}): ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
