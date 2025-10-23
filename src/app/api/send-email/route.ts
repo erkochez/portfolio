@@ -16,19 +16,20 @@ export async function POST(request: NextRequest) {
     // Create transporter using Namecheap SMTP settings
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || 'coresense.org',
-      port: parseInt(process.env.EMAIL_PORT || '465'),
+      port: parseInt('process.env.EMAIL_PORT'),
       secure: true, // Use SSL/TLS
       auth: {
-        user: process.env.EMAIL_USER || 'eren.ahmed@coresense.org',
-        pass: process.env.EMAIL_PASS || ';MVS5?)n[#=a',
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'eren.ahmed@coresense.org',
+      from: process.env.EMAIL_FROM || 'eren.ahmed@coresense.org', // Authenticated sender
+      replyTo: email, // Allow replies to go to user's email
       to: process.env.EMAIL_TO || 'eren.ahmed@coresense.org',
-      subject: `Portfolio Contact: ${subject}`,
+      subject: `Portfolio Contact from ${name} (${email}): ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
