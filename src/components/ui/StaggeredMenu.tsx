@@ -400,7 +400,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <div className="sm-header-buttons" id="navbar-buttons">
           <button
             className="sm-resume-button"
-            onClick={() => window.open('/resume.pdf', '_blank')}
+            onClick={() => window.open('/erenahmedresume.pdf', '_blank')}
             type="button"
             aria-label="Open resume in new tab"
           >
