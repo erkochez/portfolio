@@ -3,7 +3,6 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Eren Ahmed - Spring Boot Developer in Macedonia | React & Next.js Expert",
-  description: "Hire Spring Boot Developer in Macedonia. Expert React, Next.js, TypeScript developer from Skopje. Head Backend Developer with 2.5+ years experience. Specializing in microservices, AR development, and enterprise solutions. Available for hire.",
   keywords: [
     "Spring Boot developer Macedonia",
     "React developer Skopje",
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://erenahmed.netlify.app',
     title: 'Eren Ahmed - Spring Boot Developer in Macedonia | React & Next.js Expert',
-    description: 'Hire Spring Boot Developer in Macedonia. Expert React, Next.js, TypeScript developer from Skopje. Head Backend Developer with 2.5+ years experience.',
+    description: 'Hire Spring Boot Developer in Macedonia. Expert React, Next.js, TypeScript developer from Skopje. Head Backend Developer with 3 years experience.',
     siteName: 'Eren Ahmed Portfolio',
     images: [
       {

@@ -3,12 +3,12 @@ import SkillsAnimations from './ui/SkillsAnimations';
 export default function Skills() {
 
   const coreSkills = [
-    { name: "Spring Boot", experience: "2.5+ years" },
+    { name: "Spring Boot", experience: "3 years" },
     { name: "Java", experience: "4+ years" },
     { name: "React", experience: "1.5+ years" },
     { name: "Next.js", experience: "0.8+ years" },
     { name: "TypeScript", experience: "1+ years" },
-    { name: "PostgreSQL", experience: "2.5+ years" },
+    { name: "PostgreSQL", experience: "3 years" },
     { name: "React Native", experience: "2+ years" },
     { name: "Docker", experience: "1+ years" },
     { name: "AR Core", experience: "1+ years" },
@@ -20,7 +20,7 @@ export default function Skills() {
       title: "Head Backend Developer",
       description:
         "Leading enterprise workflow management systems for banks and state institutions",
-      highlight: "2.5+ years experience",
+      highlight: "3 years experience",
     },
     {
       title: "AR Innovation Pioneer",

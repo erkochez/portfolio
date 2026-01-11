@@ -113,7 +113,7 @@ export default function About() {
 
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <div className="text-2xl font-bold text-blue-600">2.5+</div>
+                <div className="text-2xl font-bold text-blue-600">3</div>
                 <div className="text-slate-600">Years Professional</div>
               </div>
               <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
