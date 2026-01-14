@@ -53,12 +53,12 @@ const ArMenuPage = () => {
                 </span>
               </motion.div>
 
-              <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 font-recoleta leading-[1.1]">
+              <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 md:mb-8 font-recoleta leading-[1.1]">
                 Taste in <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Augmented Reality.</span>
               </motion.h1>
 
-              <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg">
+              <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 md:mb-10 leading-relaxed max-w-lg px-4 sm:px-0">
                 Transform your paper menu into an immersive 3D experience. Let guests visualize dishes on their table before they order.
               </motion.p>
 
@@ -87,10 +87,10 @@ const ArMenuPage = () => {
                 initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className="relative md:w-[320px] w-[280px]"
+                className="relative w-[240px] sm:w-[280px] md:w-[320px]"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-[2.5rem] blur-2xl -z-10" />
-                <div className="relative bg-white rounded-[2.5rem] border-8 border-gray-800 shadow-2xl overflow-hidden aspect-[9/19] flex flex-col">
+                <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-[2rem] sm:rounded-[2.5rem] blur-2xl -z-10" />
+                <div className="relative bg-white rounded-[2rem] sm:rounded-[2.5rem] border-4 sm:border-8 border-gray-800 shadow-2xl overflow-hidden aspect-[9/19] flex flex-col">
 
                   {/* App Header */}
                   <div className="bg-blue-600 p-6 pt-10 text-white shrink-0">
@@ -100,7 +100,7 @@ const ArMenuPage = () => {
                         <div className="w-4 h-0.5 bg-white/80 rounded block"></div>
                         <div className="w-6 h-0.5 bg-white/80 rounded block"></div>
                       </div>
-                      <h3 className="font-recoleta font-bold text-2xl tracking-wide">Carmine&apos;s</h3>
+                      <h3 className="font-recoleta font-bold text-lg sm:text-xl md:text-2xl tracking-wide">Carmine&apos;s</h3>
                     </div>
 
                     <div className="relative">
