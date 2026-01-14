@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   keywords: [
     "Spring Boot developer Macedonia",
     "React developer Skopje",
-    "Next.js developer Macedonia", 
+    "Next.js developer Macedonia",
     "TypeScript developer",
     "Java developer Macedonia",
     "Backend developer hire",
@@ -74,7 +74,7 @@ export default function RootLayout({
       <head>
         {/* DNS prefetch for better loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        
+
         {/* Preload critical fonts - prioritize for desktop */}
         <link
           rel="preload"
@@ -99,7 +99,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           media="(min-width: 768px)"
         />
-        
+
         {/* Preload critical images */}
         <link
           rel="preload"
@@ -110,7 +110,7 @@ export default function RootLayout({
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://upload.wikimedia.org" />
         <link rel="preconnect" href="https://images.icon-icons.com" />
-        
+
         {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
@@ -131,7 +131,7 @@ export default function RootLayout({
               "knowsAbout": [
                 "Spring Boot",
                 "React",
-                "Next.js", 
+                "Next.js",
                 "TypeScript",
                 "Java",
                 "PostgreSQL",
@@ -155,7 +155,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>

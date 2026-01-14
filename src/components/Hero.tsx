@@ -20,56 +20,54 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 text-slate-800 relative overflow-hidden pt-20 md:pt-0">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-background text-foreground relative overflow-hidden pt-20 md:pt-0">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30"></div>
-      
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
       {/* Animated Background Shapes */}
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
           scale: [1, 1.1, 1]
         }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
-        className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"
-        style={{ 
-          transform: 'translate3d(0,0,0)', 
-          willChange: 'transform', 
-          contain: 'layout style paint' 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] opacity-40 mix-blend-screen"
+        style={{
+          transform: 'translate3d(0,0,0)',
+          willChange: 'transform',
         }}
       />
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           x: [0, -100, 0],
           y: [0, 50, 0],
           scale: [1, 0.9, 1]
         }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
+        transition={{
+          duration: 18,
+          repeat: Infinity,
           ease: "easeInOut",
-          delay: 1
+          delay: 2
         }}
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-        style={{ 
-          transform: 'translate3d(0,0,0)', 
-          willChange: 'transform', 
-          contain: 'layout style paint' 
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] opacity-30 mix-blend-screen"
+        style={{
+          transform: 'translate3d(0,0,0)',
+          willChange: 'transform',
         }}
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Profile Card for Mobile - Shown ONLY on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center mb-8 lg:!hidden"
+          className="flex justify-center mb-12 lg:hidden"
         >
           <ProfileCard
             name="Eren Ahmed"
@@ -80,18 +78,18 @@ export default function Hero() {
             avatarUrl="/erenprofile.webp"
             showUserInfo={true}
             enableTilt={false}
-            enableMobileTilt={false}
+            enableMobileTilt={true}
             onContactClick={scrollToContact}
           />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-40 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-32 items-center">
           {/* Left Side - Profile Card (Hidden on mobile, shown ONLY on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="!hidden lg:!flex justify-center lg:justify-end"
+            className="hidden lg:flex justify-end"
           >
             <ProfileCard
               name="Eren Ahmed"
@@ -121,49 +119,46 @@ export default function Hero() {
                 maxIterations={2}
                 animateOn="view"
                 revealDirection="center"
-                className="text-5xl md:text-6xl font-bold text-slate-800"
+                className="text-6xl md:text-7xl font-bold tracking-tight text-foreground font-recoleta"
               />
-              
+
               <DecryptedText
                 text="Spring Boot Developer in Macedonia"
                 speed={20}
                 maxIterations={3}
                 animateOn="view"
                 revealDirection="left"
-                className="text-lg md:text-xl font-semibold text-blue-600"
+                className="text-xl md:text-2xl font-light text-primary tracking-wide"
               />
-              
-            
-
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
-              className="space-y-4"
+              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
             >
-              <p className="text-lg text-slate-600 leading-relaxed">
-                <strong>Expert Spring Boot Developer from Skopje, Macedonia. </strong> 
-                Specializing in backend architecture, microservices, and enterprise solutions. 
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <strong className="text-foreground font-semibold">Expert Spring Boot Developer from Skopje, Macedonia. </strong>
+                Specializing in backend architecture, microservices, and enterprise solutions.
                 Also skilled in React, Next.js, and AR development. Available for hire.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+
+              <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2">
                 <motion.button
                   onClick={scrollToProjects}
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-primary text-white font-medium rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] transition-all duration-300"
                 >
                   View My Work
                 </motion.button>
-                
+
                 <motion.button
                   onClick={scrollToContact}
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 border border-input text-foreground font-medium rounded-xl hover:bg-secondary/50 hover:border-primary/50 transition-all duration-300 backdrop-blur-sm"
                 >
                   Get In Touch
                 </motion.button>
@@ -171,8 +166,6 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </div>
-        
-      
       </div>
     </section>
   );

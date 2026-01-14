@@ -11,7 +11,7 @@ export default function Header() {
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 500); // Small delay to prevent menu flash
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,11 +37,11 @@ export default function Header() {
         socialItems={socialItems}
         displaySocials={true}
         displayItemNumbering={true}
-        menuButtonColor="#000"
-        openMenuButtonColor="#000"
+        menuButtonColor="#0f172a"
+        openMenuButtonColor="#0f172a"
         changeMenuColorOnOpen={false}
-        accentColor="#000"
-        colors={['#0ea5e9', '#3b82f6']}
+        accentColor="#0f172a"
+        colors={['#0f172a', '#334155', '#475569']}
         logoUrl=""
         onMenuOpen={() => console.log('Menu opened')}
         onMenuClose={() => console.log('Menu closed')}

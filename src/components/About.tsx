@@ -44,19 +44,19 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-white text-slate-800"
+      className="py-20 bg-background text-foreground"
     >
       <AboutAnimations sectionId="about" />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-recoleta">
-                Spring Boot Developer Journey in Macedonia
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                From a curious 12-year-old creating websites to becoming a <strong>Head Backend Developer </strong> 
-                leading enterprise-level Spring Boot solutions and pioneering AR experiences in
-                <strong> Macedonia&apos;s tech scene</strong>.
-              </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-recoleta">
+            Spring Boot Developer Journey in Macedonia
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            From a curious 12-year-old creating websites to becoming a <strong>Head Backend Developer </strong>
+            leading enterprise-level Spring Boot solutions and pioneering AR experiences in
+            <strong> Macedonia&apos;s tech scene</strong>.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -74,9 +74,9 @@ export default function About() {
                 sizes="(max-width: 768px) 80px, 96px"
               />
               <div className="prose prose-lg">
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   I&apos;m{" "}
-                  <span className="font-semibold text-blue-600">
+                  <span className="font-semibold text-primary">
                     Eren Ahmed
                   </span>
                   , a passionate software engineer from
@@ -146,13 +146,13 @@ export default function About() {
                   </div>
 
                   <div className="flex-grow">
-                    <div className="bg-blue-50 p-6 rounded-lg shadow-lg border-l-4 border-blue-400">
+                    <div className="bg-secondary/50 p-6 rounded-lg shadow-sm border-l-4 border-primary">
                       <div className="flex items-center space-x-2 mb-2">
                         <span className="bg-blue-100 text-blue-700 text-sm font-semibold px-2 py-1 rounded">
                           {item.year}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold text-slate-800 mb-2">
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
                         {item.title}
                       </h3>
                       <p className="text-slate-600 text-sm leading-relaxed">
