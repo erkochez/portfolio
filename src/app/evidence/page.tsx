@@ -6,7 +6,8 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 const EvidencePage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]); // Unused variable removed
+
 
   const fadeIn: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -118,7 +119,7 @@ const EvidencePage = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="text-blue-400 font-bold text-sm tracking-wider uppercase mb-2 block">The Challenge</span>
-                <h3 className="text-3xl font-recoleta font-bold mb-6">"Do I have enough evidence to proceed to court?"</h3>
+                <h3 className="text-3xl font-recoleta font-bold mb-6">&quot;Do I have enough evidence to proceed to court?&quot;</h3>
                 <p className="text-slate-400 mb-8">
                   Every investigator and prosecutor faces this critical question. Scattered evidence, missing documents, and unclear gaps in the case make it hard to answer.
                 </p>
@@ -136,7 +137,7 @@ const EvidencePage = () => {
               <div className="bg-slate-950 rounded-xl border border-slate-800 p-8 text-center relative">
                 <div className="text-6xl font-bold text-white mb-2 font-recoleta">YES</div>
                 <div className="text-blue-400 font-mono text-sm uppercase tracking-wider">Data-Driven Insights</div>
-                <div className="mt-6 text-sm text-slate-500 italic">"E-Evidence provides the answer."</div>
+                <div className="mt-6 text-sm text-slate-500 italic">&quot;E-Evidence provides the answer.&quot;</div>
               </div>
             </div>
           </div>
@@ -380,7 +381,7 @@ const EvidencePage = () => {
 
           <blockquote className="max-w-3xl mx-auto mb-16">
             <p className="text-2xl text-slate-300 font-recoleta italic leading-relaxed mb-6">
-              "E-Evidence has transformed how we approach investigations. The Blueprint Matrix provides clarity on what evidence we need, reducing case resolution time by <span className="font-sans">40%</span>."
+              &quot;E-Evidence has transformed how we approach investigations. The Blueprint Matrix provides clarity on what evidence we need, reducing case resolution time by <span className="font-sans">40%</span>.&quot;
             </p>
             <footer className="text-sm text-slate-500 uppercase tracking-widest font-bold">
               — Senior Investigator, Ministry of Internal Affairs
