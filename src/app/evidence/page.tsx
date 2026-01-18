@@ -50,11 +50,11 @@ const EvidencePage = () => {
               </span>
             </motion.div>
 
-            <motion.h1 variants={fadeIn} className="text-6xl md:text-8xl font-bold mb-6 font-recoleta leading-tight text-white">
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 font-recoleta leading-tight text-white">
               E-EVIDENCE
             </motion.h1>
 
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl mx-auto">
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-400 mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto px-4">
               Empowering investigators with intelligent case management and systematic evidence tracking.
             </motion.p>
 
@@ -86,9 +86,9 @@ const EvidencePage = () => {
       {/* Investigation Management Info */}
       <section className="py-24 bg-slate-900/50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-recoleta font-bold mb-6">Investigation Management</h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
+          <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-recoleta font-bold mb-4 md:mb-6">Investigation Management</h2>
+            <p className="text-slate-400 text-base md:text-lg leading-relaxed">
               E-Evidence is a powerful tool designed for investigators to efficiently manage investigations. From creating cases to tracking evidence, every step is systematic and measurable.
             </p>
           </div>
@@ -119,7 +119,7 @@ const EvidencePage = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="text-blue-400 font-bold text-sm tracking-wider uppercase mb-2 block">The Challenge</span>
-                <h3 className="text-3xl font-recoleta font-bold mb-6">&quot;Do I have enough evidence to proceed to court?&quot;</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-recoleta font-bold mb-4 md:mb-6">&quot;Do I have enough evidence to proceed to court?&quot;</h3>
                 <p className="text-slate-400 mb-8">
                   Every investigator and prosecutor faces this critical question. Scattered evidence, missing documents, and unclear gaps in the case make it hard to answer.
                 </p>
@@ -149,15 +149,15 @@ const EvidencePage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-blue-500 font-mono text-sm uppercase tracking-widest">Workflow</span>
-            <h2 className="text-4xl font-bold font-recoleta mt-2">The Process</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-recoleta mt-2">The Process</h2>
           </div>
 
           <div className="space-y-24">
             {/* Step 1 */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
-                <div className="text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">01</div>
-                <h3 className="text-2xl font-bold text-white mb-4">Create Investigation</h3>
+                <div className="text-6xl sm:text-7xl md:text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">01</div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Create Investigation</h3>
                 <p className="text-slate-400 leading-relaxed mb-6">
                   Investigators begin by creating a new investigation. Add comprehensive details including description, date, time, address, classification level, and priority level.
                 </p>
@@ -221,8 +221,8 @@ const EvidencePage = () => {
                 </div>
               </div>
               <div>
-                <div className="text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">02</div>
-                <h3 className="text-2xl font-bold text-white mb-4">Add Criminal Act</h3>
+                <div className="text-6xl sm:text-7xl md:text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">02</div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Add Criminal Act</h3>
                 <p className="text-slate-400 leading-relaxed">
                   Define the criminal act (e.g., Theft, Fraud, Assault). When you create a criminal act, the system automatically generates a Blueprint Matrix based on the legal definition.
                 </p>
@@ -232,8 +232,8 @@ const EvidencePage = () => {
             {/* Step 3 */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">03</div>
-                <h3 className="text-2xl font-bold text-white mb-4">Blueprint Matrix</h3>
+                <div className="text-6xl sm:text-7xl md:text-8xl font-recoleta text-slate-800 font-bold leading-none mb-4">03</div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Blueprint Matrix</h3>
                 <p className="text-slate-400 leading-relaxed mb-6">
                   The Matrix breaks down the law into individual nouns (legal elements). For each element, investigators track three key aspects:
                 </p>
@@ -256,14 +256,14 @@ const EvidencePage = () => {
                 <div className="bg-slate-900 px-4 py-2 border-b border-slate-800 text-xs font-bold text-slate-400 uppercase tracking-wider">
                   Matrix View: Financial Fraud
                 </div>
-                <div className="p-4 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-1/3 text-sm text-slate-300">A person who</div>
-                    <div className="flex-1 bg-slate-900 rounded h-10 flex items-center px-3 border border-slate-800">
+                <div className="p-3 md:p-4 space-y-3 md:space-y-4">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+                    <div className="w-full sm:w-1/3 text-xs sm:text-sm text-slate-300 font-semibold">A person who</div>
+                    <div className="flex-1 bg-slate-900 rounded h-auto sm:h-10 flex flex-wrap items-center px-2 sm:px-3 py-2 sm:py-0 border border-slate-800 gap-1">
                       <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">Suspect ID</span>
-                      <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded ml-2">Background</span>
+                      <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">Background</span>
                     </div>
-                    <div className="w-12 text-right font-bold text-green-400">75%</div>
+                    <div className="w-full sm:w-12 text-left sm:text-right font-bold text-green-400 text-sm sm:text-base">75%</div>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-1/3 text-sm text-slate-300">Obtained property</div>

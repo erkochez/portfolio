@@ -49,12 +49,12 @@ const BankPage = () => {
               <span className="text-sm font-medium text-teal-300 tracking-wider uppercase">Enterprise Document Workflow</span>
             </motion.div>
 
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-9xl font-bold mb-8 font-recoleta text-foreground leading-[0.9] tracking-tight">
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-bold mb-6 md:mb-8 font-recoleta text-foreground leading-[0.9] tracking-tight">
               E-Dossier <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">System.</span>
             </motion.h1>
 
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto">
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto px-4">
               A comprehensive document lifecycle management platform. Automate approvals, enforce retention policies, and digitalize paper trails.
             </motion.p>
           </motion.div>
