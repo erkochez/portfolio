@@ -30,9 +30,9 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-3 lg:space-y-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-secondary/50 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                       <svg
-                        className="w-6 h-6 text-primary"
+                        className="w-6 h-6 text-blue-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

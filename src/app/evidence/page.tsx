@@ -45,7 +45,7 @@ const EvidencePage = () => {
             className="max-w-4xl mx-auto"
           >
             <motion.div variants={fadeIn} className="inline-block mb-6">
-              <span className="px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm font-mono tracking-wider uppercase">
+              <span className="px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-500 text-sm font-mono tracking-wider uppercase">
                 SOLVE CASES FASTER
               </span>
             </motion.div>
@@ -428,7 +428,7 @@ const EvidencePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 flex items-center justify-center bg-blue-600">
+      <section className="py-32 flex items-center justify-center bg-blue-950">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-recoleta font-bold mb-8 text-white">SOLVE CASES FASTER.</h2>
           <p className="text-blue-100 mb-8 max-w-lg mx-auto">Systematic investigation management for modern law enforcement.</p>

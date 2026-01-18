@@ -1,0 +1,217 @@
+/* MOBILE RESPONSIVE OVERRIDES - Only layout and sizing, NO color/font changes */
+
+/* Prevent horizontal scroll on all devices */
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Mobile devices (< 768px) */
+@media (max-width: 767px) {
+
+    /* Scale down very large text to fit mobile screens */
+    .text-9xl {
+        font-size: 3rem !important;
+        /* 48px instead of 128px */
+        line-height: 1 !important;
+    }
+
+    .text-8xl {
+        font-size: 2.5rem !important;
+        /* 40px instead of 96px */
+        line-height: 1.1 !important;
+    }
+
+    .text-7xl {
+        font-size: 2.25rem !important;
+        /* 36px instead of 72px */
+        line-height: 1.1 !important;
+    }
+
+    .text-6xl {
+        font-size: 2rem !important;
+        /* 32px instead of 60px */
+        line-height: 1.2 !important;
+    }
+
+    .text-5xl {
+        font-size: 1.75rem !important;
+        /* 28px instead of 48px */
+        line-height: 1.2 !important;
+    }
+
+    /* Reduce excessive padding on mobile */
+    .py-32 {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .py-24 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .py-20 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    /* Reduce margins */
+    .mb-24 {
+        margin-bottom: 3rem !important;
+    }
+
+    .mb-20 {
+        margin-bottom: 2.5rem !important;
+    }
+
+    .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+
+    .mb-12 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .mb-10 {
+        margin-bottom: 1.25rem !important;
+    }
+
+    .mb-8 {
+        margin-bottom: 1rem !important;
+    }
+
+    /* Stack grids on mobile */
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+
+    /* Reduce gap spacing */
+    .gap-12 {
+        gap: 2rem !important;
+    }
+
+    .gap-16 {
+        gap: 2.5rem !important;
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Ensure max-width containers don't overflow */
+    .max-w-7xl,
+    .max-w-6xl,
+    .max-w-5xl,
+    .max-w-4xl,
+    .max-w-3xl,
+    .max-w-2xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Make buttons more visible and touch-friendly on mobile */
+    button,
+    a[href^="http"],
+    a[role="button"] {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0.75rem 1.5rem !important;
+    }
+
+    /* Ensure flex containers with buttons display properly */
+    .flex.gap-4 {
+        flex-wrap: wrap !important;
+    }
+
+    /* FIX: Bank page document interface - hide sidebar on mobile */
+    .grid.grid-cols-4>.col-span-1 {
+        display: none !important;
+    }
+
+    /* FIX: Bank page document interface - make main content full width */
+    .grid.grid-cols-4>.col-span-3 {
+        grid-column: span 1 / span 1 !important;
+    }
+
+    /* FIX: Make the document preview window scrollable on mobile */
+    .rounded-t-2xl {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+    }
+
+    /* FIX: Reduce padding in document preview */
+    .grid.grid-cols-4.gap-6 {
+        padding: 1rem !important;
+        gap: 1rem !important;
+    }
+
+    /* FIX: Ensure full height sections don't cut off content on mobile (e.g. AR Menu) */
+    .h-screen {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding-top: 6rem !important;
+        padding-bottom: 6rem !important;
+    }
+
+    /* FIX: Add more spacing to the About section on mobile to prevent overlap with Hero */
+    #about {
+        padding-top: 8rem !important;
+        margin-top: 2rem !important;
+    }
+}
+
+/* Small mobile devices (< 576px) */
+@media (max-width: 575px) {
+
+    /* Even smaller text for very small screens */
+    .text-9xl {
+        font-size: 2.25rem !important;
+        /* 36px */
+    }
+
+    .text-8xl {
+        font-size: 2rem !important;
+        /* 32px */
+    }
+
+    .text-7xl {
+        font-size: 1.875rem !important;
+        /* 30px */
+    }
+
+    .text-6xl {
+        font-size: 1.75rem !important;
+        /* 28px */
+    }
+
+    .text-5xl {
+        font-size: 1.5rem !important;
+        /* 24px */
+    }
+
+    /* Tighter spacing on very small screens */
+    .py-24 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .py-20 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Smaller buttons on very small screens */
+    button,
+    a[href^="http"],
+    a[role="button"] {
+        padding: 0.625rem 1.25rem !important;
+        font-size: 0.875rem !important;
+    }
+}

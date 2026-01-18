@@ -98,7 +98,7 @@ const BankPage = () => {
               {/* Content */}
               <div className="col-span-3">
                 <div className="mb-6 flex justify-between items-center">
-                  <h3 className="font-bold text-lg">Daily Digest</h3>
+                  <h3 className="font-bold text-lg">Recent Activity</h3>
                   <span className="py-1 px-3 bg-teal-500/10 text-teal-400 text-xs rounded-full">3 New Tasks</span>
                 </div>
 
