@@ -133,32 +133,33 @@ export default function About() {
 
           {/* Timeline */}
           <div className="timeline-container relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-blue-600"></div>
+            <div className="absolute left-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className="timeline-item relative flex items-start space-x-4"
+                  className="timeline-item relative pl-12 group"
                 >
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white text-sm font-bold relative z-10">
-                    {item.icon}
-                  </div>
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-2 w-2 h-2 bg-blue-600 rounded-full ring-4 ring-white shadow-sm group-hover:scale-125 transition-transform duration-300"></div>
 
-                  <div className="flex-grow">
-                    <div className="bg-secondary/50 p-6 rounded-lg shadow-sm border-l-4 border-primary">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <span className="bg-blue-100 text-blue-700 text-sm font-semibold px-2 py-1 rounded">
-                          {item.year}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+                  {/* Card */}
+                  <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 group-hover:border-blue-200">
+                    {/* Year badge */}
+                    <span className="inline-block bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full mb-3">
+                      {item.year}
+                    </span>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-slate-600 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               ))}
