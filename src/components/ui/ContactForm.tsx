@@ -20,23 +20,24 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    
+
     try {
-      const response = await fetch('/api/send-email', {
+      const form = e.currentTarget;
+      const formDataToSend = new FormData(form);
+
+      // Submit to Netlify
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSend as any).toString(),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -47,7 +48,7 @@ export default function ContactForm() {
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -62,7 +63,24 @@ export default function ContactForm() {
         transition={{ duration: 0.6, delay: 0.4 }}
         className="max-w-md mx-auto"
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          {/* Hidden fields for Netlify */}
+          <input type="hidden" name="form-name" value="contact" />
+
+          {/* Honeypot field for spam protection */}
+          <p className="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
               Name
@@ -132,11 +150,10 @@ export default function ContactForm() {
             disabled={isSubmitting}
             whileHover={!isSubmitting ? { scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" } : {}}
             whileTap={!isSubmitting ? { scale: 0.95 } : {}}
-            className={`w-full px-8 py-4 text-white text-lg font-semibold rounded-lg transition-colors shadow-lg ${
-              isSubmitting 
-                ? 'bg-gray-400 cursor-not-allowed' 
+            className={`w-full px-8 py-4 text-white text-lg font-semibold rounded-lg transition-colors shadow-lg ${isSubmitting
+                ? 'bg-gray-400 cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-700'
-            }`}
+              }`}
           >
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </motion.button>
@@ -148,7 +165,7 @@ export default function ContactForm() {
               animate={{ opacity: 1, y: 0 }}
               className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center"
             >
-              ✅ Message sent successfully! I&apos;ll get back to you soon.
+              ✅ Message sent successfully! I'll get back to you soon.
             </motion.div>
           )}
 
