@@ -1,31 +1,29 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import ProjectsStoryline from '@/components/ProjectsStoryline';
-import Skills from '@/components/Skills';
-import Contact from '@/components/Contact';
-import { ClientOnly } from '@/components/ui/ClientOnly';
-import SkillsLogos from '@/components/ui/SkillsLogos';
-import CursorRibbons from '@/components/ui/CursorRibbons';
-import ScrollToTop from '@/components/ui/ScrollToTop';
+import { Kanit } from 'next/font/google';
+import HeroSection from './jack/components/HeroSection';
+import MarqueeSection from './jack/components/MarqueeSection';
+import AboutSection from './jack/components/AboutSection';
+import ServicesSection from './jack/components/ServicesSection';
+import ProjectsSection from './jack/components/ProjectsSection';
+import ContactSection from './jack/components/ContactSection';
+
+const kanit = Kanit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <ScrollToTop />
-      <Header />
-      <Hero />
-      <About />
-      <ProjectsStoryline />
-      <Skills />
-      <SkillsLogos />
-  
-      <Contact />
-      
-      {/* Cursor Ribbons Effect */}
-      <ClientOnly fallback={null}>
-        <CursorRibbons />
-      </ClientOnly>
-    </main>
+    <div
+      className={kanit.className}
+      style={{ backgroundColor: '#0C0C0C', overflowX: 'clip', minHeight: '100vh' }}
+    >
+      <HeroSection />
+      <MarqueeSection />
+      <AboutSection />
+      <ServicesSection />
+      <ProjectsSection />
+      <ContactSection />
+    </div>
   );
 }

@@ -1,213 +1,193 @@
-"use client";
+'use client';
+import { Kanit } from 'next/font/google';
+import Link from 'next/link';
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+const kanit = Kanit({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800', '900'], display: 'swap' });
 
-const BankPage = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const BARS = [42, 58, 35, 70, 55, 80, 63, 45, 90, 72, 68, 85];
 
-  const fadeIn: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  const staggerContainer: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
+export default function BankPage() {
   return (
-    <div ref={containerRef} className="bg-background min-h-screen selection:bg-teal-500/30">
-      {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[120px] translate-y-[-20%] translate-x-[20%]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] translate-y-[20%] translate-x-[-20%]" />
-        </div>
+    <div className={kanit.className} style={{ backgroundColor: '#0C0C0C', color: '#D7E2EA', minHeight: '100vh' }}>
+      {/* Nav */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10"
+        style={{ height: '64px', borderBottom: '1px solid rgba(215,226,234,0.08)', background: 'rgba(12,12,12,0.85)', backdropFilter: 'blur(12px)' }}
+      >
+        <Link href="/" className="flex items-center gap-2 font-medium text-sm uppercase tracking-widest transition-opacity hover:opacity-60" style={{ color: '#D7E2EA' }}>
+          ← Back
+        </Link>
+        <span className="font-black uppercase tracking-widest text-xs px-3 py-1 rounded-full" style={{ border: '1px solid rgba(215,226,234,0.2)', color: '#646973' }}>
+          Enterprise Project
+        </span>
+      </nav>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-5xl mx-auto text-center"
-          >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-              <span className="text-sm font-medium text-teal-300 tracking-wider uppercase">Enterprise Document Workflow</span>
-            </motion.div>
+      {/* Hero */}
+      <section className="flex flex-col items-center justify-center text-center px-5 sm:px-10 pt-40 pb-24">
+        <p className="font-medium uppercase tracking-[0.3em] text-xs mb-6" style={{ color: '#646973' }}>Banking Microservices Platform</p>
+        <h1
+          className="hero-heading font-black uppercase leading-none tracking-tight mb-8"
+          style={{ fontSize: 'clamp(3rem, 11vw, 140px)' }}
+        >
+          E-DOSSIER.
+        </h1>
+        <p className="font-light leading-relaxed max-w-xl mb-12" style={{ color: '#D7E2EA', opacity: 0.65, fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}>
+          Enterprise document lifecycle management for a major Turkish bank. Microservices-driven, secure, and built for 850+ daily users.
+        </p>
 
-            <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-bold mb-6 md:mb-8 font-recoleta text-foreground leading-[0.9] tracking-tight">
-              E-Dossier <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">System.</span>
-            </motion.h1>
+        {/* Dashboard mockup */}
+        <div
+          className="w-full max-w-3xl rounded-[24px] overflow-hidden"
+          style={{ border: '1px solid rgba(215,226,234,0.12)', background: 'rgba(215,226,234,0.03)' }}
+        >
+          {/* bar */}
+          <div className="flex items-center gap-2 px-5 py-3" style={{ borderBottom: '1px solid rgba(215,226,234,0.08)' }}>
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff5f57' }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#febc2e' }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#28c840' }} />
+            <span className="ml-4 text-xs font-medium uppercase tracking-widest" style={{ color: '#646973' }}>E-Dossier — Dashboard</span>
+            <span className="ml-auto text-xs font-medium" style={{ color: '#28c840' }}>● Online</span>
+          </div>
 
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto px-4">
-              A comprehensive document lifecycle management platform. Automate approvals, enforce retention policies, and digitalize paper trails.
-            </motion.p>
-          </motion.div>
-
-          {/* Abstract Interface Preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full max-w-4xl mx-auto bg-card border border-border rounded-t-2xl shadow-2xl overflow-hidden aspect-[16/9] relative"
-          >
-            {/* Fake Tool bar */}
-            <div className="h-10 bg-muted/40 border-b border-border flex items-center px-4 gap-4">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-400/20" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/20" />
-                <div className="w-3 h-3 rounded-full bg-green-400/20" />
-              </div>
-              <div className="flex-1 bg-background/50 h-6 rounded-md border border-border/50 text-xs flex items-center px-3 text-muted-foreground">
-                Search documents...
-              </div>
-            </div>
-
-            <div className="p-6 grid grid-cols-4 gap-6 h-full">
-              {/* Sidebar */}
-              <div className="col-span-1 space-y-4 border-r border-border pr-2">
-                <div className="flex items-center gap-2 font-bold text-foreground bg-accent/20 p-2 rounded-lg">
-                  <svg className="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>
-                  Inbox
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground hover:bg-muted p-2 rounded-lg transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  Pending Approval
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground hover:bg-muted p-2 rounded-lg transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
-                  Archived
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="col-span-3">
-                <div className="mb-6 flex justify-between items-center">
-                  <h3 className="font-bold text-lg">Recent Activity</h3>
-                  <span className="py-1 px-3 bg-teal-500/10 text-teal-400 text-xs rounded-full">3 New Tasks</span>
-                </div>
-
-                <div className="space-y-4">
-                  {/* Task Item */}
-                  <div className="p-4 bg-background border border-border rounded-xl flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-blue-500/10 flex items-center justify-center rounded-lg text-blue-400">PDF</div>
-                      <div>
-                        <div className="font-bold text-sm">Loan_Agreement_v2.pdf</div>
-                        <div className="text-xs text-muted-foreground">Requested by: Finance Dept</div>
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">✓</div>
-                      <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">✕</div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 bg-background border border-border rounded-xl flex items-center justify-between shadow-sm opacity-60">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-orange-500/10 flex items-center justify-center rounded-lg text-orange-400">DOC</div>
-                      <div>
-                        <div className="font-bold text-sm">Employee_Contract_JSmith.docx</div>
-                        <div className="text-xs text-muted-foreground">Requested by: HR Dept</div>
-                      </div>
-                    </div>
-                    <div className="text-xs font-mono text-muted-foreground">SIGNED</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Feature Grid */}
-      <section className="py-32 bg-muted/20 border-y border-border/30">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="p-5 grid grid-cols-3 gap-4">
+            {/* Stats */}
             {[
-              { title: "Dynamic Workflows", desc: "Design custom approval chains with drag-and-drop ease. Route documents based on metadata, value, or department." },
-              { title: "OCR & Indexing", desc: "Automatic Character Recognition allows scanning physical archives into fully searchable digital assets." },
-              { title: "Version Control", desc: "Track every edit, comment, and signature. Restore previous versions instantly and maintain a full audit log." },
-            ].map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="group"
-              >
-                <div className="w-12 h-1 bg-teal-500 mb-6 group-hover:w-24 transition-all" />
-                <h3 className="text-2xl font-bold font-recoleta mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.desc}
-                </p>
-              </motion.div>
+              { label: 'Documents', value: '2.1M', delta: '+12%' },
+              { label: 'Pending', value: '847', delta: '-3%' },
+              { label: 'Workflows', value: '20', delta: '' },
+            ].map((s) => (
+              <div key={s.label} className="rounded-[14px] p-4 flex flex-col gap-2" style={{ background: 'rgba(215,226,234,0.04)', border: '1px solid rgba(215,226,234,0.08)' }}>
+                <span className="text-xs uppercase tracking-widest" style={{ color: '#646973' }}>{s.label}</span>
+                <span className="font-black text-2xl" style={{ color: '#D7E2EA' }}>{s.value}</span>
+                {s.delta && (
+                  <span className="text-xs font-semibold" style={{ color: s.delta.startsWith('+') ? '#4ade80' : '#ff6b6b' }}>{s.delta} this month</span>
+                )}
+              </div>
             ))}
+          </div>
+
+          {/* Chart */}
+          <div className="px-5 pb-5">
+            <div className="rounded-[14px] p-4" style={{ background: 'rgba(215,226,234,0.04)', border: '1px solid rgba(215,226,234,0.08)' }}>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#D7E2EA', opacity: 0.7 }}>Monthly Document Volume</span>
+                <span className="text-xs" style={{ color: '#646973' }}>2024</span>
+              </div>
+              <div className="flex items-end gap-1.5" style={{ height: '60px' }}>
+                {BARS.map((h, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                    <div
+                      className="w-full rounded-t-sm"
+                      style={{ height: `${h}%`, background: i === 11 ? 'linear-gradient(180deg, #B600A8, #7621B0)' : 'rgba(215,226,234,0.18)' }}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex mt-1" style={{ gap: '6px' }}>
+                {MONTHS.map((m) => (
+                  <div key={m} className="flex-1 text-center" style={{ fontSize: '8px', color: '#646973' }}>{m[0]}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { label: "Documents", value: "2M+" },
-              { label: "Workflows", value: "20" },
-              { label: "Users", value: "850+" },
-              { label: "Uptime", value: "99.9%" },
-            ].map((stat, i) => (
-              <div key={i}>
-                <div className="text-4xl md:text-5xl font-sans font-bold text-foreground mb-2">{stat.value}</div>
-                <div className="text-sm font-medium text-teal-400 uppercase tracking-widest">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="py-32 overflow-hidden bg-card border-t border-border">
-        <div className="container mx-auto px-6 mb-16 text-center">
-          <h2 className="text-3xl font-recoleta font-bold text-foreground mb-6">Built for Enterprise Scale</h2>
-        </div>
-
-        <div className="flex gap-8 justify-center flex-wrap container mx-auto px-6">
+      {/* Features */}
+      <section className="px-5 sm:px-10 py-24 max-w-5xl mx-auto">
+        <p className="font-medium uppercase tracking-[0.3em] text-xs mb-4" style={{ color: '#646973' }}>Core Features</p>
+        <h2 className="hero-heading font-black uppercase leading-none tracking-tight mb-16" style={{ fontSize: 'clamp(2.5rem, 8vw, 90px)' }}>
+          ENTERPRISE GRADE.
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
           {[
-            { name: "Java Spring", desc: "Robust Backend" },
-            { name: "React", desc: "Dynamic UI" },
-            { name: "PostgreSQL", desc: "Reliable Data" },
-            { name: "Docker", desc: "Containerized" },
-          ].map((tech, i) => (
-            <div
-              key={i}
-              className="w-40 h-40 bg-background border border-border rounded-2xl flex flex-col items-center justify-center p-4 hover:border-teal-500/50 transition-colors"
-            >
-              <div className="text-2xl font-bold text-foreground text-center mb-2">{tech.name}</div>
-              <span className="text-xs text-muted-foreground text-center">{tech.desc}</span>
+            { n: '01', title: 'Dynamic Workflows', desc: 'Custom multi-step approval chains with role-based routing. Documents move automatically based on department, type, and value.' },
+            { n: '02', title: 'OCR & Indexing', desc: 'Physical archives are scanned and indexed via OCR. Every document becomes instantly searchable and auditable.' },
+            { n: '03', title: 'Version Control', desc: 'Every edit, comment, and signature is tracked. Full audit logs with instant rollback to any previous version.' },
+          ].map((s) => (
+            <div key={s.n} className="rounded-[20px] p-6 flex flex-col gap-4" style={{ border: '1px solid rgba(215,226,234,0.1)', background: 'rgba(215,226,234,0.03)' }}>
+              <span className="font-black text-4xl" style={{ color: 'rgba(215,226,234,0.12)' }}>{s.n}</span>
+              <h3 className="font-bold text-lg uppercase tracking-wide" style={{ color: '#D7E2EA' }}>{s.title}</h3>
+              <p className="font-light leading-relaxed text-sm" style={{ color: '#D7E2EA', opacity: 0.55 }}>{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="px-5 sm:px-10 py-20" style={{ borderTop: '1px solid rgba(215,226,234,0.08)', borderBottom: '1px solid rgba(215,226,234,0.08)' }}>
+        <div className="max-w-4xl mx-auto grid grid-cols-4 gap-8 text-center">
+          {[
+            { value: '2M+', label: 'Documents' },
+            { value: '850+', label: 'Daily Users' },
+            { value: '20', label: 'Workflows' },
+            { value: '99.9%', label: 'Uptime' },
+          ].map((s) => (
+            <div key={s.label}>
+              <div className="hero-heading font-black" style={{ fontSize: 'clamp(1.8rem, 5vw, 54px)' }}>{s.value}</div>
+              <div className="font-medium uppercase tracking-widest text-xs mt-2" style={{ color: '#646973' }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech stack */}
+      <section className="px-5 sm:px-10 py-24 max-w-5xl mx-auto">
+        <p className="font-medium uppercase tracking-[0.3em] text-xs mb-4" style={{ color: '#646973' }}>Tech stack</p>
+        <h2 className="hero-heading font-black uppercase leading-none tracking-tight mb-12" style={{ fontSize: 'clamp(2rem, 6vw, 72px)' }}>
+          MICROSERVICES.
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            { name: 'Spring Boot', role: 'Backend / API' },
+            { name: 'Java', role: 'Core Language' },
+            { name: 'Spring Security', role: 'Auth & RBAC' },
+            { name: 'PostgreSQL', role: 'Relational DB' },
+            { name: 'Docker', role: 'Containerization' },
+            { name: 'React', role: 'Frontend UI' },
+            { name: 'Redis', role: 'Session Cache' },
+            { name: 'REST APIs', role: 'Service Layer' },
+          ].map((t) => (
+            <div key={t.name} className="rounded-[16px] p-5 flex flex-col gap-1" style={{ border: '1px solid rgba(215,226,234,0.1)', background: 'rgba(215,226,234,0.03)' }}>
+              <span className="font-black uppercase tracking-wide" style={{ color: '#D7E2EA', fontSize: '1rem' }}>{t.name}</span>
+              <span className="text-xs font-medium uppercase tracking-widest" style={{ color: '#646973' }}>{t.role}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-5 sm:px-10 py-24 text-center" style={{ borderTop: '1px solid rgba(215,226,234,0.08)' }}>
+        <h2 className="hero-heading font-black uppercase leading-none tracking-tight mb-8" style={{ fontSize: 'clamp(2.5rem, 8vw, 100px)' }}>
+          LET&apos;S TALK.
+        </h2>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); window.location.href = '/#contact'; }}
+            className="rounded-full font-medium uppercase tracking-widest px-10 py-4 text-white transition-opacity hover:opacity-80"
+            style={{
+              background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
+              boxShadow: '0px 4px 4px rgba(181,1,167,0.25), inset 4px 4px 12px #7721B1',
+              outline: '2px solid white',
+              outlineOffset: '-3px',
+              fontSize: 'clamp(0.8rem, 1.2vw, 0.95rem)',
+            }}
+          >
+            Get in Touch
+          </a>
+          <Link href="/" className="font-medium uppercase tracking-widest text-sm transition-opacity hover:opacity-60" style={{ color: '#646973' }}>
+            ← Back to Portfolio
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <div className="px-6 sm:px-10 py-6 flex justify-between items-center" style={{ borderTop: '1px solid rgba(215,226,234,0.08)' }}>
+        <span className="font-medium uppercase tracking-widest text-xs" style={{ color: '#646973' }}>© 2025 Eren Ahmed</span>
+        <span className="font-black uppercase tracking-widest text-xs" style={{ color: '#646973' }}>Full Stack Developer</span>
+      </div>
     </div>
   );
-};
-
-export default BankPage;
+}

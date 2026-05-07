@@ -70,8 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
         {/* DNS prefetch for better loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -111,8 +111,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://upload.wikimedia.org" />
         <link rel="preconnect" href="https://images.icon-icons.com" />
 
+        {/* Strip BIS browser extension attributes before React hydrates to prevent mismatch warnings */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='attributes'&&m.attributeName==='bis_skin_checked')m.target.removeAttribute('bis_skin_checked')})}).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked']})}catch(e){}})()`,
+          }}
+        />
+
         {/* Structured Data for SEO */}
         <script
+          suppressHydrationWarning
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
