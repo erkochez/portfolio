@@ -113,6 +113,7 @@ export default function RootLayout({
 
         {/* Strip BIS browser extension attributes before React hydrates to prevent mismatch warnings */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(function(){try{new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='attributes'&&m.attributeName==='bis_skin_checked')m.target.removeAttribute('bis_skin_checked')})}).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked']})}catch(e){}})()`,
           }}

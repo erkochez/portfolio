@@ -3,16 +3,18 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import FadeIn from './FadeIn';
 
-/* ─── Shared panel wrapper ─── */
-function Panel({ children, className = '', style = {} }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+/* ─── Panel ─── */
+function Panel({ children, className = '', style = {}, accent = 'rgba(215,226,234,0.06)' }: {
+  children: React.ReactNode; className?: string; style?: React.CSSProperties; accent?: string;
+}) {
   return (
     <div
       className={`overflow-hidden ${className}`}
       style={{
-        background: 'rgba(215,226,234,0.04)',
-        border: '1px solid rgba(215,226,234,0.1)',
-        borderRadius: 'clamp(16px,3vw,32px)',
-        padding: 'clamp(12px,2vw,20px)',
+        background: accent,
+        border: '1px solid rgba(215,226,234,0.09)',
+        borderRadius: 'clamp(14px,2.5vw,28px)',
+        padding: 'clamp(10px,1.8vw,18px)',
         ...style,
       }}
     >
@@ -21,37 +23,41 @@ function Panel({ children, className = '', style = {} }: { children: React.React
   );
 }
 
-const dim: React.CSSProperties = { color: '#D7E2EA', opacity: 0.4 };
+const dim: React.CSSProperties = { color: '#D7E2EA', opacity: 0.38 };
 const bright: React.CSSProperties = { color: '#D7E2EA' };
-const label: React.CSSProperties = { ...dim, fontSize: 'clamp(0.55rem,1vw,0.7rem)', textTransform: 'uppercase', letterSpacing: '0.08em' };
-const value: React.CSSProperties = { ...bright, fontWeight: 900, fontSize: 'clamp(0.8rem,1.6vw,1.1rem)' };
+const lbl = (extra: React.CSSProperties = {}): React.CSSProperties => ({
+  color: '#D7E2EA', opacity: 0.38, fontSize: 'clamp(0.52rem,0.9vw,0.67rem)', textTransform: 'uppercase', letterSpacing: '0.08em', ...extra,
+});
 
-/* ─── AUCTION UI ─── */
+/* ══════════════════════════════════════════
+   CARD 01 — AUCTION (purple / magenta)
+   Layout: left 40% [top + bottom] | right 60%
+══════════════════════════════════════════ */
 function AuctionLeftTop() {
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} accent="rgba(182,0,168,0.08)">
       <div className="flex justify-between items-start">
-        <span style={{ ...label }}>Live Auction</span>
+        <span style={lbl()}>Live Auction</span>
         <span className="flex items-center gap-1">
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block', animation: 'pulse 1.5s infinite' }} />
-          <span style={{ ...label, color: '#ef4444', opacity: 1 }}>LIVE</span>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+          <span style={lbl({ color: '#ef4444', opacity: 1 })}>LIVE</span>
         </span>
       </div>
       <div>
-        <p style={{ ...dim, fontSize: 'clamp(0.6rem,1vw,0.72rem)', marginBottom: 2 }}>Vintage Rolex Submariner</p>
-        <p style={{ color: '#D7E2EA', fontWeight: 900, fontSize: 'clamp(1.1rem,2.5vw,1.8rem)', lineHeight: 1 }}>$2,450.00</p>
-        <p style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', marginTop: 2 }}>24 bids · Reserve met</p>
+        <p style={{ ...dim, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', marginBottom: 2 }}>Vintage Rolex Submariner</p>
+        <p style={{ color: '#D7E2EA', fontWeight: 900, fontSize: 'clamp(1.1rem,2.4vw,1.75rem)', lineHeight: 1 }}>$2,450.00</p>
+        <p style={{ ...dim, fontSize: 'clamp(0.52rem,0.85vw,0.66rem)', marginTop: 3 }}>24 bids · Reserve met</p>
       </div>
       <div>
-        <div style={{ height: 4, background: 'rgba(215,226,234,0.1)', borderRadius: 99, overflow: 'hidden', marginBottom: 6 }}>
+        <div style={{ height: 4, background: 'rgba(215,226,234,0.08)', borderRadius: 99, overflow: 'hidden', marginBottom: 6 }}>
           <div style={{ width: '72%', height: '100%', background: 'linear-gradient(90deg,#B600A8,#7621B0)', borderRadius: 99 }} />
         </div>
         <div className="flex justify-between">
-          <span style={{ ...label }}>⏱ 01h 23m 45s</span>
-          <span style={{ ...label, color: '#D7E2EA', opacity: 0.7 }}>72% filled</span>
+          <span style={lbl()}>⏱ 01h 23m 45s</span>
+          <span style={lbl({ opacity: 0.6 })}>72% filled</span>
         </div>
       </div>
-      <button style={{ background: 'rgba(182,0,168,0.15)', border: '1px solid rgba(182,0,168,0.4)', borderRadius: 99, padding: '6px 14px', ...bright, fontSize: 'clamp(0.6rem,1vw,0.72rem)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'default', width: '100%' }}>
+      <button style={{ background: 'rgba(182,0,168,0.18)', border: '1px solid rgba(182,0,168,0.5)', borderRadius: 99, padding: '6px 0', ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'default', width: '100%' }}>
         Place Bid →
       </button>
     </Panel>
@@ -64,13 +70,13 @@ function AuctionLeftBottom() {
     { user: 'User#9901', amount: '+$100', time: '12m ago' },
   ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 6 }}>
-      <p style={{ ...label, marginBottom: 4 }}>Recent Bids</p>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 5 }}>
+      <p style={lbl({ marginBottom: 2 })}>Recent Bids</p>
       {bids.map((b, i) => (
-        <div key={i} className="flex justify-between items-center" style={{ padding: '6px 8px', background: 'rgba(215,226,234,0.04)', borderRadius: 10 }}>
-          <span style={{ ...bright, fontSize: 'clamp(0.6rem,1vw,0.72rem)', fontWeight: 600 }}>{b.user}</span>
-          <span style={{ color: '#4ade80', fontSize: 'clamp(0.6rem,1vw,0.72rem)', fontWeight: 700 }}>{b.amount}</span>
-          <span style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.65rem)' }}>{b.time}</span>
+        <div key={i} className="flex justify-between items-center" style={{ padding: '6px 8px', background: 'rgba(182,0,168,0.07)', border: '1px solid rgba(182,0,168,0.15)', borderRadius: 10 }}>
+          <span style={{ ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 600 }}>{b.user}</span>
+          <span style={{ color: '#c084fc', fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 700 }}>{b.amount}</span>
+          <span style={{ ...dim, fontSize: 'clamp(0.52rem,0.85vw,0.64rem)' }}>{b.time}</span>
         </div>
       ))}
     </Panel>
@@ -78,32 +84,32 @@ function AuctionLeftBottom() {
 }
 function AuctionRight() {
   const items = [
-    { name: 'Vintage Rolex', bid: '$2,450', count: 24, pct: 72 },
-    { name: 'MacBook Pro M3', bid: '$1,890', count: 18, pct: 55 },
-    { name: 'Signed Jersey', bid: '$445', count: 31, pct: 38 },
+    { name: 'Vintage Rolex', bid: '$2,450', pct: 72 },
+    { name: 'MacBook Pro M3', bid: '$1,890', pct: 55 },
+    { name: 'Signed Jersey', bid: '$445', pct: 38 },
   ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 10 }}>
       <div className="flex justify-between items-center">
-        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.75rem,1.3vw,0.95rem)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Auction Dashboard</p>
-        <span style={{ background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: 99, padding: '2px 8px', color: '#4ade80', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase' }}>Online</span>
+        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.72rem,1.25vw,0.9rem)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Auction Dashboard</p>
+        <span style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: 99, padding: '2px 8px', color: '#4ade80', fontSize: '0.58rem', fontWeight: 700, textTransform: 'uppercase' }}>● Online</span>
       </div>
       <div className="grid grid-cols-3 gap-2">
         {[['12', 'Active'], ['347', 'Bids'], ['$18.2K', 'Volume']].map(([v, l]) => (
-          <div key={l} style={{ background: 'rgba(215,226,234,0.05)', borderRadius: 10, padding: '8px 10px' }}>
-            <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.85rem,1.6vw,1.1rem)' }}>{v}</p>
-            <p style={{ ...label }}>{l}</p>
+          <div key={l} style={{ background: 'rgba(182,0,168,0.1)', border: '1px solid rgba(182,0,168,0.2)', borderRadius: 10, padding: '8px 10px' }}>
+            <p style={{ color: '#e879f9', fontWeight: 900, fontSize: 'clamp(0.82rem,1.55vw,1.05rem)' }}>{v}</p>
+            <p style={lbl()}>{l}</p>
           </div>
         ))}
       </div>
-      <div style={{ borderTop: '1px solid rgba(215,226,234,0.08)', paddingTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ flex: 1, borderTop: '1px solid rgba(215,226,234,0.07)', paddingTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
         {items.map((it, i) => (
           <div key={i}>
             <div className="flex justify-between items-center" style={{ marginBottom: 4 }}>
-              <span style={{ ...bright, fontSize: 'clamp(0.6rem,1vw,0.73rem)', fontWeight: 600 }}>{it.name}</span>
-              <span style={{ ...bright, fontSize: 'clamp(0.6rem,1vw,0.73rem)', fontWeight: 900 }}>{it.bid}</span>
+              <span style={{ ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 600 }}>{it.name}</span>
+              <span style={{ color: '#e879f9', fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 900 }}>{it.bid}</span>
             </div>
-            <div style={{ height: 3, background: 'rgba(215,226,234,0.08)', borderRadius: 99 }}>
+            <div style={{ height: 3, background: 'rgba(215,226,234,0.07)', borderRadius: 99 }}>
               <div style={{ width: `${it.pct}%`, height: '100%', background: 'linear-gradient(90deg,#B600A8,#7621B0)', borderRadius: 99 }} />
             </div>
           </div>
@@ -113,157 +119,216 @@ function AuctionRight() {
   );
 }
 
-/* ─── AR MENU UI ─── */
-function ARMenuLeftTop() {
+/* ══════════════════════════════════════════
+   CARD 02 — AR MENU (orange / warm)
+   Layout: full-width top bar | bottom-left 50% | bottom-right 50%
+══════════════════════════════════════════ */
+function ARMenuTop() {
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <div className="flex justify-between items-start">
-        <span style={{ ...label }}>Special Foods</span>
-        <span style={{ color: '#f97316', fontSize: '0.65rem', fontWeight: 700, opacity: 0.9 }}>AR ◉</span>
+    <Panel style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }} accent="rgba(249,115,22,0.08)">
+      <div className="flex items-center gap-3">
+        <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>🍽</div>
+        <div>
+          <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.72rem,1.3vw,0.9rem)' }}>Carmine&apos;s Restaurant</p>
+          <p style={lbl({ opacity: 0.5 })}>AR-Powered Menu System</p>
+        </div>
       </div>
-      <div>
-        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.75rem,1.4vw,0.95rem)', lineHeight: 1.2 }}>Grilled Chicken Alfredo</p>
-        <p style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', marginTop: 3 }}>Tender grilled chicken breast with creamy sauce</p>
-      </div>
-      <div className="flex items-center gap-1">
-        {[1,2,3,4,5].map(s => <span key={s} style={{ color: '#f97316', fontSize: '0.7rem' }}>★</span>)}
-        <span style={{ ...dim, fontSize: '0.6rem', marginLeft: 3 }}>127 reviews</span>
-      </div>
-      <div className="flex justify-between items-center">
-        <span style={{ color: '#f97316', fontWeight: 900, fontSize: 'clamp(0.9rem,1.8vw,1.2rem)' }}>$12.00</span>
-        <button style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.4)', borderRadius: 99, padding: '5px 12px', color: '#f97316', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', cursor: 'default' }}>+ Add</button>
+      <div className="flex items-center gap-4">
+        {[['42', 'Items'], ['23/hr', 'Orders'], ['4.9★', 'Rating']].map(([v, l]) => (
+          <div key={l} className="text-center" style={{ display: 'none' }} />
+        ))}
+        {[['42', 'Items'], ['23/hr', 'Orders'], ['4.9★', 'Rating']].map(([v, l]) => (
+          <div key={l} className="text-center">
+            <p style={{ color: '#f97316', fontWeight: 900, fontSize: 'clamp(0.78rem,1.4vw,0.95rem)' }}>{v}</p>
+            <p style={lbl()}>{l}</p>
+          </div>
+        ))}
+        <span style={{ background: 'rgba(249,115,22,0.12)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: 99, padding: '3px 10px', color: '#fb923c', fontSize: '0.58rem', fontWeight: 700, textTransform: 'uppercase' }}>18 Tables Active</span>
       </div>
     </Panel>
   );
 }
-function ARMenuLeftBottom() {
+function ARMenuBottomLeft() {
+  /* AR camera viewfinder — scan a QR code on the table to load 3D models */
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 8 }} accent="rgba(249,115,22,0.06)">
       <div className="flex justify-between items-center">
-        <span style={{ ...label }}>AR Mode</span>
-        <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
+        <span style={lbl()}>AR Camera</span>
+        <span style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: 99, padding: '2px 7px', color: '#4ade80', fontSize: '0.55rem', fontWeight: 700 }}>● WebXR Active</span>
       </div>
-      <div style={{ flex: 1, margin: '8px 0', background: 'rgba(215,226,234,0.03)', borderRadius: 12, border: '1px dashed rgba(215,226,234,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-        <span style={{ ...dim, fontSize: '1.2rem' }}>⬡</span>
-        <span style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.66rem)', textAlign: 'center' }}>Point camera at table</span>
+      {/* Viewfinder */}
+      <div style={{ flex: 1, background: 'rgba(215,226,234,0.03)', border: '1px dashed rgba(249,115,22,0.25)', borderRadius: 12, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
+        {/* Corner brackets */}
+        {[['0','0','borderTop','borderLeft'],['0','auto','borderTop','borderRight'],['auto','0','borderBottom','borderLeft'],['auto','auto','borderBottom','borderRight']].map(([t,r,b1,b2],i) => (
+          <div key={i} style={{ position: 'absolute', top: t === 'auto' ? 'auto' : 8, right: r === 'auto' ? 'auto' : (r === '0' ? 8 : 'auto'), bottom: t === 'auto' ? 8 : 'auto', left: r === '0' && t !== 'auto' ? 8 : (r === 'auto' && t !== 'auto' ? 'auto' : (t === 'auto' && r === '0' ? 8 : 'auto')), width: 12, height: 12, [b1]: '2px solid rgba(249,115,22,0.7)', [b2]: '2px solid rgba(249,115,22,0.7)' }} />
+        ))}
+        <span style={{ fontSize: '1.6rem', opacity: 0.4 }}>⬡</span>
+        <span style={lbl({ opacity: 0.45, textAlign: 'center' })}>Point at menu QR</span>
+        <span style={lbl({ opacity: 0.3, textAlign: 'center', fontSize: '0.5rem' })}>3D model loads instantly</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <span style={{ ...label, color: '#4ade80', opacity: 1 }}>● Active</span>
-        <span style={{ ...label }}>WebXR</span>
+      <div className="flex justify-between items-center">
+        <span style={lbl()}>Table #7</span>
+        <span style={{ color: '#f97316', fontSize: '0.6rem', fontWeight: 700 }}>3D Preview Ready</span>
       </div>
     </Panel>
   );
 }
-function ARMenuRight() {
-  const popular = [
-    { name: 'Chicken Alfredo', pct: 68 },
-    { name: 'Spicy Wings', pct: 52 },
-    { name: 'Margherita Pizza', pct: 41 },
+function ARMenuBottomRight() {
+  /* Menu items — each has a "View in AR" badge once the model is loaded */
+  const items = [
+    { name: 'Margherita Pizza', price: '$14', ar: true },
+    { name: 'Truffle Pasta', price: '$18', ar: true },
+    { name: 'Grilled Salmon', price: '$22', ar: false },
   ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
       <div className="flex justify-between items-center">
-        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.75rem,1.3vw,0.95rem)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Carmine&apos;s</p>
-        <span style={{ ...label, color: '#f97316', opacity: 1 }}>18 tables active</span>
+        <p style={lbl()}>Menu Items</p>
+        <span style={lbl({ color: '#f97316', opacity: 1 })}>24 AR models</span>
       </div>
-      <div className="grid grid-cols-3 gap-2">
-        {[['42', 'Items'], ['23/hr', 'Orders'], ['4.9★', 'Rating']].map(([v, l]) => (
-          <div key={l} style={{ background: 'rgba(215,226,234,0.05)', borderRadius: 10, padding: '8px 10px' }}>
-            <p style={{ color: '#f97316', fontWeight: 900, fontSize: 'clamp(0.85rem,1.6vw,1.05rem)' }}>{v}</p>
-            <p style={{ ...label }}>{l}</p>
-          </div>
-        ))}
-      </div>
-      <div style={{ borderTop: '1px solid rgba(215,226,234,0.08)', paddingTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <p style={{ ...label, marginBottom: 2 }}>Popular Items</p>
-        {popular.map((it, i) => (
-          <div key={i}>
-            <div className="flex justify-between items-center" style={{ marginBottom: 3 }}>
-              <span style={{ ...bright, fontSize: 'clamp(0.6rem,1vw,0.73rem)', fontWeight: 600 }}>{it.name}</span>
-              <span style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.65rem)' }}>{it.pct}%</span>
-            </div>
-            <div style={{ height: 3, background: 'rgba(215,226,234,0.08)', borderRadius: 99 }}>
-              <div style={{ width: `${it.pct}%`, height: '100%', background: 'linear-gradient(90deg,#f97316,#ef4444)', borderRadius: 99 }} />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, justifyContent: 'center' }}>
+        {items.map((it, i) => (
+          <div key={i} className="flex justify-between items-center" style={{ padding: '7px 10px', background: i === 0 ? 'rgba(249,115,22,0.08)' : 'rgba(215,226,234,0.03)', border: `1px solid ${i === 0 ? 'rgba(249,115,22,0.25)' : 'rgba(215,226,234,0.07)'}`, borderRadius: 10 }}>
+            <span style={{ ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 600 }}>{it.name}</span>
+            <div className="flex items-center gap-2">
+              <span style={{ color: '#f97316', fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 700 }}>{it.price}</span>
+              {it.ar && <span style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.35)', borderRadius: 6, padding: '1px 5px', color: '#fb923c', fontSize: '0.5rem', fontWeight: 700 }}>AR</span>}
             </div>
           </div>
         ))}
+      </div>
+      <div style={{ borderTop: '1px solid rgba(215,226,234,0.07)', paddingTop: 8 }}>
+        <div className="flex justify-between items-center">
+          <span style={lbl()}>Scan to order</span>
+          <span style={{ color: '#f97316', fontSize: '0.62rem', fontWeight: 700 }}>◉ Live</span>
+        </div>
       </div>
     </Panel>
   );
 }
 
-/* ─── BANK UI ─── */
-function BankLeftTop() {
+/* ══════════════════════════════════════════
+   CARD 03 — E-DOSSIER (blue)
+   Software that lets banks create products (mortgage, loan…)
+   and define the approval workflow for each one.
+   Layout: left 60% (workflow pipeline) | right 40% [products + active]
+══════════════════════════════════════════ */
+function DossierLeft() {
+  /* Workflow builder for a Mortgage product */
+  const steps = [
+    { label: 'Application', status: 'done' },
+    { label: 'Credit Check', status: 'done' },
+    { label: 'Document Review', status: 'active' },
+    { label: 'Risk Assessment', status: 'pending' },
+    { label: 'Final Approval', status: 'pending' },
+  ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <div className="flex justify-between items-start">
-        <span style={{ ...label }}>Savings Account</span>
-        <span style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', borderRadius: 99, padding: '2px 7px', color: '#60a5fa', fontSize: '0.58rem', fontWeight: 700 }}>SECURED</span>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 10 }} accent="rgba(96,165,250,0.07)">
+      <div className="flex justify-between items-center">
+        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.72rem,1.25vw,0.9rem)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Workflow Builder</p>
+        <span style={{ background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.3)', borderRadius: 99, padding: '2px 8px', color: '#93c5fd', fontSize: '0.55rem', fontWeight: 700 }}>Mortgage · Draft</span>
       </div>
-      <div>
-        <p style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', marginBottom: 2 }}>Available Balance</p>
-        <p style={{ color: '#D7E2EA', fontWeight: 900, fontSize: 'clamp(1.1rem,2.5vw,1.8rem)', lineHeight: 1 }}>$24,831.50</p>
-        <p style={{ color: '#4ade80', fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', marginTop: 4, fontWeight: 600 }}>↑ +2.4% this month</p>
-      </div>
-      <div className="grid grid-cols-2 gap-2">
-        {['Transfer', 'Withdraw'].map(b => (
-          <button key={b} style={{ background: 'rgba(215,226,234,0.06)', border: '1px solid rgba(215,226,234,0.12)', borderRadius: 10, padding: '6px 0', ...bright, fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', fontWeight: 700, cursor: 'default' }}>{b}</button>
+      {/* Steps */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 5, justifyContent: 'center' }}>
+        {steps.map((s, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            {/* connector line above (except first) */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+              <div style={{
+                width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
+                background: s.status === 'done' ? 'rgba(74,222,128,0.2)' : s.status === 'active' ? 'rgba(96,165,250,0.2)' : 'rgba(215,226,234,0.06)',
+                border: `1.5px solid ${s.status === 'done' ? '#4ade80' : s.status === 'active' ? '#60a5fa' : 'rgba(215,226,234,0.15)'}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '0.6rem',
+              }}>
+                {s.status === 'done' ? <span style={{ color: '#4ade80' }}>✓</span> : s.status === 'active' ? <span style={{ color: '#60a5fa', fontWeight: 900 }}>{i + 1}</span> : <span style={{ color: 'rgba(215,226,234,0.25)' }}>{i + 1}</span>}
+              </div>
+            </div>
+            <div style={{ flex: 1, padding: '6px 10px', background: s.status === 'active' ? 'rgba(96,165,250,0.1)' : 'rgba(215,226,234,0.03)', border: `1px solid ${s.status === 'active' ? 'rgba(96,165,250,0.3)' : 'rgba(215,226,234,0.07)'}`, borderRadius: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: s.status === 'active' ? 700 : 500, opacity: s.status === 'pending' ? 0.38 : 1 }}>{s.label}</span>
+              <span style={lbl({ fontSize: '0.52rem', opacity: s.status === 'pending' ? 0.2 : 0.6, color: s.status === 'active' ? '#93c5fd' : '#D7E2EA' })}>
+                {s.status === 'done' ? 'Complete' : s.status === 'active' ? 'In Review' : 'Waiting'}
+              </span>
+            </div>
+          </div>
         ))}
+      </div>
+      <div className="flex justify-between items-center" style={{ borderTop: '1px solid rgba(215,226,234,0.07)', paddingTop: 8 }}>
+        <span style={lbl()}>Step 3 of 5</span>
+        <button style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', borderRadius: 99, padding: '4px 12px', color: '#93c5fd', fontSize: '0.58rem', fontWeight: 700, cursor: 'default' }}>+ Add Step</button>
       </div>
     </Panel>
   );
 }
-function BankLeftBottom() {
-  const txs = [
-    { label: 'Salary', amount: '+$3,200', time: 'Today', green: true },
-    { label: 'Rent', amount: '-$850', time: 'Yesterday', green: false },
-    { label: 'Coffee', amount: '-$4.50', time: '2d ago', green: false },
+function DossierRightTop() {
+  /* Product catalog — bank creates products like mortgages, loans */
+  const products = [
+    { name: 'Mortgage', icon: '🏠', active: 12, color: '#60a5fa' },
+    { name: 'Personal Loan', icon: '💳', active: 34, color: '#a78bfa' },
+    { name: 'Auto Loan', icon: '🚗', active: 8, color: '#34d399' },
   ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 4 }}>
-      <p style={{ ...label, marginBottom: 4 }}>Transactions</p>
-      {txs.map((t, i) => (
-        <div key={i} className="flex justify-between items-center" style={{ padding: '5px 8px', background: 'rgba(215,226,234,0.04)', borderRadius: 8 }}>
-          <span style={{ ...bright, fontSize: 'clamp(0.6rem,1vw,0.72rem)', fontWeight: 600 }}>{t.label}</span>
-          <span style={{ color: t.green ? '#4ade80' : '#D7E2EA', fontSize: 'clamp(0.6rem,1vw,0.72rem)', fontWeight: 700 }}>{t.amount}</span>
-          <span style={{ ...dim, fontSize: 'clamp(0.55rem,0.9vw,0.64rem)' }}>{t.time}</span>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div className="flex justify-between items-center">
+        <span style={lbl()}>Products</span>
+        <span style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: 99, padding: '2px 7px', color: '#4ade80', fontSize: '0.52rem', fontWeight: 700 }}>● Live</span>
+      </div>
+      {products.map((p, i) => (
+        <div key={i} className="flex items-center justify-between" style={{ padding: '6px 8px', background: 'rgba(96,165,250,0.05)', border: '1px solid rgba(96,165,250,0.12)', borderRadius: 9 }}>
+          <div className="flex items-center gap-2">
+            <span style={{ fontSize: '0.8rem' }}>{p.icon}</span>
+            <span style={{ ...bright, fontSize: 'clamp(0.58rem,0.95vw,0.72rem)', fontWeight: 600 }}>{p.name}</span>
+          </div>
+          <span style={{ color: p.color, fontSize: '0.6rem', fontWeight: 700 }}>{p.active} active</span>
         </div>
       ))}
     </Panel>
   );
 }
-function BankRight() {
-  const months = [35, 55, 42, 70, 58, 85, 62, 90, 75, 88, 65, 95];
+function DossierRightBottom() {
+  /* Recent workflow submissions */
+  const items = [
+    { ref: 'MTG-2841', type: 'Mortgage', stage: 'Doc Review', c: '#60a5fa' },
+    { ref: 'PLN-0392', type: 'Personal Loan', stage: 'Approved', c: '#4ade80' },
+    { ref: 'ATL-1107', type: 'Auto Loan', stage: 'Pending', c: '#fbbf24' },
+  ];
   return (
-    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div className="flex justify-between items-center">
-        <p style={{ ...bright, fontWeight: 900, fontSize: 'clamp(0.75rem,1.3vw,0.95rem)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Banking Dashboard</p>
-        <span style={{ background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: 99, padding: '2px 8px', color: '#4ade80', fontSize: '0.58rem', fontWeight: 700 }}>● Secure</span>
-      </div>
-      <div className="grid grid-cols-3 gap-2">
-        {[['$48.3K', 'Assets'], ['+$4.3K', 'Monthly In'], ['-$2.2K', 'Monthly Out']].map(([v, l], i) => (
-          <div key={l} style={{ background: 'rgba(215,226,234,0.05)', borderRadius: 10, padding: '8px 10px' }}>
-            <p style={{ color: i === 2 ? '#f87171' : '#4ade80', fontWeight: 900, fontSize: 'clamp(0.75rem,1.4vw,0.95rem)' }}>{v}</p>
-            <p style={{ ...label }}>{l}</p>
-          </div>
-        ))}
-      </div>
-      {/* Mini bar chart */}
-      <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: 3, borderTop: '1px solid rgba(215,226,234,0.08)', paddingTop: 10 }}>
-        {months.map((h, i) => (
-          <div key={i} style={{ flex: 1, background: i === months.length - 1 ? 'linear-gradient(180deg,#60a5fa,#3b82f6)' : 'rgba(59,130,246,0.25)', borderRadius: '4px 4px 0 0', height: `${h}%`, minHeight: 4 }} />
-        ))}
-      </div>
-      <p style={{ ...label, textAlign: 'center' }}>12-month balance trend</p>
+    <Panel style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 5 }}>
+      <p style={lbl({ marginBottom: 2 })}>Recent Submissions</p>
+      {items.map((t, i) => (
+        <div key={i} className="flex justify-between items-center" style={{ padding: '5px 8px', background: 'rgba(96,165,250,0.04)', border: '1px solid rgba(96,165,250,0.1)', borderRadius: 8 }}>
+          <span style={{ ...dim, fontSize: 'clamp(0.5rem,0.82vw,0.62rem)', fontFamily: 'monospace' }}>{t.ref}</span>
+          <span style={{ ...bright, fontSize: 'clamp(0.55rem,0.9vw,0.68rem)', fontWeight: 600 }}>{t.type}</span>
+          <span style={{ color: t.c, fontSize: '0.55rem', fontWeight: 700 }}>{t.stage}</span>
+        </div>
+      ))}
     </Panel>
   );
 }
 
-/* ─── Project card data ─── */
+/* ─── Project config ─── */
 const PROJECTS = [
-  { number: '01', name: 'Auction Platform', category: 'Client', link: '/auction', LeftTop: AuctionLeftTop, LeftBottom: AuctionLeftBottom, Right: AuctionRight },
-  { number: '02', name: 'AR Menu App', category: 'Personal', link: '/armenu', LeftTop: ARMenuLeftTop, LeftBottom: ARMenuLeftBottom, Right: ARMenuRight },
-  { number: '03', name: 'Bank System', category: 'Client', link: '/bank', LeftTop: BankLeftTop, LeftBottom: BankLeftBottom, Right: BankRight },
+  {
+    number: '01', name: 'Auction Platform', category: 'Client', link: '/auction',
+    cardBg: '#0D0812',
+    borderColor: 'rgba(182,0,168,0.3)',
+    numberColor: undefined as string | undefined, // uses .hero-heading gradient
+    layout: 'standard' as const,
+  },
+  {
+    number: '02', name: 'AR Menu App', category: 'Personal', link: '/armenu',
+    cardBg: '#120D08',
+    borderColor: 'rgba(249,115,22,0.3)',
+    numberColor: '#f97316',
+    layout: 'ar' as const,
+  },
+  {
+    number: '03', name: 'E-Dossier', category: 'Client', link: '/bank',
+    cardBg: '#080E16',
+    borderColor: 'rgba(96,165,250,0.3)',
+    numberColor: '#60a5fa',
+    layout: 'bank' as const,
+  },
 ];
 
 type Project = (typeof PROJECTS)[number];
@@ -271,7 +336,10 @@ type Project = (typeof PROJECTS)[number];
 function ProjectCard({ project, index, total, progress }: { project: Project; index: number; total: number; progress: MotionValue<number> }) {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, (index + 1) / total], [1, targetScale]);
-  const { LeftTop, LeftBottom, Right } = project;
+
+  const numStyle: React.CSSProperties = project.numberColor
+    ? { color: project.numberColor, fontWeight: 900, fontSize: 'clamp(2.5rem,6vw,100px)', lineHeight: 1, flexShrink: 0 }
+    : { fontWeight: 900, fontSize: 'clamp(2.5rem,6vw,100px)', lineHeight: 1, flexShrink: 0 };
 
   return (
     <div style={{ height: '85vh', position: 'relative' }}>
@@ -281,9 +349,9 @@ function ProjectCard({ project, index, total, progress }: { project: Project; in
           position: 'sticky',
           top: `${96 + index * 28}px`,
           transformOrigin: 'top center',
-          backgroundColor: '#0C0C0C',
+          backgroundColor: project.cardBg,
           borderRadius: 'clamp(32px,5vw,60px)',
-          border: '2px solid rgba(215,226,234,0.2)',
+          border: `2px solid ${project.borderColor}`,
           height: '75vh',
           display: 'flex',
           flexDirection: 'column',
@@ -291,16 +359,18 @@ function ProjectCard({ project, index, total, progress }: { project: Project; in
         className="p-4 sm:p-6 md:p-8"
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-4 gap-4 flex-shrink-0">
+        <div className="flex items-center justify-between mb-3 gap-4 flex-shrink-0">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="font-black leading-none flex-shrink-0" style={{ color: '#D7E2EA', fontSize: 'clamp(2.5rem,6vw,100px)' }}>
-              {project.number}
-            </span>
+            {project.numberColor ? (
+              <span style={numStyle}>{project.number}</span>
+            ) : (
+              <span className="hero-heading" style={numStyle}>{project.number}</span>
+            )}
             <div className="flex flex-col min-w-0">
-              <span className="uppercase tracking-widest" style={{ color: '#D7E2EA', opacity: 0.4, fontSize: 'clamp(0.55rem,0.9vw,0.75rem)' }}>
+              <span className="uppercase tracking-widest" style={{ color: '#D7E2EA', opacity: 0.35, fontSize: 'clamp(0.52rem,0.85vw,0.72rem)' }}>
                 {project.category}
               </span>
-              <span className="font-black uppercase truncate" style={{ color: '#D7E2EA', fontSize: 'clamp(0.9rem,2vw,1.8rem)' }}>
+              <span className="font-black uppercase truncate" style={{ color: '#D7E2EA', fontSize: 'clamp(0.88rem,1.9vw,1.75rem)' }}>
                 {project.name}
               </span>
             </div>
@@ -308,22 +378,44 @@ function ProjectCard({ project, index, total, progress }: { project: Project; in
           <a
             href={project.link}
             className="flex-shrink-0 rounded-full font-medium uppercase tracking-widest text-center"
-            style={{ border: '2px solid rgba(215,226,234,0.4)', color: '#D7E2EA', background: 'transparent', padding: 'clamp(8px,1vw,12px) clamp(16px,2vw,28px)', fontSize: 'clamp(0.65rem,1vw,0.82rem)', transition: 'background 0.2s' }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(215,226,234,0.08)')}
+            style={{ border: `2px solid ${project.borderColor}`, color: '#D7E2EA', background: 'transparent', padding: 'clamp(7px,0.9vw,11px) clamp(14px,1.8vw,26px)', fontSize: 'clamp(0.62rem,0.95vw,0.8rem)', transition: 'background 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(215,226,234,0.07)')}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
           >
             View Project
           </a>
         </div>
 
-        {/* UI Grid */}
-        <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
-          <div className="flex flex-col gap-3 sm:gap-4 min-h-0" style={{ width: '40%' }}>
-            <div style={{ flex: '1 1 0', minHeight: 0 }}><LeftTop /></div>
-            <div style={{ flex: '1.4 1 0', minHeight: 0 }}><LeftBottom /></div>
+        {/* Layout variants */}
+        {project.layout === 'standard' && (
+          <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
+            <div className="flex flex-col gap-3 sm:gap-4 min-h-0" style={{ width: '40%' }}>
+              <div style={{ flex: '1 1 0', minHeight: 0 }}><AuctionLeftTop /></div>
+              <div style={{ flex: '1.4 1 0', minHeight: 0 }}><AuctionLeftBottom /></div>
+            </div>
+            <div style={{ width: '60%', minHeight: 0 }}><AuctionRight /></div>
           </div>
-          <div style={{ width: '60%', minHeight: 0 }}><Right /></div>
-        </div>
+        )}
+
+        {project.layout === 'ar' && (
+          <div className="flex flex-col gap-3 sm:gap-4 flex-1 min-h-0">
+            <ARMenuTop />
+            <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
+              <div style={{ width: '45%', minHeight: 0 }}><ARMenuBottomLeft /></div>
+              <div style={{ width: '55%', minHeight: 0 }}><ARMenuBottomRight /></div>
+            </div>
+          </div>
+        )}
+
+        {project.layout === 'bank' && (
+          <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
+            <div style={{ width: '60%', minHeight: 0 }}><DossierLeft /></div>
+            <div className="flex flex-col gap-3 sm:gap-4 min-h-0" style={{ width: '40%' }}>
+              <div style={{ flex: '1 1 0', minHeight: 0 }}><DossierRightTop /></div>
+              <div style={{ flex: '1.3 1 0', minHeight: 0 }}><DossierRightBottom /></div>
+            </div>
+          </div>
+        )}
       </motion.div>
     </div>
   );
