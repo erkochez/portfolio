@@ -21,10 +21,11 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('/api/send-email', {
+      const body = new URLSearchParams({ 'form-name': 'contact', ...form }).toString();
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
       });
       setStatus(res.ok ? 'sent' : 'error');
     } catch {
@@ -104,7 +105,8 @@ export default function ContactSection() {
               <p style={{ color: '#D7E2EA', opacity: 0.5 }}>I&apos;ll get back to you soon.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form name="contact" data-netlify="true" onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <input type="hidden" name="form-name" value="contact" />
               <div className="grid grid-cols-2 gap-4">
                 <input
                   name="name"

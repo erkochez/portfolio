@@ -61,7 +61,7 @@ export default function HeroSection() {
       </div>
 
       {/* Portrait */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[240px] sm:w-[300px] md:w-[380px] lg:w-[450px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[320px] sm:w-[420px] md:w-[520px] lg:w-[620px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none">
         <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={150}
