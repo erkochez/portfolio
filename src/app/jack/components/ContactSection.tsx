@@ -7,7 +7,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 const SOCIAL = [
   { label: 'GitHub', href: 'https://github.com/erkochez' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/erenahmed' },
-  { label: 'Email', href: 'mailto:eren.ahmed@intecsystem.com' },
+  { label: 'Email', href: 'mailto:erenahmed3@gmail.com' },
 ];
 
 export default function ContactSection() {
