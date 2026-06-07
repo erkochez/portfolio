@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Resume', href: '/erenahmedresume.pdf', download: true },
+  { label: 'Resume', href: '/resume.pdf', download: true },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -37,7 +37,7 @@ export default function HeroSection() {
       {/* Hero Heading */}
       <div className="overflow-hidden w-full">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full mt-6 sm:mt-4 md:-mt-5 text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]">
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full mt-6 sm:mt-4 md:-mt-5 text-[11vw] sm:text-[12vw] md:text-[13vw] lg:text-[14vw]">
             Hi, i&apos;m eren
           </h1>
         </FadeIn>
@@ -61,7 +61,7 @@ export default function HeroSection() {
       </div>
 
       {/* Portrait */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[320px] sm:w-[420px] md:w-[520px] lg:w-[620px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[240px] sm:w-[320px] md:w-[400px] lg:w-[480px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none">
         <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={150}
